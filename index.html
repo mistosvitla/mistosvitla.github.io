@@ -91,6 +91,8 @@ html.kb .g-form{padding-bottom:12px}
 .mark b{color:var(--accent);font-weight:800}
 .top-r{display:flex;align-items:center;gap:6px}
 .icon-btn{width:40px;height:40px;border-radius:50%;border:0;background:color-mix(in srgb,var(--ink) 8%,transparent);display:grid;place-items:center}
+.th-note{width:15px!important;height:15px!important;margin-left:-2px;opacity:.75}
+.th-lang .lang{display:inline-flex}
 .icon-btn.theme-btn{width:auto;height:40px;display:inline-flex;gap:6px;padding:0 14px 0 11px;border-radius:999px;font:600 13px/1 var(--font-body);color:var(--ink)}
 .icon-btn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .icon-btn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
@@ -3143,8 +3145,8 @@ function vCabinet(){var mm=myMeetings(),done=readCount(),teams=TEAMS.filter(func
      '<div><span>'+x('Мої молитовні потреби','Мои молитвенные нужды')+'</span><b>'+nmine+'</b></div>'+
      '<div><span>Mind DEVS</span><span>'+dvLevelLabel()+'</span></div>'+'<div><span>'+x('Служіння','Служение')+'</span><span>'+(teams.length?esc(teams.join(', ')):x('не обрано','не выбрано'))+'</span></div></div></section>'+
    '<section class="stack"><h2>'+x('Налаштування','Настройки')+'</h2>'+
-     '<div class="between" style="align-items:center"><span>'+x('Мова','Язык','Language')+'</span>'+langSwitch()+'</div>'+verseRow()+
-     '<div class="row"><button class="btn tint small" data-act="sheet" data-v="theme">'+x('Тема оформлення та музика','Тема оформления и музыка')+'</button>'+
+     verseRow()+
+     '<div class="row"><button class="btn tint small" data-act="sheet" data-v="theme">'+x('Мова, тема і звук','Язык, тема и звук','Language, theme and sound')+'</button>'+
        (canHome()?'<button class="btn tint small" data-act="homeIcon">'+x('Іконка на головний екран','Иконка на главный экран')+'</button>':'')+
        '<button class="btn tint small" data-act="invite">'+x('Запросити друга','Пригласить друга')+'</button></div></section>'+
    '<form data-form="name" class="stack"><label class="f" for="me-name">'+x('Ім’я в церкві','Имя в церкви')+'<span class="inline"><input type="text" id="me-name" name="name" maxlength="60" value="'+esc(me.name||'')+'" placeholder="'+x('Ім’я та прізвище','Имя и фамилия')+'"><button class="btn" type="submit">'+x('Зберегти','Сохранить')+'</button></span></label>'+
@@ -3805,8 +3807,9 @@ function sheet(){var s=state.sheet,inner='';if(s!=='verseAt')WH.fresh=false;if(!
       ['xmas','thp-xmas',x('Різдво','Рождество','Christmas'),x('сніг, зоря, музична скринька','снег, звезда, музыкальная шкатулка','snow, the star, a music box')],
       ['cosmos','thp-cosmos',x('Космос','Космос','Cosmos'),x('зорі, туманності, тиша','звёзды, туманности, тишина','stars, nebulae, stillness')],
       ['joy','thp-joy',x('Радість','Радость','Joy'),x('веселка, хмаринки, ягнятко','радуга, облачка, ягнёнок','a rainbow, clouds, a little lamb')]];
-    inner='<h2>'+x('Тема оформлення','Тема оформления','Theme')+'</h2>'+
-      '<p class="th-cap">'+x('Атмосфера','Атмосфера','Atmosphere')+'</p><div class="th-sw">'+
+    inner='<h2>'+x('Мова, тема і звук','Язык, тема и звук','Language, theme and sound')+'</h2>'+
+      '<p class="th-cap">'+x('Мова','Язык','Language')+'</p><div class="th-lang">'+langSwitch()+'</div>'+
+      '<p class="th-cap">'+x('Звук','Звук','Sound')+'</p><div class="th-sw">'+
       '<button class="switch" role="switch" aria-checked="'+musicOn+'" data-act="music">'+x('Фонова музика','Фоновая музыка','Background music')+'<i></i></button>'+
       '<button class="switch" role="switch" aria-checked="'+(state.sfx!==false)+'" data-act="sfxToggle">'+x('Звуки дій','Звуки действий','Tap sounds')+'<i></i></button></div>'+
       '<p class="th-cap">'+x('Тема','Тема','Theme')+'</p><div class="th-grid">'+TH.map(function(t){
@@ -3877,8 +3880,8 @@ function render(){var root=document.getElementById('app'),m=root.querySelector('
   var view=(VIEWS[state.sub]||VIEWS[state.tab]||vToday)();
   var fx=document.getElementById('fx');
   root.innerHTML='<header class="top"><button class="mark" data-act="go" data-v="today" aria-label="'+x('На головну','На главную')+'">Місто <b>Світла</b></button>'+
-    '<div class="top-r">'+(state.skin?'<button class="icon-btn" data-act="music" aria-pressed="'+musicOn+'" aria-label="'+x('Музика теми','Музыка темы')+'"><svg viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6.500" cy="18" r="2.500"/><circle cx="16.500" cy="16" r="2.500"/></svg></button>':'')+
-    '<button class="icon-btn theme-btn" data-act="sheet" data-v="theme" aria-label="'+x('Тема оформлення','Тема оформления','Theme')+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.900 5.200L19 10l-5.100 1.800L12 17l-1.900-5.200L5 10l5.100-1.800z"/><path d="M19 15l.7 1.800 1.800.7-1.800.7L19 20l-.7-1.800-1.800-.7 1.800-.7z"/></svg><span>'+x('Тема','Тема','Theme')+'</span></button>'+
+    '<div class="top-r">'+
+    '<button class="icon-btn theme-btn" data-act="sheet" data-v="theme" aria-label="'+x('Мова, тема і звук','Язык, тема и звук','Language, theme and sound')+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.900 5.200L19 10l-5.100 1.800L12 17l-1.900-5.200L5 10l5.100-1.800z"/><path d="M19 15l.7 1.800 1.800.7-1.800.7L19 20l-.7-1.800-1.800-.7 1.800-.7z"/></svg><span>'+{uk:'UA',ru:'RU',en:'EN'}[state.lang]+'</span>'+(musicOn?'<svg class="th-note" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.500" cy="18" r="2.500"/><circle cx="16.500" cy="16" r="2.500"/></svg>':'')+'</button>'+
     '<button class="me" data-act="go" data-v="cabinet" aria-label="'+x('Мій кабінет','Мой кабинет')+'">'+esc(initial())+'</button></div></header>'+
     '<main id="main">'+view+'</main>'+cxBackBar()+verseBar()+
     '<nav class="tabs" aria-label="'+x('Розділи','Разделы')+'">'+TABS.map(function(t){if(t==='guide')return '<button class="g-tab" data-act="go" data-v="guide"'+(state.tab===t?' aria-current="page"':'')+'><span class="g-orb" aria-hidden="true"><svg viewBox="0 0 24 24">'+ICON.guide+'</svg></span>'+tabName(t)+'</button>';
