@@ -1314,6 +1314,14 @@ i.add{font-style:italic;color:var(--muted)}
 .sky-bottom{position:relative;padding:0 10px 10px;display:flex;flex-direction:column;gap:8px}
 .sky .lit{position:static;width:auto;align-self:flex-start;padding:7px 12px;color:#fff;gap:8px;background:rgba(8,10,24,.34);border-radius:999px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:13px}
 .sky .lit b{color:#FFD27A;font-size:15px}
+.sky .online{display:flex;align-items:center;gap:5px;margin-top:5px;white-space:nowrap}
+.sky .online b{color:#fff;font-weight:800}
+.sky .online i{width:8px;height:8px;border-radius:50%;background:#5BE38A;box-shadow:0 0 0 3px rgba(91,227,138,.22)}
+@media (prefers-reduced-motion:no-preference){.sky .online i{animation:onPulse 2.4s ease-in-out infinite}@keyframes onPulse{50%{box-shadow:0 0 0 6px rgba(91,227,138,0)}}}
+.hs-card{display:flex;align-items:center;gap:10px;padding:10px 8px 10px 12px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.hs-card p{flex:1;margin:0;font-size:13.5px;line-height:1.35;color:var(--muted)}
+.hs-ic{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.hs-x{flex:none;width:32px;height:32px;border:0;background:none;color:var(--muted);font-size:22px;line-height:1;border-radius:50%}
 .sky .lit i{color:rgba(255,255,255,.6)}
 .glass{background:rgba(14,13,20,.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);border-radius:26px;padding:8px 12px 8px 8px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);display:flex;align-items:center;gap:10px}
 .glass .txt{flex:1;min-width:0;background:none;border:0;padding:8px 10px;text-align:left;color:#fff;border-radius:18px}
@@ -1442,7 +1450,7 @@ var BASE_LIT=48, TRANSIENT=['bookOpen','sheet','sheetData','sel','pickBook','jum
 
 function defaults(){return {bookPos:{},bookOpen:null,log:{},path:{},aseg:'events',confirm:null,bcText:'',img:null,q:'',lang:'uk',skin:'',sfx:true,tab:'today',sub:null,seg:{bible:'read',prayer:'needs',community:'serve',heaven:'os'},devs:{p:{},all:false},dvCard:null,day:null,name:'',
   going:{},verseOn:false,verseAt:'',prayed:{},needs:[],testimonies:[],pastoral:null,step:{text:'',done:false},read:{},openBook:null,
-  bible:{b:0,c:5},hl:{},notes:{},marks:{},fs:1,cardDay:null,done:{},serve:{},skills:{},ads:[],hello:false,prSnd:true,ncSeen:false,ncHide:false,sermon:false,
+  bible:{b:0,c:5},hl:{},notes:{},marks:{},fs:1,cardDay:null,done:{},serve:{},skills:{},ads:[],hello:false,prSnd:true,ncSeen:false,ncHide:false,visits:0,hsHide:0,hsNo:0,sermon:false,
   thanks:{},wxLoc:null,shareWay:null,sermSaved:{},
   sheet:null,sheetData:null,sel:null,pickBook:null,jump:null,cardAnim:false};}
 var state=defaults();
@@ -1482,7 +1490,15 @@ var tgPaint='';function tgColors(){if(!LIVE)return;try{var c=getComputedStyle(do
   if(tg.setHeaderColor)tg.setHeaderColor(c);if(tg.setBackgroundColor)tg.setBackgroundColor(c);if(tg.setBottomBarColor)tg.setBottomBarColor(c);}catch(e){}}
 /* Telegram 8.0+: home-screen shortcut; invite a friend through Telegram's share sheet */
 var homeAdded=false;function canHome(){try{return LIVE&&!homeAdded&&tg.addToHomeScreen&&tg.isVersionAtLeast&&tg.isVersionAtLeast('8.0');}catch(e){return false;}}
-function checkHome(){try{if(canHome()&&tg.checkHomeScreenStatus)tg.checkHomeScreenStatus(function(st){if(st==='added'||st==='unsupported'){homeAdded=true;render();}});}catch(e){}}
+var homeStatus='',ONLINE=0;
+function checkHome(){try{if(canHome()&&tg.checkHomeScreenStatus)tg.checkHomeScreenStatus(function(st){homeStatus=st;if(st==='added'||st==='unsupported')homeAdded=true;render();});}catch(e){}}
+/* From the second visit on, a quiet card offers the home-screen icon; once it is there, or after two "no", it never comes back. */
+function hsCard(){if(!canHome()||(state.visits||0)<2||(homeStatus!=='missed'&&homeStatus!=='unknown')||(state.hsNo||0)>=2||Date.now()<(state.hsHide||0))return '';
+  return '<section class="hs-card"><span class="hs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 8v6M9 11h6"/></svg></span><p>'+x('Додай іконку на головний екран, щоб відкривати в один дотик','Добавь иконку на главный экран, чтобы открывать в одно касание','Add the icon to your home screen to open it in one tap')+'</p>'+
+    '<button class="btn tint small" data-act="homeIcon">'+x('Додати','Добавить','Add')+'</button><button class="hs-x" data-act="hsHide" aria-label="'+x('Сховати','Скрыть','Hide')+'">×</button></section>';}
+function onlineChip(){var n=DEMO?7:ONLINE;if(n<2)return '';return '<span class="online" id="online"><i aria-hidden="true"></i><b>'+n+'</b> '+x('онлайн','онлайн','online')+'</span>';}
+function pingOnline(){if(!LIVE||document.hidden||!D)return;post('ping').then(function(j){if(!j||!j.online)return;ONLINE=j.online;var el=document.getElementById('online');if(el){var b=el.querySelector('b');if(b)b.textContent=ONLINE;}else if(ONLINE>=2&&document.getElementById('sky'))render();}).catch(function(){});}
+setInterval(pingOnline,90000);
 function haptic(){try{var h=window.Telegram&&Telegram.WebApp&&Telegram.WebApp.HapticFeedback;if(h)h.impactOccurred('light');}catch(e){}}
 
 /* ---------- data from the server (live) or from the in-browser demo server ---------- */
@@ -1536,7 +1552,7 @@ function roleCard(){var r=role();if(r==='member')return '';var can=(ROLE_CAN[r]|
     '<div class="row">'+(isLeaderRole()?'<button class="btn tint small" data-act="go" data-v="leader">'+x('Кабінет лідера','Кабинет лидера')+'</button><button class="btn tint small" data-act="go" data-v="heaven">'+x('Кімната групи','Комната группы')+'</button>':'')+(isAdmin()?'<button class="btn tint small" data-act="go" data-v="admin">'+x('Адмінка','Админка')+'</button>':'')+'</div></section>';}
 function isAdmin(){return role()==='admin';}
 function isLeaderRole(){return ['leader','minister','admin'].indexOf(role())>-1;}
-function applyD(){if(!D)return;
+function applyD(){if(!D)return;if(D.online)ONLINE=D.online;
   D.settings=Object.assign({},DEFAULT_SETTINGS,D.settings||{});D.att=D.att||{};D.needs=D.needs||[];D.tests=D.tests||[];D.myTests=D.myTests||[];D.ads=D.ads||[];D.myAds=D.myAds||[];
   var ev=(D.events||[]).filter(function(e){return e.active!==false;});
   RULES=ev.filter(function(e){return e.type!=='dates'&&e.dow&&e.dow.length;}).map(function(e){return {id:e.id,dow:e.dow,time:e.time,kind:e.kind,title:lv(e.title)||{uk:'',ru:''},who:lv(e.who),where:lv(e.where),desc:lv(e.desc),link:e.link||''};});
@@ -1635,7 +1651,7 @@ function demoMission(){var wk=msWeek();if(!DS.ms||DS.ms.week!==wk)DS.ms={week:wk
   return {week:wk,mine:mine?{path:mine.path,swaps:mine.swaps||0,status:mine.status,text:mine.text||''}:null,drawn:drawn,done:done,stories:stories};}
 function demoApi(a,d){if(!DS)demoInit();if(a==='roleInvite')return {role:d.role,link:'https://t.me/misto_svitla_bot?start=r_'+d.role+'_'+(d.reset?Math.random().toString(36).slice(2,12):'demo'+d.role.slice(0,3)+'7k2q')};if(/^room/.test(a)){var rr=demoRoom(a,d||{});if(rr)return rr;var RD=demoD();RD.flash=a==='roomOpen'?{room:d.key}:{roomClosed:d.key};return RD;}var now=Date.now(),flash=null,by=function(list,id){for(var i=0;i<list.length;i++)if(list[i].id===id)return list[i];return null;};
   var me=DS.me.name||x('Ти','Ты');
-  if(a==='personal'||a==='sendImage')return {ok:true};if(a==='prayQuiet')return {ok:true,added:d.count||0};
+  if(a==='personal'||a==='sendImage')return {ok:true};if(a==='ping')return {online:7};if(a==='prayQuiet')return {ok:true,added:d.count||0};
   if(a==='verseAdd'){if(['leader','minister','admin'].indexOf(DS.me.role)<0)demoErr(x('Лише для лідерів','Только для лидеров'));var vl=DS.verses[d.card]||(DS.verses[d.card]=[]);(d.verses||[]).forEach(function(v,i){if(vl.length<30)vl.push({id:'v'+now+'_'+i,ref:v.ref,uk:v.uk,who:DS.me.name||x('Ти','Ты')});});}
   if(a==='sermonSave'){var so=d.sermon||{};if(!/^\d{4}-\d{2}-\d{2}$/.test(so.date||''))demoErr(x('Вкажіть дату проповіді','Укажите дату проповеди'));if(!String(so.title_uk||'').trim())demoErr(x('Заповніть поле «Тема»','Заполните поле «Тема»'));if(!/^$|^(\d{1,2}:)?[0-5]?\d:[0-5]\d$/.test(String(so.vfrom||'').trim())||!/^$|^(\d{1,2}:)?[0-5]?\d:[0-5]\d$/.test(String(so.vto||'').trim()))demoErr(x('Час у записі вкажіть як 52:10 або 1:31:40','Время в записи укажите как 52:10 или 1:31:40'));if(so.status==='published'&&!String(so.text||'').trim())demoErr(x('Додайте текст підсумку, щоб опублікувати','Добавьте текст итога, чтобы опубликовать'));
     DS.sermons=DS.sermons||[];var ex=DS.sermons.filter(function(q){return q.id===so.id;})[0],rec={id:so.id||('s'+now),date:so.date,time:so.time||'11:00',title:{uk:so.title_uk,ru:so.title_ru||so.title_uk},speaker:so.speaker||'',verse:so.verse||'',ask:so.ask||'',text:so.text||'',video:/^https:\/\//.test(so.video||'')?so.video:'',vfrom:String(so.vfrom||'').trim(),vto:String(so.vto||'').trim(),status:so.status==='published'?'published':'announce'};
@@ -1746,7 +1762,7 @@ function guestView(){var now=new Date(),up=[],sun=null;
    '<div class="g-cta" id="gcta">'+tgBtn.replace('btn light','btn accent')+'</div>'+
    '<p class="note g-demo"><a href="?demo=1">'+x('Подивитися, як виглядає застосунок','Посмотреть, как выглядит приложение','See what the app looks like')+'</a></p></main>';}
 function boot(){
-  if(LIVE){try{tg.ready();tg.expand();if(tg.BackButton)tg.BackButton.onClick(goBack);if(tg.disableVerticalSwipes)tg.disableVerticalSwipes();tgTheme();checkHome();if(tg.onEvent)tg.onEvent('homeScreenAdded',function(){homeAdded=true;render();});if(tg.onEvent)tg.onEvent('themeChanged',function(){tgTheme();render();});}catch(e){}
+  if(LIVE){try{tg.ready();tg.expand();if(tg.BackButton)tg.BackButton.onClick(goBack);if(tg.disableVerticalSwipes)tg.disableVerticalSwipes();tgTheme();state.visits=(state.visits||0)+1;save();checkHome();if(tg.onEvent)tg.onEvent('homeScreenAdded',function(){homeAdded=true;render();});if(tg.onEvent)tg.onEvent('themeChanged',function(){tgTheme();render();});}catch(e){}
     if(!D){try{var c=JSON.parse(localStorage.getItem('ms-cache')||'null');if(c&&c.me){D=c;applyD();}}catch(e){}}
     if(D){BLOCK=null;}else BLOCK='loading';render();
     lastLoad=Date.now();post('load').then(function(nd){D=nd;applyD();cacheD();
@@ -2199,7 +2215,7 @@ function vToday(){var now=new Date(),t0=day0(now),sel=state.day?fromIso(state.da
       (it.who||it.where?'<p class="when">'+(it.who?L(it.who):L(it.where))+'</p>':'')+'<div class="row">'+goingBtn(key)+'<button class="btn tint small" data-act="meet" data-v="'+key+'">'+x('Хто буде','Кто будет')+'</button></div>';}
   var items=dayItems(sel),v=verseOfDay(now),cn=weekCard(),open=cardOpen();
   var soon=SPECIALS.filter(function(s){return occDate(s.dates[s.dates.length-1],s.time)>now;});
-  return hero2(now,nx)+ncCard()+homeDay()+
+  var nc=ncCard();return hero2(now,nx)+(nc||hsCard())+homeDay()+
    '<section class="stack"><div class="between"><h2>'+x('Цей тиждень','Эта неделя')+'</h2><button class="link" data-act="go" data-v="events">'+x('Увесь місяць','Весь месяц')+'</button></div>'+
      '<div class="week">'+week+'</div><ul class="mts">'+items.map(function(q){return mtRow(q,sel);}).join('')+'</ul></section>'+
    (soon.length?'<section class="stack"><h2>'+x('Не пропусти','Не пропусти')+'</h2><ul class="list">'+soon.map(specialRow).join('')+'</ul></section>':'')+
@@ -3740,7 +3756,7 @@ function hero2(now,nx){var name=((D&&D.me&&D.me.name)||'').trim().split(/\s+/)[0
   if(nx){var it=nx.it,key=it.id+'@'+iso(nx.date),ms=occDate(iso(nx.date),it.time).getTime(),cd=cdText(ms);
     strip='<div class="glass"><button class="txt" data-act="meet" data-v="'+key+'"><strong>'+esc(L(it.title))+'</strong><small>'+(cd&&iso(nx.date)===iso(now)?at(it.time):rel(nx.date)+' '+at(it.time))+'<span data-cd="'+ms+'">'+(cd?', '+cd:'')+'</span>'+wxAt(iso(nx.date))+(it.who?'<br>'+esc(L(it.who)):'')+'</small></button>'+goingBtn(key)+'</div>';}
   return '<section class="sky" id="sky"><canvas class="scene" data-sky="1" aria-hidden="true"></canvas><canvas class="wx-fx" id="wxc" aria-hidden="true"></canvas>'+
-    '<div class="sky-top"><p class="sky-date">'+WD[state.lang][now.getDay()]+', '+fmtDay(now)+'</p><h1 class="sky-hi">'+greet()+(name?',<br>'+esc(name):'')+'</h1>'+
+    '<div class="sky-top"><p class="sky-date">'+WD[state.lang][now.getDay()]+', '+fmtDay(now)+onlineChip()+'</p><h1 class="sky-hi">'+greet()+(name?',<br>'+esc(name):'')+'</h1>'+
       wxLine()+'<span class="sky-clock" id="skyclock" hidden></span>'+wxBadge()+'</div>'+
     '<div class="sky-bottom">'+heroLamb()+'<button class="lit" data-act="go" data-v="prayer"><span><b>'+num('lit',litCount())+'</b>'+x('молитов цього тижня','молитв на этой неделе')+'</span>'+(DEMO?'<i>'+x('приклад','пример')+'</i>':'')+'</button>'+strip+'</div></section>';}
 var LAMP={k:'<path d="M4 5h16v11H9l-5 4z"/><path d="M12 13.2s-3-1.9-3-4a1.6 1.6 0 0 1 3-.9 1.6 1.6 0 0 1 3 .9c0 2.1-3 4-3 4z"/>',r:'<path d="M4 5.500C6.500 4.500 9.500 4.500 12 6c2.500-1.500 5.500-1.500 8-.5V19c-2.500-1-5.500-1-8 .5-2.500-1.500-5.500-1.500-8-.5z"/><path d="M12 6v13.500"/>',c:'<rect x="6" y="3" width="12" height="18" rx="2.500"/><path d="M12 8.500l1.100 2.400 2.400 1.100-2.400 1.100L12 15.500l-1.100-2.400-2.400-1.100 2.400-1.100z"/>',p:'<path d="M12 20s-7-4.400-7-9.600A3.900 3.900 0 0 1 12 8a3.900 3.900 0 0 1 7 2.400C19 15.600 12 20 12 20z"/>'};
@@ -4107,6 +4123,7 @@ var actions={
   cxBack:function(){var r=cxRet||{y:0};cxRet=null;go('newcomer');commit();var put=function(){var mm=document.querySelector('main'),pn=r.p!=null?document.querySelector('.cx-p[data-cx="'+r.p+'"]'):null;if(mm)mm.scrollTop=pn?pn.offsetTop-r.off:r.y;};put();setTimeout(put,60);},
   cxClose:function(){cxRet=null;render();},
   ncHide:function(){state.ncHide=true;save();render();},
+  hsHide:function(){state.hsNo=(state.hsNo||0)+1;state.hsHide=Date.now()+7*864e5;save();render();},
   lambTap:function(){state.ncSeen=true;var b=document.querySelector('.h-lamb');bleat();if(b){b.classList.remove('talk');void b.offsetWidth;b.classList.add('talk');}setTimeout(function(){go('newcomer');render();},motionOk()?650:0);},
   hello:function(){state.hello=!state.hello;save();run(state.hello?'request':'requestCancel',{kind:'hello',topic:''},state.hello?x('Тебе зустрінуть у неділю. Служитель напише тобі','Тебя встретят в воскресенье. Служитель напишет тебе'):'');},
   skin:function(v){state.skin=v;MODELS={};intro.done=false;intro.t0=performance.now();if(musicOn)startMusic();commit();sfxPlay('pick');},

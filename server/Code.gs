@@ -322,9 +322,10 @@ function handleApi(body) {
   if (action === 'contact') return contactFromApp(tgUser, u, body);
   if (!u || u.status !== 'ok') return { error: 'NOT_REGISTERED' };
   if (action === 'room') { u.role = roleOf(u); return roomView(u, String(body.key || '')); }
+  if (action === 'ping') return { online: onlineMark(id) };
   var fn = ACTIONS[action];
   if (!fn) throw new Error('Невідома дія');
-  if (action === 'load') { u.role = roleOf(u); return buildD(u); }
+  if (action === 'load') { u.role = roleOf(u); var d = buildD(u); d.online = onlineMark(id); return d; }
   var lock = LockService.getScriptLock();
   lock.waitLock(25000);
   try {
@@ -1256,6 +1257,16 @@ function remindJob() {
   var old = kyivDate(new Date(now - 60 * 864e5));
   var stale = rows('Going').filter(function (g) { var d = String(g.key).split('@')[1]; return d && d < old; });
   if (stale.length) delRows('Going', stale);
+}
+
+/* Хто зараз у застосунку: застосунок відмічається раз на 90 с, рахуємо тих, хто був за останні 3 хвилини.
+   Без блокування: рідкісна гонка може на хвилину загубити одну людину, для лічильника це не страшно. */
+function onlineMark(id) {
+  var c = CacheService.getScriptCache(), m = parseJ(c.get('online'), {}), now = Date.now(), o = {};
+  for (var k in m) if (now - Number(m[k]) < 180000) o[k] = m[k];
+  o[String(id)] = now;
+  c.put('online', JSON.stringify(o), 600);
+  return Object.keys(o).length;
 }
 
 /* Молитви в «Хвилині тиші» за загальні теми (без конкретної потреби): лічильник по днях у властивостях скрипта. */

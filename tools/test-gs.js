@@ -405,5 +405,13 @@ assert.strictEqual(call(petro, 'load').me.name, 'Петро Іваненко', '
   assert.strictEqual(call(petro, 'load').calls, null, 'members do not get the list');
 }
 
+// --- who is in the app right now
+{ let r = call(admin, 'ping'); assert.ok(r.online >= 1, 'ping counts me');
+  const before = r.online;
+  r = call(anna, 'ping'); assert.strictEqual(r.online, before + (r.online > before ? 1 : 0), 'second person counted');
+  assert.ok(call(admin, 'load').online >= 2, 'load returns the online count');
+  assert.ok(/NOT_REGISTERED/.test(JSON.stringify(call({ id: 999111, first_name: 'Гість' }, 'ping'))), 'strangers are not counted');
+}
+
 console.log('ALL GOOD. messages sent:', sent.length, '| log rows:', (sheets.Log ? sheets.Log.data.length - 1 : 0));
 if (sheets.Log && sheets.Log.data.length > 1) console.log(sheets.Log.data.slice(1));
