@@ -1321,6 +1321,42 @@ i.add{font-style:italic;color:var(--muted)}
 .hs-card{display:flex;align-items:center;gap:10px;padding:10px 8px 10px 12px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
 .hs-card p{flex:1;margin:0;font-size:13.5px;line-height:1.35;color:var(--muted)}
 .hs-ic{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.hv{position:relative;width:196px;height:360px;margin:6px auto 12px;border-radius:32px;border:7px solid #15161A;background:#F2F2F7;overflow:hidden;color:#111;font-family:-apple-system,system-ui,sans-serif;box-shadow:0 0 0 1.5px rgba(255,255,255,.14),0 12px 30px rgba(0,0,0,.18)}
+.hv-l{position:absolute;inset:0}
+.hv-app{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:linear-gradient(160deg,#5B4BD6,#FFB45E);flex:none}.hv-app svg{width:40px;height:40px}
+.hv-page{background:#fff}
+.hv-url{margin:10px 10px 0;padding:6px;border-radius:9px;background:#EEEEF2;font-size:9px;text-align:center;color:#555}
+.hv-hero{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:80px;font-size:13px}.hv-hero .hv-app{width:56px;height:56px;border-radius:14px}.hv-hero .hv-app svg{width:56px;height:56px}
+.hv-bar{position:absolute;left:0;right:0;bottom:0;height:34px;display:flex;justify-content:space-around;align-items:center;background:#F7F7F9;border-top:1px solid #DDD;color:#0A84FF;font-style:normal}.hv-bar i{font-style:normal;font-size:13px;width:22px;height:22px;display:grid;place-items:center;border-radius:6px}
+.hv-sheet{top:auto;height:212px;background:#F2F2F7;border-radius:14px 14px 0 0;box-shadow:0 -6px 20px rgba(0,0,0,.15);padding:10px 8px;transform:translateY(110%)}
+.hv-sh-h{display:flex;gap:8px;align-items:center;margin-bottom:10px;font-size:10px}.hv-sh-h .hv-app{width:30px;height:30px;border-radius:8px}.hv-sh-h .hv-app svg{width:30px;height:30px}.hv-sh-h small{display:block;color:#888;font-size:8.5px}
+.hv-row{display:flex;justify-content:space-between;align-items:center;height:30px;padding:0 10px;background:#fff;font-size:10.5px;border-bottom:1px solid #E5E5EA}.hv-row:nth-child(2){border-radius:9px 9px 0 0}.hv-row:last-child{border-radius:0 0 9px 9px;border:0}
+.hv-dlg{background:#F2F2F7;opacity:0}
+.hv-nav{display:flex;justify-content:space-between;padding:12px 12px 10px;font-size:10.5px;color:#0A84FF;background:#F7F7F9;border-bottom:1px solid #DDD}.hv-add{padding:2px 5px;border-radius:6px}
+.hv-dlg-b{display:flex;align-items:center;gap:10px;margin:14px 10px;padding:10px;background:#fff;border-radius:10px;font-size:11px}
+.hv-home{opacity:0;background:linear-gradient(170deg,#3B3A8F,#E58A5A)}
+.hv-grid{display:grid;grid-template-columns:repeat(4,32px);gap:12px 10px;justify-content:center;padding-top:30px}.hv-grid i{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.28)}
+.hv-new .hv-app{width:32px;height:32px;border-radius:8px;transform:scale(0)}.hv-new .hv-app svg{width:32px;height:32px}
+.hv-f{position:absolute;left:120px;top:250px;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:rgba(40,40,50,.35);border:2px solid rgba(255,255,255,.9);opacity:0}
+.hv-steps{list-style:none;padding:0;margin:0 0 14px;display:grid;gap:6px}
+.hv-steps li{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;font-size:14px;color:var(--muted)}
+.hv-steps b{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+@media (prefers-reduced-motion:no-preference){
+.hv-f{animation:hvF 6s infinite}.hv-sheet{animation:hvSh 6s infinite}.hv-dlg{animation:hvDl 6s infinite}.hv-home{animation:hvHo 6s infinite}.hv-new .hv-app{animation:hvNew 6s infinite}
+.hv-share{animation:hvHi1 6s infinite}.hv-pick{animation:hvHi2 6s infinite}.hv-add{animation:hvHi3 6s infinite}
+.hv-s1{animation:hvS1 6s infinite}.hv-s2{animation:hvS2 6s infinite}.hv-s3{animation:hvS3 6s infinite}
+@keyframes hvF{0%{left:130px;top:250px;opacity:0;transform:scale(1)}6%{opacity:1}14%{left:91px;top:329px;transform:scale(1)}17%{transform:scale(.7)}20%{left:91px;top:329px;transform:scale(1)}30%{left:91px;top:262px}38%{left:91px;top:262px;transform:scale(1)}41%{transform:scale(.7)}44%{left:91px;top:262px;transform:scale(1)}54%{left:162px;top:22px}61%{left:162px;top:22px;transform:scale(1);opacity:1}64%{transform:scale(.7)}67%{transform:scale(1);opacity:1}72%,100%{left:162px;top:22px;opacity:0}}
+@keyframes hvSh{0%,19%{transform:translateY(110%);opacity:1}26%,46%{transform:translateY(0);opacity:1}48%,100%{transform:translateY(0);opacity:0}}
+@keyframes hvDl{0%,45%{opacity:0}48%,69%{opacity:1}72%,100%{opacity:0}}
+@keyframes hvHo{0%,69%{opacity:0}72%,96%{opacity:1}100%{opacity:0}}
+@keyframes hvNew{0%,75%{transform:scale(0)}80%{transform:scale(1.18)}84%,100%{transform:scale(1)}}
+@keyframes hvHi1{0%,15%,21%,100%{background:none}17%{background:rgba(10,132,255,.18)}}
+@keyframes hvHi2{0%,39%,47%,100%{background:#fff}41%,45%{background:#D8D8DE}}
+@keyframes hvHi3{0%,62%,69%,100%{background:none}64%,67%{background:rgba(10,132,255,.18)}}
+@keyframes hvS1{0%,22%{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--ink)}24%,100%{background:none;color:var(--muted)}}
+@keyframes hvS2{0%,22%,48%,100%{background:none;color:var(--muted)}24%,46%{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--ink)}}
+@keyframes hvS3{0%,46%,74%,100%{background:none;color:var(--muted)}48%,72%{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--ink)}}}
+@media (prefers-reduced-motion:reduce){.hv-sheet{transform:none}}
 .hs-x{flex:none;width:32px;height:32px;border:0;background:none;color:var(--muted);font-size:22px;line-height:1;border-radius:50%}
 .sky .lit i{color:rgba(255,255,255,.6)}
 .glass{background:rgba(14,13,20,.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);border-radius:26px;padding:8px 12px 8px 8px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);display:flex;align-items:center;gap:10px}
@@ -1496,6 +1532,20 @@ function checkHome(){try{if(canHome()&&tg.checkHomeScreenStatus)tg.checkHomeScre
 function hsCard(){if(!canHome()||(state.visits||0)<2||(homeStatus!=='missed'&&homeStatus!=='unknown')||(state.hsNo||0)>=2||Date.now()<(state.hsHide||0))return '';
   return '<section class="hs-card"><span class="hs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 8v6M9 11h6"/></svg></span><p>'+x('Додай іконку на головний екран, щоб відкривати в один дотик','Добавь иконку на главный экран, чтобы открывать в одно касание','Add the icon to your home screen to open it in one tap')+'</p>'+
     '<button class="btn tint small" data-act="homeIcon">'+x('Додати','Добавить','Add')+'</button><button class="hs-x" data-act="hsHide" aria-label="'+x('Сховати','Скрыть','Hide')+'">×</button></section>';}
+/* iPhone: Telegram can't add the icon by itself there, so first show the three taps as a short looping animation. */
+function isIOS(){try{return tg.platform==='ios'||/iPhone|iPad|iPod/.test(navigator.userAgent);}catch(e){return false;}}
+function hsIosSheet(){var icon='<span class="hv-app"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 34 C12 20 16 16 20 16 C24 16 28 20 36 34Z" fill="#2B2140"/><rect x="17.5" y="11" width="5" height="6" fill="#2B2140"/><path d="M16.5 11.5L20 8l3.5 3.5z" fill="#2B2140"/><rect x="19" y="13" width="2" height="2.6" fill="#FFD27A"/></svg></span>',
+    st=[x('Поділитися','Поделиться','Share'),x('На початковий екран','На экран «Домой»','Add to Home Screen'),x('Додати','Добавить','Add')];
+  var share='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10H6v10h12V10h-2"/><path d="M12 14V3M8.5 6.5L12 3l3.5 3.5"/></svg>',
+    rows=[[x('Копіювати','Копировать','Copy'),'<rect x="8" y="8" width="11" height="11" rx="2"/><path d="M5 15V5h10"/>'],[x('Додати закладку','Добавить закладку','Add Bookmark'),'<path d="M6 4h12v16l-6-4-6 4z"/>'],[st[1],'<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/>']];
+  var page='<div class="hv-l hv-page"><div class="hv-url">mistosvitla.github.io</div><div class="hv-hero">'+icon+'<b>Місто Світла</b></div><div class="hv-bar"><i>‹</i><i>›</i><i class="hv-share">'+share+'</i><i>▢</i><i>⧉</i></div></div>';
+  var sh='<div class="hv-l hv-sheet"><div class="hv-sh-h">'+icon+'<span><b>Місто Світла</b><small>mistosvitla.github.io</small></span></div>'+rows.map(function(r,i){return '<div class="hv-row'+(i===2?' hv-pick':'')+'"><span>'+r[0]+'</span><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8">'+r[1]+'</svg></div>';}).join('')+'</div>';
+  var dlg='<div class="hv-l hv-dlg"><div class="hv-nav"><span>'+x('Скасувати','Отменить','Cancel')+'</span><b class="hv-add">'+st[2]+'</b></div><div class="hv-dlg-b">'+icon+'<span>Місто Світла</span></div></div>';
+  var home='<div class="hv-l hv-home"><div class="hv-grid">'+'<i></i>'.repeat(11)+'<span class="hv-new">'+icon+'</span></div></div>';
+  return '<h2>'+x('Іконка на iPhone — три дотики','Иконка на iPhone — три касания','Icon on iPhone in three taps')+'</h2><p class="sub">'+x('Після кнопки відкриється сторінка. Далі зроби так:','После кнопки откроется страница. Дальше сделай так:','After the button a page opens. Then do this:')+'</p>'+
+    '<div class="hv" aria-hidden="true">'+page+sh+dlg+home+'<span class="hv-f"></span></div>'+
+    '<ol class="hv-steps">'+st.map(function(t,i){return '<li class="hv-s'+(i+1)+'"><b>'+(i+1)+'</b>'+t+'</li>';}).join('')+'</ol>'+
+    '<button class="btn accent wide" data-act="homeGo">'+x('Зрозуміло, додати','Понятно, добавить','Got it, add')+'</button>';}
 function onlineChip(){var n=DEMO?7:ONLINE;if(n<2)return '';return '<span class="online" id="online"><i aria-hidden="true"></i><b>'+n+'</b> '+x('онлайн','онлайн','online')+'</span>';}
 function pingOnline(){if(!LIVE||document.hidden||!D)return;post('ping').then(function(j){if(!j||!j.online)return;ONLINE=j.online;var el=document.getElementById('online');if(el){var b=el.querySelector('b');if(b)b.textContent=ONLINE;}else if(ONLINE>=2&&document.getElementById('sky'))render();}).catch(function(){});}
 setInterval(pingOnline,90000);
@@ -3780,6 +3830,7 @@ function sheet(){var s=state.sheet,inner='';if(s!=='verseAt')WH.fresh=false;if(!
       '<button class="btn accent wide" data-act="whSave">'+x('Зберегти','Сохранить','Save')+'</button>';
     setTimeout(wheelInit,30);}
   if(s==='roomNew')inner=roomNewSheet();
+  if(s==='hsIos')inner=hsIosSheet();
   var foot=DEMO?'<p class="note">'+x('Демо: запис зберігається лише в цьому браузері.','Демо: запись хранится только в этом браузере.')+'</p>':'';
   if(s==='meet'){var p=String(state.sheetData||'').split('@'),it=byId(p[0]);if(!it||!p[1])return '';
     var d=fromIso(p[1]),key=state.sheetData,sm=attOf(key,it),mine=sm.mine,who='';
@@ -3952,7 +4003,8 @@ var actions={
   loadOT:function(){loadOT(state.lang);render();},
   verseImg:function(){imgTitle='';toast(x('Готую картинку…','Готовлю картинку…'));verseImage().then(function(u){state.img=u;state.sheet='img';render();},function(){toast(x('Не вдалося створити картинку','Не удалось создать картинку'));});},
   sendImg:function(){var v=verseOfDay();post('sendImage',{img:state.img,caption:'«'+L(v.t)+'»\n'+L(v.ref)}).then(function(){toast(x('Надіслано в чат з ботом. Звідти її легко переслати','Отправлено в чат с ботом. Оттуда её легко переслать'));},function(e){toast(errText(e),1);});},
-  homeIcon:function(){try{tg.addToHomeScreen();}catch(e){toast(x('Твій Telegram поки цього не вміє. Онови застосунок','Твой Telegram пока этого не умеет. Обнови приложение'),true);}},
+  homeIcon:function(){if(isIOS()){state.sheet='hsIos';state.sheetData=null;render();return;}actions.homeGo();},
+  homeGo:function(){if(state.sheet==='hsIos'){state.sheet=null;render();}try{tg.addToHomeScreen();}catch(e){toast(x('Твій Telegram поки цього не вміє. Онови застосунок','Твой Telegram пока этого не умеет. Обнови приложение'),true);}},
   invite:function(){var app=CONFIG.BOT_USERNAME?'https://t.me/'+CONFIG.BOT_USERNAME+'?startapp=src_friend':'',txt=x('Наша церква «Місто Світла» тепер у Telegram: розклад, Біблія, молитва. Приєднуйся!','Наша церковь «Місто Світла» теперь в Telegram: расписание, Библия, молитва. Присоединяйся!');
     if(!app){toast(x('У живій версії відкриється вибір чату','В живой версии откроется выбор чата'));return;}
     var u='https://t.me/share/url?url='+encodeURIComponent(app)+'&text='+encodeURIComponent(txt);if(LIVE&&tg.openTelegramLink)tg.openTelegramLink(u);else window.open(u,'_blank');},
