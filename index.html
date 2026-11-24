@@ -1321,42 +1321,64 @@ i.add{font-style:italic;color:var(--muted)}
 .hs-card{display:flex;align-items:center;gap:10px;padding:10px 8px 10px 12px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
 .hs-card p{flex:1;margin:0;font-size:13.5px;line-height:1.35;color:var(--muted)}
 .hs-ic{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
-.hv{position:relative;width:196px;height:360px;margin:6px auto 12px;border-radius:32px;border:7px solid #15161A;background:#F2F2F7;overflow:hidden;color:#111;font-family:-apple-system,system-ui,sans-serif;box-shadow:0 0 0 1.5px rgba(255,255,255,.14),0 12px 30px rgba(0,0,0,.18)}
+.hv{position:relative;width:196px;height:360px;margin:6px auto 12px;border-radius:32px;border:7px solid #15161A;background:#fff;overflow:hidden;color:#111;font-family:-apple-system,system-ui,sans-serif;box-shadow:0 0 0 1.5px rgba(255,255,255,.14),0 12px 30px rgba(0,0,0,.18)}
 .hv-l{position:absolute;inset:0}
-.hv-app{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:linear-gradient(160deg,#5B4BD6,#FFB45E);flex:none}.hv-app svg{width:40px;height:40px}
-.hv-page{background:#fff}
-.hv-url{margin:10px 10px 0;padding:6px;border-radius:9px;background:#EEEEF2;font-size:9px;text-align:center;color:#555}
-.hv-hero{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:80px;font-size:13px}.hv-hero .hv-app{width:56px;height:56px;border-radius:14px}.hv-hero .hv-app svg{width:56px;height:56px}
-.hv-bar{position:absolute;left:0;right:0;bottom:0;height:34px;display:flex;justify-content:space-around;align-items:center;background:#F7F7F9;border-top:1px solid #DDD;color:#0A84FF;font-style:normal}.hv-bar i{font-style:normal;font-size:13px;width:22px;height:22px;display:grid;place-items:center;border-radius:6px}
-.hv-sheet{top:auto;height:212px;background:#F2F2F7;border-radius:14px 14px 0 0;box-shadow:0 -6px 20px rgba(0,0,0,.15);padding:10px 8px;transform:translateY(110%)}
-.hv-sh-h{display:flex;gap:8px;align-items:center;margin-bottom:10px;font-size:10px}.hv-sh-h .hv-app{width:30px;height:30px;border-radius:8px}.hv-sh-h .hv-app svg{width:30px;height:30px}.hv-sh-h small{display:block;color:#888;font-size:8.5px}
-.hv-row{display:flex;justify-content:space-between;align-items:center;height:30px;padding:0 10px;background:#fff;font-size:10.5px;border-bottom:1px solid #E5E5EA}.hv-row:nth-child(2){border-radius:9px 9px 0 0}.hv-row:last-child{border-radius:0 0 9px 9px;border:0}
+.hv-app{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:10px;background:linear-gradient(160deg,#5B4BD6,#FFB45E);flex:none}.hv-app svg{width:100%;height:100%}
+.hv-page{background:linear-gradient(180deg,#F4F1FF,#fff 60%)}
+.hv-hero{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:84px;font-size:13px}.hv-hero small{font-size:9.5px;color:#777}.hv-hero .hv-app{width:56px;height:56px;border-radius:14px}
+.hv-bar{position:absolute;left:8px;right:8px;bottom:10px;display:flex;align-items:center;gap:6px}
+.hv-g{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;color:#222;background:rgba(255,255,255,.75);box-shadow:0 2px 10px rgba(0,0,0,.14),inset 0 0 0 .5px rgba(0,0,0,.08)}
+.hv-dots{font-size:8px;letter-spacing:.5px}
+.hv-url{flex:1;height:28px;border-radius:999px;display:grid;place-items:center;font-size:8.5px;color:#333;background:rgba(255,255,255,.75);box-shadow:0 2px 10px rgba(0,0,0,.14),inset 0 0 0 .5px rgba(0,0,0,.08)}
+.hv-menu{position:absolute;right:8px;bottom:46px;width:122px;border-radius:14px;background:rgba(250,250,252,.96);box-shadow:0 8px 24px rgba(0,0,0,.2);overflow:hidden;transform-origin:100% 100%;transform:scale(.3);opacity:0}
+.hv-mi{display:flex;justify-content:space-between;align-items:center;height:26px;padding:0 9px;font-size:9.5px;border-bottom:.5px solid #E2E2E7}.hv-mi:last-child{border:0}
+.hv-sheet{top:auto;height:226px;background:#F2F2F7;border-radius:16px 16px 0 0;box-shadow:0 -6px 20px rgba(0,0,0,.15);padding:10px 8px;transform:translateY(110%)}
+.hv-sh-h{display:flex;gap:8px;align-items:center;margin-bottom:8px;font-size:10px}.hv-sh-h .hv-app{width:30px;height:30px;border-radius:8px}.hv-sh-h small{display:block;color:#888;font-size:8.5px}
+.hv-ppl{display:flex;gap:10px;margin:0 2px 9px}.hv-ppl i{width:30px;height:30px;border-radius:50%;background:#D9D9E0}
+.hv-row{display:flex;justify-content:space-between;align-items:center;height:30px;padding:0 10px;background:#fff;font-size:10px;border-bottom:.5px solid #E5E5EA}.hv-row:nth-child(3){border-radius:9px 9px 0 0}.hv-row:last-child{border-radius:0 0 9px 9px;border:0}
 .hv-dlg{background:#F2F2F7;opacity:0}
-.hv-nav{display:flex;justify-content:space-between;padding:12px 12px 10px;font-size:10.5px;color:#0A84FF;background:#F7F7F9;border-bottom:1px solid #DDD}.hv-add{padding:2px 5px;border-radius:6px}
-.hv-dlg-b{display:flex;align-items:center;gap:10px;margin:14px 10px;padding:10px;background:#fff;border-radius:10px;font-size:11px}
+.hv-nav{display:flex;justify-content:space-between;align-items:center;padding:8px 8px;font-size:9.5px;background:#F7F7F9}.hv-nav span{flex:1;min-width:0;margin:0 6px;text-align:center;font-weight:600;font-size:8.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hv-nav .hv-g{width:24px;height:24px;font-size:9px}
+.hv-add{padding:5px 8px;border-radius:999px;background:#0A84FF;color:#fff;font-size:9.5px}
+.hv-dlg-b{display:flex;align-items:center;gap:10px;margin:10px 10px 8px;padding:10px;background:#fff;border-radius:12px;font-size:11px}
+.hv-tg{display:flex;justify-content:space-between;align-items:center;margin:0 10px;padding:8px 10px;background:#fff;border-radius:12px;font-size:9.5px}.hv-tg em{width:26px;height:15px;border-radius:999px;background:#34C759;position:relative}.hv-tg em:after{content:"";position:absolute;right:1.5px;top:1.5px;width:12px;height:12px;border-radius:50%;background:#fff}
 .hv-home{opacity:0;background:linear-gradient(170deg,#3B3A8F,#E58A5A)}
 .hv-grid{display:grid;grid-template-columns:repeat(4,32px);gap:12px 10px;justify-content:center;padding-top:30px}.hv-grid i{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.28)}
-.hv-new .hv-app{width:32px;height:32px;border-radius:8px;transform:scale(0)}.hv-new .hv-app svg{width:32px;height:32px}
-.hv-f{position:absolute;left:120px;top:250px;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:rgba(40,40,50,.35);border:2px solid rgba(255,255,255,.9);opacity:0}
-.hv-steps{list-style:none;padding:0;margin:0 0 14px;display:grid;gap:6px}
-.hv-steps li{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;font-size:14px;color:var(--muted)}
-.hv-steps b{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.hv-new .hv-app{width:32px;height:32px;border-radius:8px;transform:scale(0)}
+.hv-f{position:absolute;left:120px;top:250px;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;background:rgba(40,40,50,.35);border:2px solid rgba(255,255,255,.9);opacity:0;z-index:3}
+.hv-steps{list-style:none;padding:0;margin:0 0 8px;display:grid;gap:4px}
+.hv-steps li{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:12px;font-size:14px;color:var(--muted)}
+.hv-steps b{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.hv-note{margin:0 0 14px;font-size:12.5px}
 @media (prefers-reduced-motion:no-preference){
-.hv-f{animation:hvF 6s infinite}.hv-sheet{animation:hvSh 6s infinite}.hv-dlg{animation:hvDl 6s infinite}.hv-home{animation:hvHo 6s infinite}.hv-new .hv-app{animation:hvNew 6s infinite}
-.hv-share{animation:hvHi1 6s infinite}.hv-pick{animation:hvHi2 6s infinite}.hv-add{animation:hvHi3 6s infinite}
-.hv-s1{animation:hvS1 6s infinite}.hv-s2{animation:hvS2 6s infinite}.hv-s3{animation:hvS3 6s infinite}
-@keyframes hvF{0%{left:130px;top:250px;opacity:0;transform:scale(1)}6%{opacity:1}14%{left:91px;top:329px;transform:scale(1)}17%{transform:scale(.7)}20%{left:91px;top:329px;transform:scale(1)}30%{left:91px;top:262px}38%{left:91px;top:262px;transform:scale(1)}41%{transform:scale(.7)}44%{left:91px;top:262px;transform:scale(1)}54%{left:162px;top:22px}61%{left:162px;top:22px;transform:scale(1);opacity:1}64%{transform:scale(.7)}67%{transform:scale(1);opacity:1}72%,100%{left:162px;top:22px;opacity:0}}
-@keyframes hvSh{0%,19%{transform:translateY(110%);opacity:1}26%,46%{transform:translateY(0);opacity:1}48%,100%{transform:translateY(0);opacity:0}}
-@keyframes hvDl{0%,45%{opacity:0}48%,69%{opacity:1}72%,100%{opacity:0}}
-@keyframes hvHo{0%,69%{opacity:0}72%,96%{opacity:1}100%{opacity:0}}
-@keyframes hvNew{0%,75%{transform:scale(0)}80%{transform:scale(1.18)}84%,100%{transform:scale(1)}}
-@keyframes hvHi1{0%,15%,21%,100%{background:none}17%{background:rgba(10,132,255,.18)}}
-@keyframes hvHi2{0%,39%,47%,100%{background:#fff}41%,45%{background:#D8D8DE}}
-@keyframes hvHi3{0%,62%,69%,100%{background:none}64%,67%{background:rgba(10,132,255,.18)}}
-@keyframes hvS1{0%,22%{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--ink)}24%,100%{background:none;color:var(--muted)}}
-@keyframes hvS2{0%,22%,48%,100%{background:none;color:var(--muted)}24%,46%{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--ink)}}
-@keyframes hvS3{0%,46%,74%,100%{background:none;color:var(--muted)}48%,72%{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--ink)}}}
+.hv-f{animation:hvF 7s infinite}.hv-menu{animation:hvMe 7s infinite}.hv-sheet{animation:hvSh 7s infinite}.hv-dlg{animation:hvDl 7s infinite}.hv-home{animation:hvHo 7s infinite}.hv-new .hv-app{animation:hvNew 7s infinite}
+.hv-dots{animation:hvHi1 7s infinite}.hv-pk1{animation:hvHi2 7s infinite}.hv-pk2{animation:hvHi3 7s infinite}.hv-add{animation:hvHi4 7s infinite}
+.hv-s1{animation:hvS1 7s infinite}.hv-s2{animation:hvS2 7s infinite}.hv-s3{animation:hvS3 7s infinite}.hv-s4{animation:hvS4 7s infinite}
+@keyframes hvF{0%{left:120px;top:240px;opacity:0;transform:scale(1)}5%{opacity:1}11%{left:160px;top:322px;transform:scale(1)}13%{transform:scale(.7)}15%{left:160px;top:322px;transform:scale(1)}23%{left:113px;top:235px;transform:scale(1)}25%{transform:scale(.7)}27%{left:113px;top:235px;transform:scale(1)}38%{left:91px;top:292px;transform:scale(1)}48%{left:91px;top:292px;transform:scale(1)}50%{transform:scale(.7)}52%{left:91px;top:292px;transform:scale(1)}62%{left:152px;top:20px;transform:scale(1);opacity:1}68%{left:152px;top:20px;transform:scale(1)}70%{transform:scale(.7);opacity:1}72%{transform:scale(1)}76%,100%{left:152px;top:20px;opacity:0}}
+@keyframes hvMe{0%,13%{transform:scale(.3);opacity:0}17%,27%{transform:scale(1);opacity:1}30%,100%{transform:scale(1);opacity:0}}
+@keyframes hvSh{0%,28%{transform:translateY(110%);opacity:1}34%,53%{transform:translateY(0);opacity:1}55%,100%{transform:translateY(0);opacity:0}}
+@keyframes hvDl{0%,53%{opacity:0}56%,75%{opacity:1}78%,100%{opacity:0}}
+@keyframes hvHo{0%,75%{opacity:0}78%,97%{opacity:1}100%{opacity:0}}
+@keyframes hvNew{0%,80%{transform:scale(0)}85%{transform:scale(1.18)}88%,100%{transform:scale(1)}}
+@keyframes hvHi1{0%,12%,16%,100%{background:rgba(255,255,255,.75)}13%,15%{background:#D6E6FF}}
+@keyframes hvHi2{0%,24%,28%,100%{background:none}25%,27%{background:#DCDCE2}}
+@keyframes hvHi3{0%,49%,53%,100%{background:#fff}50%,52%{background:#D8D8DE}}
+@keyframes hvHi4{0%,69%,73%,100%{background:#0A84FF}70%,72%{background:#0062CC}}
+@keyframes hvS1{0%,16%{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--ink)}18%,100%{background:none;color:var(--muted)}}
+@keyframes hvS2{0%,16%,30%,100%{background:none;color:var(--muted)}18%,28%{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--ink)}}
+@keyframes hvS3{0%,28%,54%,100%{background:none;color:var(--muted)}30%,52%{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--ink)}}
+@keyframes hvS4{0%,52%,78%,100%{background:none;color:var(--muted)}54%,76%{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--ink)}}}
 @media (prefers-reduced-motion:reduce){.hv-sheet{transform:none}}
+.sh-card{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border:0;border-radius:20px;text-align:left;color:#2A1B05;background:linear-gradient(120deg,#FFE3A3,#FFC978);box-shadow:0 8px 22px rgba(255,170,60,.22)}
+.sh-ic{flex:none;width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:rgba(255,255,255,.55);color:#B5530B}
+.sh-tx{flex:1;display:flex;flex-direction:column;gap:2px}.sh-tx b{font:800 16px/1.2 var(--font-display);letter-spacing:-.01em}.sh-tx small{font-size:13px;color:rgba(42,27,5,.72)}
+.sh-chev{flex:none;color:rgba(42,27,5,.55)}
+:root[data-theme="dark"] .sh-card,:root:not([data-theme="light"]) .sh-card{box-shadow:none}
+.sh-msg{margin:4px 0 16px auto;max-width:300px;padding:10px 12px 12px;border-radius:18px 18px 6px 18px;background:color-mix(in srgb,var(--accent) 12%,var(--surface));font-size:14px;line-height:1.4}
+.sh-msg p{margin:0 0 4px}.sh-url{display:block;color:var(--accent);font-size:13.5px;margin-bottom:8px;word-break:break-all}
+.sh-prev{display:flex;flex-direction:column;gap:2px;padding-left:10px;border-left:3px solid var(--accent);font-size:13px}
+.sh-prev b{color:var(--accent);font-size:13px}.sh-prev strong{font-size:13.5px}.sh-prev span{color:var(--muted)}
+.sh-prev img{width:100%;border-radius:10px;margin-top:6px;aspect-ratio:1200/630;object-fit:cover;background:#1A1410}
+.sheet .btn.wide+.btn.wide{margin-top:8px}
 .hs-x{flex:none;width:32px;height:32px;border:0;background:none;color:var(--muted);font-size:22px;line-height:1;border-radius:50%}
 .sky .lit i{color:rgba(255,255,255,.6)}
 .glass{background:rgba(14,13,20,.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);border-radius:26px;padding:8px 12px 8px 8px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);display:flex;align-items:center;gap:10px}
@@ -1532,20 +1554,36 @@ function checkHome(){try{if(canHome()&&tg.checkHomeScreenStatus)tg.checkHomeScre
 function hsCard(){if(!canHome()||(state.visits||0)<2||(homeStatus!=='missed'&&homeStatus!=='unknown')||(state.hsNo||0)>=2||Date.now()<(state.hsHide||0))return '';
   return '<section class="hs-card"><span class="hs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M12 8v6M9 11h6"/></svg></span><p>'+x('Додай іконку на головний екран, щоб відкривати в один дотик','Добавь иконку на главный экран, чтобы открывать в одно касание','Add the icon to your home screen to open it in one tap')+'</p>'+
     '<button class="btn tint small" data-act="homeIcon">'+x('Додати','Добавить','Add')+'</button><button class="hs-x" data-act="hsHide" aria-label="'+x('Сховати','Скрыть','Hide')+'">×</button></section>';}
-/* iPhone: Telegram can't add the icon by itself there, so first show the three taps as a short looping animation. */
+/* iPhone: Telegram can't add the icon by itself there, so first show the taps in Safari as a short looping animation. */
 function isIOS(){try{return tg.platform==='ios'||/iPhone|iPad|iPod/.test(navigator.userAgent);}catch(e){return false;}}
 function hsIosSheet(){var icon='<span class="hv-app"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 34 C12 20 16 16 20 16 C24 16 28 20 36 34Z" fill="#2B2140"/><rect x="17.5" y="11" width="5" height="6" fill="#2B2140"/><path d="M16.5 11.5L20 8l3.5 3.5z" fill="#2B2140"/><rect x="19" y="13" width="2" height="2.6" fill="#FFD27A"/></svg></span>',
-    st=[x('Поділитися','Поделиться','Share'),x('На початковий екран','На экран «Домой»','Add to Home Screen'),x('Додати','Добавить','Add')];
-  var share='<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10H6v10h12V10h-2"/><path d="M12 14V3M8.5 6.5L12 3l3.5 3.5"/></svg>',
-    rows=[[x('Копіювати','Копировать','Copy'),'<rect x="8" y="8" width="11" height="11" rx="2"/><path d="M5 15V5h10"/>'],[x('Додати закладку','Добавить закладку','Add Bookmark'),'<path d="M6 4h12v16l-6-4-6 4z"/>'],[st[1],'<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/>']];
-  var page='<div class="hv-l hv-page"><div class="hv-url">mistosvitla.github.io</div><div class="hv-hero">'+icon+'<b>Місто Світла</b></div><div class="hv-bar"><i>‹</i><i>›</i><i class="hv-share">'+share+'</i><i>▢</i><i>⧉</i></div></div>';
-  var sh='<div class="hv-l hv-sheet"><div class="hv-sh-h">'+icon+'<span><b>Місто Світла</b><small>mistosvitla.github.io</small></span></div>'+rows.map(function(r,i){return '<div class="hv-row'+(i===2?' hv-pick':'')+'"><span>'+r[0]+'</span><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8">'+r[1]+'</svg></div>';}).join('')+'</div>';
-  var dlg='<div class="hv-l hv-dlg"><div class="hv-nav"><span>'+x('Скасувати','Отменить','Cancel')+'</span><b class="hv-add">'+st[2]+'</b></div><div class="hv-dlg-b">'+icon+'<span>Місто Світла</span></div></div>';
-  var home='<div class="hv-l hv-home"><div class="hv-grid">'+'<i></i>'.repeat(11)+'<span class="hv-new">'+icon+'</span></div></div>';
-  return '<h2>'+x('Іконка на iPhone — три дотики','Иконка на iPhone — три касания','Icon on iPhone in three taps')+'</h2><p class="sub">'+x('Після кнопки відкриється сторінка. Далі зроби так:','После кнопки откроется страница. Дальше сделай так:','After the button a page opens. Then do this:')+'</p>'+
-    '<div class="hv" aria-hidden="true">'+page+sh+dlg+home+'<span class="hv-f"></span></div>'+
+    I=function(d,w){return '<svg viewBox="0 0 24 24" width="'+(w||12)+'" height="'+(w||12)+'" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">'+d+'</svg>';},
+    SH='<path d="M8 10H6v10h12V10h-2"/><path d="M12 14V3M8.5 6.5L12 3l3.5 3.5"/>',
+    home=x('На початковий екран','На экран «Домой»','Add to Home Screen'),add=x('Додати','Добавить','Add');
+  var st=[x('Три крапки ••• унизу справа','Три точки ••• внизу справа','The ••• button, bottom right'),x('Поділитися','Поделиться','Share'),home,add];
+  var page='<div class="hv-l hv-page"><div class="hv-hero">'+icon+'<b>Місто Світла</b><small>'+x('Церква в Telegram','Церковь в Telegram','Church in Telegram')+'</small></div>'+
+    '<div class="hv-bar"><i class="hv-g">‹</i><span class="hv-url">mistosvitla.github.io</span><i class="hv-g hv-dots">•••</i></div>'+
+    '<div class="hv-menu"><div class="hv-mi hv-pk1"><span>'+st[1]+'</span>'+I(SH)+'</div><div class="hv-mi"><span>'+x('Додати закладку','Добавить закладку','Add Bookmark')+'</span>'+I('<path d="M6 4h12v16l-6-4-6 4z"/>')+'</div><div class="hv-mi"><span>'+x('Знайти на сторінці','Найти на странице','Find on Page')+'</span>'+I('<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>')+'</div></div></div>';
+  var sh='<div class="hv-l hv-sheet"><div class="hv-sh-h">'+icon+'<span><b>Місто Світла</b><small>mistosvitla.github.io</small></span></div><div class="hv-ppl"><i></i><i></i><i></i><i></i></div>'+
+    [[x('Копіювати','Копировать','Copy'),'<rect x="8" y="8" width="11" height="11" rx="2"/><path d="M5 15V5h10"/>',''],[x('Додати в обране','Добавить в избранное','Add to Favorites'),'<path d="M12 4l2.4 5 5.3.6-4 3.7 1.1 5.3L12 16l-4.8 2.6 1.1-5.3-4-3.7 5.3-.6z"/>',''],[home,'<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/>',' hv-pk2']].map(function(r){return '<div class="hv-row'+r[2]+'"><span>'+r[0]+'</span>'+I(r[1])+'</div>';}).join('')+'</div>';
+  var dlg='<div class="hv-l hv-dlg"><div class="hv-nav"><i class="hv-g">✕</i><span>'+home+'</span><b class="hv-add">'+add+'</b></div><div class="hv-dlg-b">'+icon+'<span>Місто Світла</span></div>'+
+    '<div class="hv-tg"><span>'+x('Відкривати як вебпрограму','Открывать как веб-приложение','Open as Web App')+'</span><em></em></div></div>';
+  var hm='<div class="hv-l hv-home"><div class="hv-grid">'+'<i></i>'.repeat(11)+'<span class="hv-new">'+icon+'</span></div></div>';
+  return '<h2>'+x('Іконка на iPhone','Иконка на iPhone','Icon on iPhone')+'</h2><p class="sub">'+x('Після кнопки відкриється Safari. Далі чотири дотики:','После кнопки откроется Safari. Дальше четыре касания:','Safari opens after the button. Then four taps:')+'</p>'+
+    '<div class="hv" aria-hidden="true">'+page+sh+dlg+hm+'<span class="hv-f"></span></div>'+
     '<ol class="hv-steps">'+st.map(function(t,i){return '<li class="hv-s'+(i+1)+'"><b>'+(i+1)+'</b>'+t+'</li>';}).join('')+'</ol>'+
-    '<button class="btn accent wide" data-act="homeGo">'+x('Зрозуміло, додати','Понятно, добавить','Got it, add')+'</button>';}
+    '<p class="note hv-note">'+x('Якщо пункту «На початковий екран» не видно, прокрути список нижче. На старих iPhone кнопка «Поділитися» '+'⬆︎'+' стоїть одразу внизу екрана.','Если пункта «На экран «Домой»» не видно, прокрути список ниже. На старых iPhone кнопка «Поделиться» ⬆︎ сразу внизу экрана.','If you don’t see “Add to Home Screen”, scroll the list down. On older iPhones the Share button ⬆︎ is right at the bottom.')+'</p>'+
+    '<button class="btn accent wide" data-act="homeGo">'+x('Зрозуміло, відкрити','Понятно, открыть','Got it, open')+'</button>';}
+/* «Поділитися з близьким»: a link whose preview is a card about the app (app/ pages carry the picture and two lines). */
+function shareUrl(){return 'https://mistosvitla.github.io/app/'+(state.lang==='uk'?'':state.lang+'/');}
+function shareText(){return x('Привіт! Хочу поділитися застосунком нашої церкви «Місто Світла». Там розклад зустрічей, Біблія і молитва разом, і все це просто в Telegram 👇','Привет! Хочу поделиться приложением нашей церкви «Місто Світла». Там расписание встреч, Библия и молитва вместе, и всё это прямо в Telegram 👇','Hi! I’d like to share our church app, Misto Svitla. Meeting times, the Bible and prayer together, right inside Telegram 👇');}
+function shareCard(){return '<button class="sh-card" data-act="shareApp"><span class="sh-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9.6A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.4c0 .6-.1 1.2-.3 1.8"/><path d="M16 16h6M19 13l3 3-3 3"/></svg></span><span class="sh-tx"><b>'+x('Поділитися з близьким','Поделиться с близким','Share with someone close')+'</b><small>'+x('Надішли тому, кому це зараз потрібно','Отправь тому, кому это сейчас нужно','Send it to someone who needs it now')+'</small></span><svg class="sh-chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>';}
+function shareSheet(){var img='app/'+(state.lang==='uk'?'':state.lang+'/')+'og.jpg';
+  return '<h2>'+x('Поділитися з близьким','Поделиться с близким','Share with someone close')+'</h2><p class="sub">'+x('Так виглядатиме повідомлення:','Так будет выглядеть сообщение:','This is how the message will look:')+'</p>'+
+    '<div class="sh-msg"><p>'+esc(shareText())+'</p><span class="sh-url">'+esc(shareUrl().replace('https://',''))+'</span>'+
+      '<div class="sh-prev"><b>Місто Світла</b><strong>'+x('Місто Світла — церква в Telegram','Місто Світла — церковь в Telegram','Misto Svitla — church in Telegram')+'</strong><span>'+x('Розклад зустрічей, Біблія з планом читання і молитва разом. Відкривається в один дотик.','Расписание встреч, Библия с планом чтения и молитва вместе. Открывается в одно касание.','Meeting times, a Bible reading plan and prayer together. Opens in one tap.')+'</span><img src="'+img+'" alt="" loading="lazy"></div></div>'+
+    '<button class="btn accent wide" data-act="shareSend">'+x('Надіслати в Telegram','Отправить в Telegram','Send in Telegram')+'</button>'+
+    '<button class="btn tint wide" data-act="shareCopy">'+x('Скопіювати текст і посилання','Скопировать текст и ссылку','Copy text and link')+'</button>';}
 function onlineChip(){var n=DEMO?7:ONLINE;if(n<2)return '';return '<span class="online" id="online"><i aria-hidden="true"></i><b>'+n+'</b> '+x('онлайн','онлайн','online')+'</span>';}
 function pingOnline(){if(!LIVE||document.hidden||!D)return;post('ping').then(function(j){if(!j||!j.online)return;ONLINE=j.online;var el=document.getElementById('online');if(el){var b=el.querySelector('b');if(b)b.textContent=ONLINE;}else if(ONLINE>=2&&document.getElementById('sky'))render();}).catch(function(){});}
 setInterval(pingOnline,90000);
@@ -2265,7 +2303,7 @@ function vToday(){var now=new Date(),t0=day0(now),sel=state.day?fromIso(state.da
       (it.who||it.where?'<p class="when">'+(it.who?L(it.who):L(it.where))+'</p>':'')+'<div class="row">'+goingBtn(key)+'<button class="btn tint small" data-act="meet" data-v="'+key+'">'+x('Хто буде','Кто будет')+'</button></div>';}
   var items=dayItems(sel),v=verseOfDay(now),cn=weekCard(),open=cardOpen();
   var soon=SPECIALS.filter(function(s){return occDate(s.dates[s.dates.length-1],s.time)>now;});
-  var nc=ncCard();return hero2(now,nx)+(nc||hsCard())+homeDay()+
+  var nc=ncCard();return hero2(now,nx)+(nc||hsCard())+shareCard()+homeDay()+
    '<section class="stack"><div class="between"><h2>'+x('Цей тиждень','Эта неделя')+'</h2><button class="link" data-act="go" data-v="events">'+x('Увесь місяць','Весь месяц')+'</button></div>'+
      '<div class="week">'+week+'</div><ul class="mts">'+items.map(function(q){return mtRow(q,sel);}).join('')+'</ul></section>'+
    (soon.length?'<section class="stack"><h2>'+x('Не пропусти','Не пропусти')+'</h2><ul class="list">'+soon.map(specialRow).join('')+'</ul></section>':'')+
@@ -3214,7 +3252,7 @@ function vCabinet(){var mm=myMeetings(),done=readCount(),teams=TEAMS.filter(func
      verseRow()+
      '<div class="row"><button class="btn tint small" data-act="sheet" data-v="theme">'+x('Мова, тема і звук','Язык, тема и звук','Language, theme and sound')+'</button>'+
        (canHome()?'<button class="btn tint small" data-act="homeIcon">'+x('Іконка на головний екран','Иконка на главный экран')+'</button>':'')+
-       '<button class="btn tint small" data-act="invite">'+x('Запросити друга','Пригласить друга')+'</button></div></section>'+
+       '<button class="btn tint small" data-act="shareApp">'+x('Поділитися з близьким','Поделиться с близким','Share with someone close')+'</button></div></section>'+
    '<form data-form="name" class="stack"><label class="f" for="me-name">'+x('Ім’я в церкві','Имя в церкви')+'<span class="inline"><input type="text" id="me-name" name="name" maxlength="60" value="'+esc(me.name||'')+'" placeholder="'+x('Ім’я та прізвище','Имя и фамилия')+'"><button class="btn" type="submit">'+x('Зберегти','Сохранить')+'</button></span></label>'+
      (me.phone?'<p class="note">'+x('Телефон з реєстрації: ','Телефон из регистрации: ')+esc(me.phone)+'</p>':'')+'</form>'+
    (DEMO?'<section class="card"><p class="sub">'+x('Це демо. Дані зберігаються лише в цьому браузері, повідомлення не надсилаються. Ти тут адміністратор, щоб можна було подивитися адмінку. Імена, номери й приклади вигадані, розклад і картки справжні.','Это демо. Данные хранятся только в этом браузере, сообщения не отправляются. Ты здесь администратор, чтобы можно было посмотреть админку. Имена, номера и примеры вымышлены, расписание и карточки настоящие.')+'</p>'+
@@ -3831,6 +3869,7 @@ function sheet(){var s=state.sheet,inner='';if(s!=='verseAt')WH.fresh=false;if(!
     setTimeout(wheelInit,30);}
   if(s==='roomNew')inner=roomNewSheet();
   if(s==='hsIos')inner=hsIosSheet();
+  if(s==='share')inner=shareSheet();
   var foot=DEMO?'<p class="note">'+x('Демо: запис зберігається лише в цьому браузері.','Демо: запись хранится только в этом браузере.')+'</p>':'';
   if(s==='meet'){var p=String(state.sheetData||'').split('@'),it=byId(p[0]);if(!it||!p[1])return '';
     var d=fromIso(p[1]),key=state.sheetData,sm=attOf(key,it),mine=sm.mine,who='';
@@ -4005,9 +4044,9 @@ var actions={
   sendImg:function(){var v=verseOfDay();post('sendImage',{img:state.img,caption:'«'+L(v.t)+'»\n'+L(v.ref)}).then(function(){toast(x('Надіслано в чат з ботом. Звідти її легко переслати','Отправлено в чат с ботом. Оттуда её легко переслать'));},function(e){toast(errText(e),1);});},
   homeIcon:function(){if(isIOS()){state.sheet='hsIos';state.sheetData=null;render();return;}actions.homeGo();},
   homeGo:function(){if(state.sheet==='hsIos'){state.sheet=null;render();}try{tg.addToHomeScreen();}catch(e){toast(x('Твій Telegram поки цього не вміє. Онови застосунок','Твой Telegram пока этого не умеет. Обнови приложение'),true);}},
-  invite:function(){var app=CONFIG.BOT_USERNAME?'https://t.me/'+CONFIG.BOT_USERNAME+'?startapp=src_friend':'',txt=x('Наша церква «Місто Світла» тепер у Telegram: розклад, Біблія, молитва. Приєднуйся!','Наша церковь «Місто Світла» теперь в Telegram: расписание, Библия, молитва. Присоединяйся!');
-    if(!app){toast(x('У живій версії відкриється вибір чату','В живой версии откроется выбор чата'));return;}
-    var u='https://t.me/share/url?url='+encodeURIComponent(app)+'&text='+encodeURIComponent(txt);if(LIVE&&tg.openTelegramLink)tg.openTelegramLink(u);else window.open(u,'_blank');},
+  shareApp:function(){state.sheet='share';state.sheetData=null;render();},
+  shareSend:function(){var u='https://t.me/share/url?url='+encodeURIComponent(shareUrl())+'&text='+encodeURIComponent(shareText());state.sheet=null;render();if(LIVE&&tg.openTelegramLink)tg.openTelegramLink(u);else window.open(u,'_blank');},
+  shareCopy:function(){copyText(shareText()+'\n'+shareUrl());},
   bkOpen:function(v){var p=(state.bookPos||{})[v];bkOpenFx(v,p?p.ch:0);},
   bkGo:function(v){var q=String(v).split(':');state.sheet=null;state.bookPos=state.bookPos||{};state.bookPos[q[0]]={ch:+q[1]};save();go('books');bkOpenFx(q[0],+q[1]);},
   bkToc:function(v){state.sheet='bkToc';state.sheetData=v;render();},
