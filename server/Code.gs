@@ -34,7 +34,7 @@ var SHEETS = {
   CardVerses: ['id', 'card', 'ref', 'text_uk', 'text_ru', 'userId', 'who', 'created'],
   Sermons: ['id', 'date', 'time', 'title_uk', 'title_ru', 'speaker', 'verse', 'ask', 'text', 'status', 'created', 'video', 'vfrom', 'vto'],
   Cheers: ['key', 'fromId', 'toId', 'kind', 'at'],
-  Mission: ['key', 'week', 'userId', 'path', 'swaps', 'status', 'text', 'anon', 'created', 'done'],
+  Bingo: ['key', 'week', 'userId', 'marks', 'at'],
   Settings: ['key', 'value'],
   Log: ['at', 'where', 'message']
 };
@@ -440,21 +440,22 @@ function wayBuild(users, myId) {
   return { devs: { people: people.slice(0, 60), count: people.length, levels: levels }, feed: feed };
 }
 
-/* ---------- Церква в дії: one weekly mission, a drawn path per person ---------- */
+/* ---------- Церква в дії: «Бінго добрих справ», one 3×3 card a week for the whole church (cell 4 is the free star) ---------- */
+var BG_LINES = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
 function weekKey() { var p = kyivDate().split('-'), d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])); d.setUTCDate(d.getUTCDate() - (d.getUTCDay() + 6) % 7); return d.toISOString().slice(0, 10); }
-function findMission(key) { return rows('Mission').filter(function (r) { return String(r.key) === key; })[0] || null; }
-function missionOut(myId, byId) {
-  var wk = weekKey(), out = { week: wk, mine: null, drawn: [0, 0, 0, 0, 0, 0], done: [0, 0, 0, 0, 0, 0], stories: [] };
-  rows('Mission').forEach(function (r) {
+function bgMarks(r) { var m = String(r && r.marks || '').replace(/[^01]/g, ''); while (m.length < 9) m += '0'; return m.slice(0, 9); }
+function bgHasLine(m) { return BG_LINES.some(function (l) { return l.every(function (i) { return i === 4 || m.charAt(i) === '1'; }); }); }
+function bingoOut(myId) {
+  var wk = weekKey(), out = { week: wk, mine: '000000000', cells: [0, 0, 0, 0, 0, 0, 0, 0, 0], deeds: 0, people: 0, bingos: 0 };
+  rows('Bingo').forEach(function (r) {
     if (String(r.week) !== wk) return;
-    var p = Number(r.path) || 0, mine = String(r.userId) === myId;
-    out.drawn[p]++;
-    if (r.status === 'done' || r.status === 'hidden') out.done[p]++;
-    if (mine) out.mine = { path: p, swaps: Number(r.swaps) || 0, status: r.status === 'hidden' ? 'done' : r.status, text: String(r.text || '') };
-    if (r.status === 'done' && r.text) { var u = byId[String(r.userId)]; out.stories.push({ key: String(r.key), path: p, text: String(r.text), name: String(r.anon) === '1' ? '' : first(u && u.name), at: Number(r.done) || 0 }); }
+    var m = bgMarks(r), n = 0;
+    for (var i = 0; i < 9; i++) if (i !== 4 && m.charAt(i) === '1') { out.cells[i]++; n++; }
+    if (!n) return;
+    out.deeds += n; out.people++;
+    if (bgHasLine(m)) out.bingos++;
+    if (String(r.userId) === myId) out.mine = m;
   });
-  out.stories.sort(function (a, b) { return b.at - a.at; });
-  out.stories = out.stories.slice(0, 120);
   return out;
 }
 
@@ -524,7 +525,7 @@ function buildD(u) {
   D.verses = versesMap();
   D.sermons = sermonsOut();
   D.way = wayBuild(users, myId);
-  D.mission = missionOut(myId, byId);
+  D.bingo = bingoOut(myId);
 
   if (isAdmin) {
     var pendingTests = [], pendingAds = [], activeNeeds = [];
@@ -741,27 +742,13 @@ var ACTIONS = {
     var t = findUser(to);
     if (t) send(to, kind === 'pray' ? '🙏 ' + first(u.name) + ' молиться за тебе на шляху Mind DEVS.' : '🔥 ' + first(u.name) + ' підтримує тебе на шляху Mind DEVS. Так тримати!');
   },
-  msDraw: function (u, b) {
-    var wk = weekKey(), key = wk + ':' + u.id, p = Number(b.path);
-    if (!(p >= 0 && p <= 5)) throw new Error('Невідомий шлях');
-    var r = findMission(key);
-    if (!r) { addRow('Mission', { key: key, week: wk, userId: String(u.id), path: String(p), swaps: '0', status: 'drawn', text: '', anon: '', created: String(Date.now()), done: '' }); return; }
-    if (!b.swap) return;
-    if (Number(r.swaps) >= 1) throw new Error('Шлях можна змінити лише один раз');
-    if (r.status !== 'drawn') throw new Error('Ти вже поділився історією цього тижня');
-    if (Number(r.path) === p) throw new Error('Спробуй ще раз');
-    r.path = String(p); r.swaps = '1'; setRow('Mission', r);
-  },
-  msDone: function (u, b) {
-    var r = findMission(weekKey() + ':' + u.id);
-    if (!r) throw new Error('Спершу витягни свій шлях');
-    r.text = needText(b.text, 500, 'Як це було'); r.anon = b.anon ? '1' : ''; r.status = 'done'; r.done = String(Date.now());
-    setRow('Mission', r);
-  },
-  msDel: function (u, b) {
-    var r = findMission(txt(b.key, 60));
-    if (!r) throw new Error('Історію не знайдено');
-    r.status = 'hidden'; setRow('Mission', r);
+  bgMark: function (u, b) {
+    var c = Number(b.cell);
+    if (!(c >= 0 && c <= 8) || c === 4 || c !== Math.floor(c)) throw new Error('Невідома клітинка');
+    var wk = weekKey(), key = wk + ':' + u.id, r = rows('Bingo').filter(function (q) { return String(q.key) === key; })[0];
+    var m = bgMarks(r).split(''); m[c] = b.on ? '1' : '0'; m = m.join('');
+    if (!r) addRow('Bingo', { key: key, week: wk, userId: String(u.id), marks: m, at: String(Date.now()) });
+    else { r.marks = m; r.at = String(Date.now()); setRow('Bingo', r); }
   },
   eventDel: function (u, b) {
     var e = findBy('Events', b.id);
@@ -1040,7 +1027,6 @@ ACTIONS.roomClose.leader = true;
 ACTIONS.presence.leader = true;
 ACTIONS.verseAdd.leader = true;
 ACTIONS.verseDel.leader = true;
-ACTIONS.msDel.admin = true;
 
 /* ================= бот ================= */
 

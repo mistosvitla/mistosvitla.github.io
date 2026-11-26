@@ -252,17 +252,16 @@ const b5 = sent.length; S.resetCache(); S.tick(); assert.ok(!sent.slice(b5).some
   x = call(dan, 'cheer', { key: lv.key, kind: 'cheer' }); assert.strictEqual(x.way.feed.find(f => f.key === lv.key).cheers, 0, 'second tap undoes');
   x = call(anna, 'cheer', { key: lv.key, kind: 'cheer' }); assert.ok(/Себе/.test(x.error));
 }
-// --- Церква в дії
+// --- Церква в дії: бінго добрих справ
 {
-  let x = call(anna, 'msDone', { text: 'Зробила' }); assert.ok(/витягни/.test(x.error), 'draw first');
-  x = call(anna, 'msDraw', { path: 2 }); assert.strictEqual(x.mission.mine.path, 2); assert.strictEqual(x.mission.drawn[2], 1);
-  x = call(anna, 'msDraw', { path: 4 }); assert.strictEqual(x.mission.mine.path, 2, 'second draw keeps fate');
-  x = call(anna, 'msDraw', { path: 4, swap: true }); assert.strictEqual(x.mission.mine.path, 4); assert.strictEqual(x.mission.drawn[2], 0);
-  x = call(anna, 'msDraw', { path: 1, swap: true }); assert.ok(/один раз/.test(x.error), 'one swap only');
-  x = call(anna, 'msDone', { text: 'Подякувала прибиральниці, вона розплакалась', anon: true }); assert.strictEqual(x.mission.done[4], 1);
-  x = call(dan, 'load'); assert.strictEqual(x.mission.stories.length, 1); assert.strictEqual(x.mission.stories[0].name, '', 'anonymous');
-  x = call(dan, 'msDel', { key: x.mission.stories[0].key }); assert.ok(/адміністратор/.test(x.error));
-  x = call(admin, 'load'); x = call(admin, 'msDel', { key: x.mission.stories[0].key }); assert.strictEqual(x.mission.stories.length, 0, 'admin hides'); assert.strictEqual(x.mission.done[4], 1, 'still counted');
+  let x = call(anna, 'bgMark', { cell: 4, on: true }); assert.ok(/клітинка/.test(x.error), 'free cell is not markable');
+  x = call(anna, 'bgMark', { cell: 9, on: true }); assert.ok(/клітинка/.test(x.error));
+  x = call(anna, 'bgMark', { cell: 0, on: true }); assert.strictEqual(x.bingo.mine, '100000000'); assert.strictEqual(x.bingo.deeds, 1); assert.strictEqual(x.bingo.bingos, 0);
+  x = call(anna, 'bgMark', { cell: 8, on: true }); assert.strictEqual(x.bingo.bingos, 1, 'diagonal through the free star');
+  x = call(dan, 'bgMark', { cell: 0, on: true }); assert.strictEqual(x.bingo.cells[0], 2); assert.strictEqual(x.bingo.people, 2); assert.strictEqual(x.bingo.mine, '100000000');
+  x = call(anna, 'bgMark', { cell: 8, on: false }); assert.strictEqual(x.bingo.bingos, 0, 'untick removes the bingo'); assert.strictEqual(x.bingo.deeds, 2);
+  x = call(dan, 'bgMark', { cell: 0, on: false }); assert.strictEqual(x.bingo.people, 1, 'empty card is not a player');
+  x = call(admin, 'load'); assert.strictEqual(x.bingo.mine, '000000000'); assert.strictEqual(x.bingo.cells[0], 1);
 }
 // verse formula matches the app
 assert.ok(S.verseOfDay('2026-11-09').ref.uk);

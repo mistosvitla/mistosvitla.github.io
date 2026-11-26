@@ -917,42 +917,45 @@ i.add{font-style:italic;color:var(--muted)}
 .mp-sl button{border:0;background:none;color:rgba(255,255,255,.75);font:600 12.5px/1 var(--font-body);padding:7px 11px;border-radius:999px}
 .mp-sl button[aria-pressed="true"]{background:rgba(255,255,255,.18);color:#fff}
 .mp-pl{color:#FFD27A;font-weight:600;font-size:13.5px;text-decoration:none}
-.ms-head{border-radius:26px;padding:20px;background:linear-gradient(160deg,#1F6F66,#0F3D38);color:#F2F7F5;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.ms-head{border-radius:26px;padding:20px 20px 16px;background:linear-gradient(160deg,#1F6F66,#0F3D38);color:#F2F7F5;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
 .ms-head::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,207,110,.35),transparent 70%)}
 .ms-head h1{font:800 34px/1 var(--font-display);letter-spacing:-.03em;color:#fff}
 .ms-head p{font-size:15.5px;line-height:1.45;opacity:.92}
 .ms-k{font:600 12.5px/1.2 var(--font-body);opacity:.8}
 .ms-ref{align-self:flex-start;background:rgba(255,255,255,.16);color:#fff}
 .ms-stats{display:flex;gap:16px;font-size:13.5px;opacity:.95}.ms-stats b{font:800 20px/1 var(--font-display);margin-right:4px}
-.ms-draw{display:flex;flex-direction:column;gap:14px}
-.ms-deck{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;padding:6px 0}
-.ms-back{aspect-ratio:2/3;border:0;border-radius:12px;background:linear-gradient(160deg,#C8372D,#7A1E18);color:#FFE3C7;font:900 26px/1 var(--font-display);box-shadow:0 8px 18px rgba(122,30,24,.3)}
-@media (prefers-reduced-motion:no-preference){.ms-back{animation:msBob 2.6s ease-in-out infinite;animation-delay:calc(var(--i)*.18s)}@keyframes msBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px) rotate(-2deg)}}
- .ms-mine.reveal{animation:msRev .8s cubic-bezier(.2,.9,.25,1.2)}@keyframes msRev{0%{transform:rotateY(90deg) scale(.8);opacity:0}100%{transform:none;opacity:1}}}
-.ms-mine{border-radius:26px;padding:22px;background:linear-gradient(160deg,#F4ECDD,#E6D3AE);color:#1A160F;display:flex;flex-direction:column;gap:10px;border-top:5px solid #C8372D}
-.ms-path{font:800 24px/1.2 var(--font-display);letter-spacing:-.02em}
-.ms-told{display:flex;align-items:center;gap:6px;font-weight:600;color:#1E8A55}.ms-told svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.4}
-.ms-sw{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.ms-swap{background:rgba(26,22,15,.08);color:#1A160F}.ms-sw span{font-size:12.5px;color:#7A5A1E}.ms-swd{font-size:13px;color:#7A5A1E}
-.ms-anon{display:flex;align-items:center;gap:8px;font-size:14px}
-.ms-paths{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-.ms-paths>li{background:var(--surface);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:8px}
-.ms-paths>li.ms-mine-p{box-shadow:inset 0 0 0 2px #C8372D}
-.ms-ph{display:flex;gap:10px;align-items:flex-start}.ms-ph p{font-weight:600;font-size:15px;line-height:1.35}
-.ms-n{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:#1F6F66;color:#fff;font:800 13px/1 var(--font-display)}
-.ms-c{font-size:12.5px;color:var(--muted);padding-left:36px}
-.ms-st{list-style:none;margin:0 0 0 36px;padding:0;display:flex;flex-direction:column;gap:8px}
-.ms-st li{padding:10px 12px;border-radius:14px;background:var(--paper)}.ms-st p{font:italic 500 14.5px/1.45 var(--font-word)}.ms-st small{color:var(--muted);font-size:12px}
+.ms-demo{position:absolute;right:16px;bottom:14px;font-style:normal;font-size:12px;opacity:.6}
+.bg-hill{display:block;width:calc(100% + 40px);margin:2px -20px -4px;height:auto}
+.bg-hill circle{opacity:.9}
+@media (prefers-reduced-motion:no-preference){.bg-hill circle{animation:bgTw 3s ease-in-out infinite;animation-delay:var(--d)}@keyframes bgTw{50%{opacity:.35}}}
+.bg-me{display:flex;flex-direction:column;gap:10px}
+.bg-prog{font:800 15px/1 var(--font-display);color:var(--accent)}
+.bg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.bg-c{position:relative;aspect-ratio:1;border:0;border-radius:18px;padding:10px 8px;background:var(--surface);color:var(--ink);font:600 13.5px/1.25 var(--font-body);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;box-shadow:inset 0 0 0 1.5px var(--line);transition:transform .15s,background .2s}
+.bg-c:active{transform:scale(.95)}
+.bg-c.on{background:linear-gradient(160deg,#2C8A7E,#17564F);color:#fff;box-shadow:none}
+.bg-c.win{background:linear-gradient(160deg,#FFD27A,#F0A93B);color:#2A1B05;box-shadow:0 6px 18px rgba(240,169,59,.35)}
+.bg-ck{position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.25);display:grid;place-items:center}.bg-ck svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:3}
+.bg-free{background:linear-gradient(160deg,#1F6F66,#0F3D38);color:#FFE3A3;box-shadow:none}.bg-free small{font-size:11.5px;color:#F2F7F5;opacity:.85}
+.bg-star{font-size:28px;line-height:1}
+.bg-free.win{color:#7A4A00}.bg-free.win small{color:#2A1B05}
+.bg-st{text-align:center;font:700 15px/1.3 var(--font-body);color:var(--muted)}.bg-st.yes{font:900 20px/1.2 var(--font-display);color:#E0901F;letter-spacing:-.01em}
+.bg-grid.big .bg-c{aspect-ratio:auto;min-height:84px;font-size:12px;font-weight:500;color:var(--muted)}
+.bg-grid.big .bg-c.on{background:color-mix(in srgb,#2C8A7E 16%,var(--surface));color:var(--ink);box-shadow:none}
+.bg-n{font:800 22px/1 var(--font-display);color:#2C8A7E}
+@media (prefers-reduced-motion:no-preference){.bg-c.pop{animation:bgPop .5s cubic-bezier(.2,.9,.25,1.4)}@keyframes bgPop{0%{transform:scale(.8)}60%{transform:scale(1.08)}100%{transform:none}}
+ .bg-me.celebrate .bg-c.win{animation:bgWin .9s ease}@keyframes bgWin{0%,100%{transform:none}30%{transform:scale(1.08) rotate(-2deg)}60%{transform:scale(1.04) rotate(2deg)}}}
 .ms-today{display:flex;gap:12px;align-items:center;text-align:left;border:0;border-radius:22px;padding:14px;background:linear-gradient(160deg,#1F6F66,#0F3D38);color:#fff;font:inherit;width:100%}
-.ms-today .ms-ico{flex:none;width:44px;height:58px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(160deg,#C8372D,#7A1E18);font:900 24px/1 var(--font-display);color:#FFE3C7}
+.ms-mini{flex:none;display:grid;grid-template-columns:repeat(3,14px);gap:3px;padding:6px;border-radius:12px;background:rgba(255,255,255,.1)}.ms-mini i{width:14px;height:14px;border-radius:4px;background:rgba(255,255,255,.18)}.ms-mini i.on{background:#7FD6C8}.ms-mini i.f{background:#FFD27A}
 .ms-today small{display:block;font-size:12px;opacity:.8}.ms-today strong{display:block;font:800 19px/1.1 var(--font-display);margin:3px 0}.ms-today em{display:block;font-style:normal;font-size:13.5px;opacity:.92;line-height:1.3}
-.pj-ms{background:linear-gradient(150deg,#1F6F66,#0F3D38)}.pj-ms .pj-mark{color:#FFE3C7;background:linear-gradient(160deg,#C8372D,#7A1E18);box-shadow:none;text-shadow:none}
-.ms-show{position:fixed;inset:0;z-index:300;background:radial-gradient(circle at 80% 10%,#1F6F66,#071C1A 70%);color:#F2F7F5;display:grid;grid-template-columns:minmax(260px,38%) 1fr;gap:4vw;padding:6vh 5vw;align-items:center;font-family:var(--font-body)}
-.ms-show .ms-x{position:absolute;top:16px;right:20px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:28px;line-height:1}
+.pj-ms{background:linear-gradient(150deg,#1F6F66,#0F3D38)}.pj-ms .pj-mark{color:#2A1B05;background:linear-gradient(160deg,#FFD27A,#F0A93B);box-shadow:none;text-shadow:none}
+.ms-show{position:fixed;inset:0;z-index:300;background:radial-gradient(circle at 80% 10%,#1F6F66,#071C1A 70%);color:#F2F7F5;display:grid;grid-template-columns:minmax(260px,40%) 1fr;gap:4vw;padding:6vh 5vw;align-items:center;font-family:var(--font-body)}
+.ms-show .ms-x{position:absolute;top:16px;right:20px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:28px;line-height:1;z-index:2}
 .ms-sh h2{font:900 clamp(34px,6vw,84px)/1 var(--font-display);letter-spacing:-.03em;margin:10px 0 24px}
-.ms-sp{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}.ms-sp li{display:flex;gap:14px;align-items:center;font-size:clamp(13px,1.4vw,20px);line-height:1.3}
-.ms-sp i{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.12);font:800 18px/1 var(--font-display);font-style:normal}.ms-sp span{flex:1}.ms-sp b{flex:none;min-width:52px;padding:8px 12px;border-radius:999px;text-align:center;background:#C8372D;font:900 20px/1 var(--font-display)}.ms-sp b::after{content:' ✓';font-size:.7em;opacity:.8}
-.ms-story{display:flex;flex-direction:column;gap:18px;cursor:pointer}.ms-story.in{animation:msIn .7s ease}@keyframes msIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.ms-sk{font:600 clamp(13px,1.4vw,20px)/1.3 var(--font-body);color:#FFCF6E}.ms-q{font:italic 500 clamp(22px,3.4vw,52px)/1.3 var(--font-word)}.ms-sn{font-weight:600;font-size:clamp(14px,1.6vw,24px);opacity:.8}
+.ms-big{display:flex;gap:4vw;flex-wrap:wrap}.ms-big span{display:flex;flex-direction:column;font-size:clamp(13px,1.4vw,20px);opacity:.9}.ms-big b{font:900 clamp(36px,5vw,76px)/1 var(--font-display);color:#FFD27A}
+.ms-sh .bg-hill{width:100%;margin:3vh 0 0}
+.ms-show .bg-grid{gap:1.2vw}.ms-show .bg-grid.big .bg-c{min-height:clamp(84px,16vh,190px);background:rgba(255,255,255,.08);color:#E6F1EE;font-size:clamp(12px,1.4vw,22px);box-shadow:none;border-radius:2vw}
+.ms-show .bg-grid.big .bg-c.on{background:rgba(127,214,200,.18)}.ms-show .bg-n{color:#FFD27A;font-size:clamp(22px,3vw,52px)}.ms-show .bg-free{background:rgba(255,210,122,.14)}
 @media (max-width:700px){.ms-show{grid-template-columns:1fr;align-content:start;overflow:auto}}
 .sm{border-radius:24px;padding:18px;display:flex;flex-direction:column;gap:10px}
 .sm-k{font:600 12.5px/1.2 var(--font-body);opacity:.8}
@@ -1704,7 +1707,7 @@ function demoD(){if(!DS)demoInit();var lang=state.lang,tx=function(t){return t&&
   var pendT=DS.tests.filter(function(t){return t.status==='pending';}),pendA=DS.ads.filter(function(a){return a.status==='pending';});
   if(!DS.verses){DS.verses={};Object.keys(SEED_VERSES).forEach(function(k){DS.verses[k]=SEED_VERSES[k].map(function(v,i){return Object.assign({id:'sv'+k+'_'+i},v);});});demoSave();}
   if(!DS.sermons){DS.sermons=demoSermons();demoSave();}
-  return {mission:demoMission(),sermons:clone(DS.sermons),way:demoWay(),verses:clone(DS.verses),rooms:demoRoomsList(),me:{id:'me',name:DS.me.name,role:DS.me.role,phone:DS.me.phone},settings:Object.assign({},DS.settings),events:clone(DS.events),att:att,needs:needs,lit:lit,
+  return {bingo:demoMission(),sermons:clone(DS.sermons),way:demoWay(),verses:clone(DS.verses),rooms:demoRoomsList(),me:{id:'me',name:DS.me.name,role:DS.me.role,phone:DS.me.phone},settings:Object.assign({},DS.settings),events:clone(DS.events),att:att,needs:needs,lit:lit,
     tests:DS.tests.filter(function(t){return t.status==='approved';}).map(function(t){return {id:t.id,text:tx(t.text),who:t.sign==='anon'?'':(t.mine?(DS.me.name||''):tx(t.who)),created:t.created,sample:!!t.sample};}),
     myTests:DS.tests.filter(function(t){return t.mine;}).map(function(t){return {id:t.id,text:tx(t.text),sign:t.sign,status:t.status};}),
     ads:DS.ads.filter(function(a){return a.status==='active'&&!a.mine;}).map(function(a){return {id:a.id,type:a.type,text:tx(a.text),area:a.area,who:tx(a.who),username:'',uid:'',sample:!!a.sample,created:a.created};}),
@@ -1728,15 +1731,9 @@ function demoWay(){var now=Date.now(),h=36e5,lang=state.lang,P=[[0,14,3],[1,9,0]
   var C=DS.cheers||{},feed=[{uid:'u3',kind:'level',v:2,at:now-3*h},{uid:'u0',kind:'level',v:1,at:now-20*h},{uid:'u5',kind:'kept',v:10,at:now-30*h},{uid:'u4',kind:'start',v:0,at:now-50*h},{uid:'u1',kind:'level',v:1,at:now-74*h},{uid:'u2',kind:'start',v:0,at:now-96*h}].map(function(f,i){
     var who=P.filter(function(q){return q.uid===f.uid;})[0];f.name=who?who.name:'?';f.key=f.uid+':'+f.kind+f.v;var c=C[f.key]||{};f.mine={cheer:!!c.cheer,pray:!!c.pray};f.cheers=[4,2,7,1,3,0][i]+(c.cheer?1:0)+(c.pray?1:0);return f;});
   return {devs:{people:people,count:people.length,levels:levels},feed:feed};}
-function demoMission(){var wk=msWeek();if(!DS.ms||DS.ms.week!==wk)DS.ms={week:wk,mine:null};var mine=DS.ms.mine,drawn=[7,5,9,4,6,3],done=[3,2,4,1,3,1],lang=state.lang;
-  if(mine){drawn[mine.path]++;if(mine.status==='done')done[mine.path]++;}
-  var sm=[[0,P2('Було страшно почати. Але як тільки зробив перший крок, стало легше, а людина відповіла теплом, якого я не чекав.','Было страшно начать. Но как только сделал первый шаг, стало легче, а человек ответил теплом, которого я не ждал.'),'Оля'],
-    [2,P2('Робили це разом із дітьми. Вони потім цілий вечір питали, коли зробимо ще.','Делали это вместе с детьми. Они потом весь вечер спрашивали, когда сделаем ещё.'),'Марко'],
-    [4,P2('Думав, що це дрібниця. Виявилось, що для іншої людини це був найкращий момент тижня.','Думал, что это мелочь. Оказалось, что для другого человека это был лучший момент недели.'),''],
-    [5,P2('Не вийшло з першого разу. Спробував ще раз у четвер, і Бог відкрив двері, яких я не бачив.','Не получилось с первого раза. Попробовал ещё раз в четверг, и Бог открыл двери, которых я не видел.'),'Тарас']];
-  var stories=sm.map(function(q,i){return {key:'d'+i,path:q[0],text:rL(q[1]),name:q[2],at:Date.now()-(i+1)*72e5,sample:true};});
-  if(mine&&mine.status==='done')stories.unshift({key:'me',path:mine.path,text:mine.text,name:mine.anon?'':(DS.me.name||x('Ти','Ты')).split(' ')[0],at:Date.now()});
-  return {week:wk,mine:mine?{path:mine.path,swaps:mine.swaps||0,status:mine.status,text:mine.text||''}:null,drawn:drawn,done:done,stories:stories};}
+function demoMission(){var wk=msWeek();if(!DS.bg||DS.bg.week!==wk)DS.bg={week:wk,mine:'000000000'};var base=[14,9,17,6,0,11,8,12,5],m=DS.bg.mine,cells=base.map(function(c,i){return c+(m[i]==='1'&&i!==4?1:0);});
+  var deeds=cells.reduce(function(a,b){return a+b;},0);return {week:wk,mine:m,cells:cells,deeds:deeds,people:23+(m.indexOf('1')>=0?1:0),bingos:7+(bgLines(msData0(m)).length?1:0)};}
+function msData0(m){var o=String(m).split('').map(function(c){return c==='1';});o[4]=true;return o;}
 function demoApi(a,d){if(!DS)demoInit();if(a==='roleInvite')return {role:d.role,link:'https://t.me/misto_svitla_bot?start=r_'+d.role+'_'+(d.reset?Math.random().toString(36).slice(2,12):'demo'+d.role.slice(0,3)+'7k2q')};if(/^room/.test(a)){var rr=demoRoom(a,d||{});if(rr)return rr;var RD=demoD();RD.flash=a==='roomOpen'?{room:d.key}:{roomClosed:d.key};return RD;}var now=Date.now(),flash=null,by=function(list,id){for(var i=0;i<list.length;i++)if(list[i].id===id)return list[i];return null;};
   var me=DS.me.name||x('Ти','Ты');
   if(a==='personal'||a==='sendImage')return {ok:true};if(a==='ping')return {online:7};if(a==='prayQuiet')return {ok:true,added:d.count||0};
@@ -1744,9 +1741,7 @@ function demoApi(a,d){if(!DS)demoInit();if(a==='roleInvite')return {role:d.role,
   if(a==='sermonSave'){var so=d.sermon||{};if(!/^\d{4}-\d{2}-\d{2}$/.test(so.date||''))demoErr(x('Вкажіть дату проповіді','Укажите дату проповеди'));if(!String(so.title_uk||'').trim())demoErr(x('Заповніть поле «Тема»','Заполните поле «Тема»'));if(!/^$|^(\d{1,2}:)?[0-5]?\d:[0-5]\d$/.test(String(so.vfrom||'').trim())||!/^$|^(\d{1,2}:)?[0-5]?\d:[0-5]\d$/.test(String(so.vto||'').trim()))demoErr(x('Час у записі вкажіть як 52:10 або 1:31:40','Время в записи укажите как 52:10 или 1:31:40'));if(so.status==='published'&&!String(so.text||'').trim())demoErr(x('Додайте текст підсумку, щоб опублікувати','Добавьте текст итога, чтобы опубликовать'));
     DS.sermons=DS.sermons||[];var ex=DS.sermons.filter(function(q){return q.id===so.id;})[0],rec={id:so.id||('s'+now),date:so.date,time:so.time||'11:00',title:{uk:so.title_uk,ru:so.title_ru||so.title_uk},speaker:so.speaker||'',verse:so.verse||'',ask:so.ask||'',text:so.text||'',video:/^https:\/\//.test(so.video||'')?so.video:'',vfrom:String(so.vfrom||'').trim(),vto:String(so.vto||'').trim(),status:so.status==='published'?'published':'announce'};
     if(ex)Object.assign(ex,rec);else DS.sermons.push(rec);DS.sermons.sort(function(p,q){return p.date<q.date?1:-1;});}
-  if(a==='msDraw'){demoMission();var dm=DS.ms;if(!dm.mine)dm.mine={path:d.path,swaps:0,status:'drawn'};else if(d.swap){if(dm.mine.swaps>=1)demoErr(x('Шлях можна змінити лише один раз','Путь можно сменить только один раз'));if(dm.mine.status!=='drawn')demoErr(x('Ти вже поділився історією цього тижня','Ты уже поделился историей на этой неделе'));dm.mine.path=d.path;dm.mine.swaps=1;}}
-  if(a==='msDone'){demoMission();if(!DS.ms.mine)demoErr(x('Спершу витягни свій шлях','Сначала вытяни свой путь'));DS.ms.mine.status='done';DS.ms.mine.text=String(d.text).slice(0,500);DS.ms.mine.anon=!!d.anon;}
-  if(a==='msDel'){}
+  if(a==='bgMark'){demoMission();var dm=DS.bg.mine.split('');var ci=+d.cell;if(ci>=0&&ci<9&&ci!==4)dm[ci]=d.on?'1':'0';DS.bg.mine=dm.join('');}
   if(a==='sermonDel'){DS.sermons=(DS.sermons||[]).filter(function(q){return q.id!==d.id;});}
   if(a==='cheer'){DS.cheers=DS.cheers||{};var cc=DS.cheers[d.key]=DS.cheers[d.key]||{};cc[d.kind]=!cc[d.kind];}
   if(a==='verseDel'){Object.keys(DS.verses||{}).forEach(function(k){DS.verses[k]=DS.verses[k].filter(function(v){return v.id!==d.id;});});}
@@ -2827,7 +2822,7 @@ var G_INT={
  plan:['план читання','план чтения','що читати','что читать'],
  serve:['хочу служити','хочу служить','волонтер','волонтёр'],
  app:['що вмієш застосун','что умеет прилож','що є в застосун','что есть в прилож','як користуватися','как пользоваться','функці','=розділи','=разделы','що тут є','что тут есть','=застосунок','=приложение'],
- mission:['церква в дії','церковь в действ','завдання тижня','задание недели','задание тижня','=місія','=миссия'],
+ mission:['бінго','бинго','bingo','добрі справи','добрые дела','церква в дії','церковь в действ','завдання тижня','задание недели','задание тижня','=місія','=миссия'],
  bible:['пошук у біблі','поиск в библи','нотатк','заметк','заклад','король джеймс','як читати біблі','как читать библи'],
  sermon:['проповід','проповед'],
  music:['=музика','=музыка','плеєр','плеер','пісн','песн'],
@@ -2901,8 +2896,7 @@ function gIntentReply(k,n){var st=(D&&D.settings)||{};if(G.mode!=='care')G.mode=
       'Вот что здесь есть:\n• Сегодня: стих дня, глава Библии, доброе слово, молитва за кого-то и погода на воскресенье.\n• Библия: Новый и Ветхий Завет, поиск, заметки, закладки и план чтения.\n• Рост: Mind DEVS, домашние группы HeavenOS и «Церковь в действии».\n• Разделы: события, молитва, проповеди, сообщество, пожертвования и твой кабинет с музыкой.\nКуда пойдём?'),
       a:[[P2('Сьогодні','Сегодня'),'go:today'],[P2('Біблія','Библия'),'go:bible'],[P2('Зростання','Рост'),'go:play'],[P2('Мій кабінет','Мой кабинет'),'go:cabinet']],
       c:[[P2('Mind DEVS','Mind DEVS'),'i:devs'],[P2('Церква в дії','Церковь в действии'),'i:mission'],[P2('Проповіді','Проповеди'),'i:sermon'],[P2('Музика і теми','Музыка и темы'),'i:theme']]});return;}
-  if(k==='mission'){gBot({t:P2('«Церква в дії» — одне завдання тижня для всієї церкви, але в кожного свій шлях до нього. Витягни картку, проживи її за тиждень, а в неділю поділися, як це було. Шлях можна один раз замінити.',
-      '«Церковь в действии» — одно задание недели для всей церкви, но у каждого свой путь к нему. Вытяни карточку, проживи её за неделю, а в воскресенье поделись, как это было. Путь можно один раз заменить.'),a:[[P2('Відкрити «Церкву в дії»','Открыть «Церковь в действии»'),'go:mission']],c:[[P2('Mind DEVS','Mind DEVS'),'i:devs'],[P2('Що ще є?','Что ещё есть?'),'i:app']]});return;}
+  if(k==='mission'){gBot({t:P3('«Церква в дії» — це бінго добрих справ. Щотижня в усієї церкви одна картка 3×3 з простими справами: подзвонити рідним, подякувати, помолитися за когось. Обираєш, що тобі до сил, робиш і торкаєшся клітинки. Три в ряд — бінго! А в неділю на екрані видно, скільки добра зробила вся церква.','«Церковь в действии» — это бинго добрых дел. Каждую неделю у всей церкви одна карточка 3×3 с простыми делами: позвонить родным, поблагодарить, помолиться за кого-то. Выбираешь, что тебе по силам, делаешь и касаешься клетки. Три в ряд — бинго! А в воскресенье на экране видно, сколько добра сделала вся церковь.','«Church in action» is good deeds bingo. Each week the whole church shares one 3×3 card of simple deeds: call family, say thanks, pray for someone. Pick what you can, do it and tap the cell. Three in a row is a bingo! On Sunday the screen shows how much good the whole church did.'),a:[[P2('Відкрити «Церкву в дії»','Открыть «Церковь в действии»'),'go:mission']],c:[[P2('Mind DEVS','Mind DEVS'),'i:devs'],[P2('Що ще є?','Что ещё есть?'),'i:app']]});return;}
   if(k==='bible'){gBot({t:P2('У «Біблії» є весь Новий і Старий Завіт. Торкнись вірша, щоб виділити його кольором, додати нотатку чи закладку. Пошук знаходить слово по всій Біблії, а план допомагає читати по розділу на день разом із церквою.',
       'В «Библии» есть весь Новый и Ветхий Завет. Коснись стиха, чтобы выделить его цветом, добавить заметку или закладку. Поиск находит слово по всей Библии, а план помогает читать по главе в день вместе с церковью.'),a:[[P2('Відкрити Біблію','Открыть Библию'),'go:bible'],[P2('План читання','План чтения'),'plan']],c:[[P2('Вірш дня','Стих дня'),'i:verse'],[P2('Що ще є?','Что ещё есть?'),'i:app']]});return;}
   if(k==='sermon'){gBot({t:P2('Після неділі тут з’являється підсумок проповіді: суть, тези, вірші й питання для роздумів. Його можна зберегти як памʼятну картку або поділитися в сторіс. Перед неділею видно тему наступної проповіді.',
@@ -3060,7 +3054,7 @@ function vPlay(){var cn=weekCard(),open=cardOpen(),cd=CARDS[cn-1],dn=0;try{dn=dv
   var dv='<button class="pj pj-devs" data-act="go" data-v="devs"><span class="pj-mark pj-jesus" aria-hidden="true">'+jesusArt()+'</span><span class="pj-in"><small>'+x('Система розвитку свідомості','Система развития сознания')+'</small><strong>Mind <b>DEVS</b></strong><span>'+x('Слова Ісуса стають ділом. Рівні відкриваються по черзі, і кожен змінює погляд на життя.','Слова Иисуса становятся делом. Уровни открываются по очереди, и каждый меняет взгляд на жизнь.','The words of Jesus become deeds. Levels open one by one, and each changes how you see life.')+'</span><em>'+dvLevelLabel()+(wayData().devs.count?' · '+x('у дорозі ','в пути ','on the way ')+wayData().devs.count:'')+'</em></span></button>';
   var soon='<div class="pj pj-soon"><span class="pj-in"><small>'+x('Незабаром','Скоро')+'</small><strong>'+x('Нові ігри','Новые игры')+'</strong><span>'+x('Тут з’являтимуться ігри та інтерактивні вивчення Біблії для себе, для групи й для всієї церкви.','Здесь будут появляться игры и интерактивные изучения Библии для себя, для группы и для всей церкви.')+'</span></span></div>';
   return '<h1>'+x('Зростання','Рост','Grow')+'</h1><p class="sub">'+x('Домашні групи, ігри та живе вивчення Біблії. Кожен проєкт окремий, обирай свій.','Домашние группы, игры и живое изучение Библии. Каждый проект отдельный, выбирай свой.','Home groups, games and living Bible study. Each project is separate — pick yours.')+'</p>'+(liveRooms().length?heavenLive():'')+'<div class="pjs">'+msTile()+hv+dv+soon+'</div>';}
-function msTile(){var M=msNow(),S=msData(),dn=S.done.reduce(function(a,b){return a+b;},0);return '<button class="pj pj-ms" data-act="go" data-v="mission"><span class="pj-mark" aria-hidden="true">?</span><span class="pj-in"><small>'+x('Церква в дії · вся церква','Церковь в действии · вся церковь')+'</small><strong>'+esc(rL(M.t))+'</strong><span>'+x('Одне завдання на тиждень, а шлях до нього кожному випадає свій. У неділю ділимося.','Одно задание на неделю, а путь к нему каждому выпадает свой. В воскресенье делимся.')+'</span><em>'+(S.mine?x('Твій шлях ','Твой путь ')+(S.mine.path+1)+x(' із 6',' из 6'):x('Витягни свій шлях','Вытяни свой путь'))+(dn?' · '+x('зробили ','сделали ')+dn:'')+'</em></span></button>';}
+function msTile(){var M=msNow(),S=msData(),n=bgCount(S.on);return '<button class="pj pj-ms" data-act="go" data-v="mission"><span class="pj-mark" aria-hidden="true">★</span><span class="pj-in"><small>'+x('Церква в дії · вся церква','Церковь в действии · вся церковь','Church in action · the whole church')+'</small><strong>'+esc(rL(M.t))+'</strong><span>'+x('Бінго добрих справ: картка на тиждень із простих справ. Три в ряд — бінго.','Бинго добрых дел: карточка на неделю из простых дел. Три в ряд — бинго.','Good deeds bingo: a weekly card of simple deeds. Three in a row is a bingo.')+'</span><em>'+(n?x('Зроблено ','Сделано ','Done ')+n+x(' із 8',' из 8',' of 8'):x('Відкрити картку','Открыть карточку','Open the card'))+(S.deeds?' · '+x('у церкві ','в церкви ','church: ')+S.deeds:'')+'</em></span></button>';}
 function vHeaven(){var head=back()+'<h1>HeavenOS</h1>';
   var cn=weekCard(),gc=myGroupCard(),open=cardOpen(),cd=CARDS[cn-1],dn=!!state.done[cn];
   var decks=DECKS.map(function(dk,di){var from=dk[1],cnt=0,th='';
@@ -3366,7 +3360,7 @@ function vNewcomer(){var sun=RULES.filter(function(r){return r.kind==='sunday';}
     '<button class="btn tint small" data-act="cxGo" data-v="guide">'+x('Привітатися з Провідником','Поздороваться с Проводником','Say hi to the Guide')+'</button>',x('Дзінь!','Дзинь!','Ding!'),-.8));
   P.push(cxPanel(5,x('Розділ 6. Зростання','Глава 6. Рост','Chapter 6. Grow'),'<div class="cx-cards"><i></i><i></i><i></i></div>',
     [x('У «Зростанні» живе Mind DEVS: слова Ісуса як тренажер для розуму. Одна картка за раз, рівні й нагороди.','В «Росте» живёт Mind DEVS: слова Иисуса как тренажёр для ума. Одна карточка за раз, уровни и награды.','«Grow» is home to Mind DEVS: the words of Jesus as a gym for the mind. One card at a time, levels and rewards.'),
-     x('А ще «Церква в дії»: одне завдання тижня на всю церкву, але в кожного свій шлях.','А ещё «Церковь в действии»: одно задание недели на всю церковь, но у каждого свой путь.','And «Church in action»: one task a week for the whole church, with a path of your own.')],
+     x('А ще «Церква в дії»: бінго добрих справ на тиждень для всієї церкви.','А ещё «Церковь в действии»: бинго добрых дел на неделю для всей церкви.','And «Church in action»: a good deeds bingo for the whole church each week.')],
     '<button class="btn tint small" data-act="cxGo" data-v="play">'+x('До «Зростання»','В «Рост»','Open Grow')+'</button>','',.6));
   P.push(cxPanel(6,x('Розділ 7. Ти не з Києва?','Глава 7. Ты не из Киева?','Chapter 7. Not in Kyiv?'),'<svg class="cx-globe" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="36" fill="#9AD0FF" stroke="currentColor" stroke-width="2.5"/><g class="sp"><path d="M30 34c8 4 10 12 4 18s-2 14 6 16M58 20c-4 8 4 12 12 10s10 10 4 16" fill="none" stroke="#63B216" stroke-width="7" stroke-linecap="round"/></g><ellipse cx="50" cy="50" rx="16" ry="36" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="1.6"/><path d="M14 50h72" stroke="rgba(0,0,0,.18)" stroke-width="1.6"/><g class="pin"><path d="M64 22c0-5 4-8 8-8s8 3 8 8c0 6-8 13-8 13s-8-7-8-13z" fill="#FF6F5B" stroke="currentColor" stroke-width="2"/><circle cx="72" cy="22" r="2.6" fill="#fff"/></g></svg>',
     [x('Не біда! Я он теж зараз невідомо де, і нічого, мене все одно знайдуть.','Не беда! Я вот тоже сейчас неизвестно где, и ничего, меня всё равно найдут.','No problem! I am not exactly sure where I am either, and it is fine: I will still be found.'),
@@ -3745,100 +3739,89 @@ function wayFeedText(f){var lv=DV_LV[Math.max(0,f.v-1)];return f.kind==='start'?
 function wayBlock(){var W=wayData(),n=W.devs.count||0;if(!n)return '';var f=W.feed[0],dots='';for(var i=0;i<Math.min(n,7);i++)dots+='<i style="--d:'+(i*0.37).toFixed(2)+'s"></i>';
   return '<div class="way-min" aria-label="'+x('Попутники','Попутчики','Fellow travelers')+'"><span class="way-dots" aria-hidden="true">'+dots+'</span><span><b>'+n+'</b> '+x('у дорозі','в пути','on the way')+(f?' · '+x('щойно хтось: ','только что кто-то: ','someone just: ')+wayFeedText(f):'')+'</span></div>';}
 function wayLevelCount(li){var W=wayData();return (W.devs.levels||[])[li]||0;}
-/* ---------- Церква в дії: one mission for the whole church, everyone draws their own path, Sunday shows them all ---------- */
+/* ---------- Церква в дії: «Бінго добрих справ». One 3×3 card a week for the whole church; tap what you did, three in a row is a bingo ---------- */
 var MISSIONS=[
- {t:P2('Подяка','Благодарность'),r:'Колосян 3:15',w:P2('Цього тижня вся церква дякує. Як саме, вирішить твоя картка.','На этой неделе вся церковь благодарит. Как именно, решит твоя карточка.'),p:[
-  P2('Напиши вчителю чи наставнику з минулого, за що ти йому вдячний','Напиши учителю или наставнику из прошлого, за что ты ему благодарен'),
-  P2('Подякуй по імені людині, яку зазвичай не помічають: касиру, водію, охоронцю','Поблагодари по имени человека, которого обычно не замечают: кассира, водителя, охранника'),
-  P2('Напиши батькам або рідним три речі, за які ти їм вдячний','Напиши родителям или родным три вещи, за которые ты им благодарен'),
-  P2('Подякуй колезі чи однокласнику при інших','Поблагодари коллегу или одноклассника при других'),
-  P2('Залиш записку-подяку сусідам чи прибиральниці під’їзду','Оставь записку-благодарность соседям или уборщице подъезда'),
-  P2('Разом із кимось вголос подякуй Богові за десять речей','Вместе с кем-то вслух поблагодари Бога за десять вещей')]},
- {t:P2('Ближній поруч','Ближний рядом'),r:'Луки 10:27',w:P2('Ближній не десь далеко. Він за стіною, у маршрутці, в чаті.','Ближний не где-то далеко. Он за стеной, в маршрутке, в чате.'),p:[
-  P2('Познайомся з сусідом, якого досі не знаєш на ім’я','Познакомься с соседом, которого до сих пор не знаешь по имени'),
-  P2('Допоможи літній людині з покупками чи справою','Помоги пожилому человеку с покупками или делом'),
-  P2('Запроси на чай когось, кому самотньо','Пригласи на чай того, кому одиноко'),
-  P2('Принеси їжу людині, якій зараз важко','Принеси еду человеку, которому сейчас тяжело'),
-  P2('Подзвони тому, хто хворіє, і просто поговори','Позвони тому, кто болеет, и просто поговори'),
-  P2('У неділю сядь поруч із новою людиною в церкві й познайомся','В воскресенье сядь рядом с новым человеком в церкви и познакомься')]},
- {t:P2('Слухати','Слушать'),r:'Якова 1:19',w:P2('Тиждень, коли ми більше слухаємо, ніж говоримо: людей і Бога.','Неделя, когда мы больше слушаем, чем говорим: людей и Бога.'),p:[
-  P2('Одна довга розмова, у якій телефон лежить у кишені','Один долгий разговор, в котором телефон лежит в кармане'),
-  P2('Розпитай літню людину про її життя і просто слухай','Расспроси пожилого человека о его жизни и просто слушай'),
-  P2('Вислухай когось до кінця й не дай жодної поради','Выслушай кого-то до конца и не дай ни одного совета'),
-  P2('Щодня п’ятнадцять хвилин тиші з Богом без слів','Каждый день пятнадцать минут тишины с Богом без слов'),
-  P2('Запитай дитину про її день і слухай, поки не скаже все','Спроси ребёнка о его дне и слушай, пока не скажет всё'),
-  P2('Один день без новин і соцмереж, щоб почути, що в серці','Один день без новостей и соцсетей, чтобы услышать, что в сердце')]},
- {t:P2('Щедрість','Щедрость'),r:'2 Коринтян 9:7',w:P2('Віддавати не з надлишку, а з радістю. Кожен по-своєму.','Отдавать не от избытка, а с радостью. Каждый по-своему.'),p:[
-  P2('Віддай річ, яка тобі справді дорога','Отдай вещь, которая тебе действительно дорога'),
-  P2('Непомітно заплати за чиюсь каву чи покупки','Незаметно заплати за чей-то кофе или покупки'),
-  P2('Подаруй годину свого часу комусь, кому потрібна допомога','Подари час своего времени тому, кому нужна помощь'),
-  P2('Збери пакет продуктів для тих, хто в потребі','Собери пакет продуктов для тех, кто в нужде'),
-  P2('Подаруй книгу, яка колись змінила тебе','Подари книгу, которая когда-то изменила тебя'),
-  P2('Зроби комусь корисну справу своїм умінням безкоштовно','Сделай кому-то полезное дело своим умением бесплатно')]},
- {t:P2('Примирення','Примирение'),r:'Матвія 5:9',w:P2('Миротворці шукають не правоту, а мир. Тиждень першого кроку.','Миротворцы ищут не правоту, а мир. Неделя первого шага.'),p:[
-  P2('Напиши людині, з якою давно посварився','Напиши человеку, с которым давно поссорился'),
-  P2('Попроси пробачення першим, навіть за дрібницю','Попроси прощения первым, даже за мелочь'),
-  P2('Щодня молися за того, хто тебе образив','Каждый день молись за того, кто тебя обидел'),
-  P2('Скажи щось добре про людину, яка тебе дратує','Скажи что-то доброе о человеке, который тебя раздражает'),
-  P2('Відпусти одну стару образу й скажи це Богові вголос','Отпусти одну старую обиду и скажи это Богу вслух'),
-  P2('Поверни те, що колись позичив, або закрий старий борг','Верни то, что когда-то брал, или закрой старый долг')]},
- {t:P2('Місто молиться','Город молится'),r:'1 Тимофія 2:1',w:P2('Тиждень, коли вся церква молиться за Київ. У кожного свій куточок міста.','Неделя, когда вся церковь молится за Киев. У каждого свой уголок города.'),p:[
-  P2('Молися за людей поруч у метро чи маршрутці','Молись за людей рядом в метро или маршрутке'),
-  P2('Пройдися своєю вулицею й помолися за кожен будинок','Пройдись по своей улице и помолись за каждый дом'),
-  P2('Помолися біля лікарні за лікарів і хворих','Помолись у больницы за врачей и больных'),
-  P2('Помолися за військових і напиши комусь із них листа','Помолись за военных и напиши кому-то из них письмо'),
-  P2('Помолися біля школи за дітей і вчителів','Помолись у школы за детей и учителей'),
-  P2('Щодня молися за владу міста й тих, хто ухвалює рішення','Каждый день молись за власть города и тех, кто принимает решения')]},
- {t:P2('Свідчення','Свидетельство'),r:'1 Петра 3:15',w:P2('Не проповідь, а чесна історія. Кожен розповідає по-своєму.','Не проповедь, а честная история. Каждый рассказывает по-своему.'),p:[
-  P2('Розкажи одній людині, що Бог зробив у твоєму житті','Расскажи одному человеку, что Бог сделал в твоей жизни'),
-  P2('Запроси на недільне служіння одну людину','Пригласи на воскресное служение одного человека'),
-  P2('Поділися віршем, який тримає тебе зараз','Поделись стихом, который держит тебя сейчас'),
-  P2('Запропонуй комусь помолитися разом і помолись','Предложи кому-то помолиться вместе и помолись'),
-  P2('Розкажи рідним, як ти прийшов до віри','Расскажи родным, как ты пришёл к вере'),
-  P2('Надішли другу проповідь, що зачепила тебе, і запитай, що він думає','Отправь другу проповедь, которая тебя зацепила, и спроси, что он думает')]},
- {t:P2('Свої','Свои'),r:'Ісуса Навина 24:15',w:P2('Віра починається вдома. Тиждень для найближчих.','Вера начинается дома. Неделя для самых близких.'),p:[
-  P2('Вечеря всією родиною без телефонів','Ужин всей семьёй без телефонов'),
-  P2('Лист подяки чоловікові, дружині чи батькам','Письмо благодарности мужу, жене или родителям'),
-  P2('Пів години гри з дітьми чи молодшими рідними','Полчаса игры с детьми или младшими родными'),
-  P2('Зроби вдома справу, яку зазвичай роблять інші','Сделай дома дело, которое обычно делают другие'),
-  P2('Спільна молитва з рідними хоча б раз','Совместная молитва с родными хотя бы раз'),
-  P2('Прогулянка вдвох із рідною людиною й розмова по душах','Прогулка вдвоём с родным человеком и разговор по душам')]}];
+ {t:P3('Подяка','Благодарность','Gratitude'),r:'Колосян 3:15',w:P3('Тиждень, коли вся церква дякує.','Неделя, когда вся церковь благодарит.','A week when the whole church gives thanks.'),d:[
+  P3('Подзвони батькам','Позвони родителям','Call your parents'),P3('Подякуй водію чи касиру','Поблагодари водителя или кассира','Thank a driver or cashier'),P3('Скажи комусь комплімент','Скажи кому-то комплимент','Give someone a compliment'),
+  P3('Напиши вчителю чи наставнику','Напиши учителю или наставнику','Message a teacher or mentor'),P3('Подякуй Богові за 10 речей','Поблагодари Бога за 10 вещей','Thank God for 10 things'),
+  P3('Обійми рідних','Обними родных','Hug your family'),P3('Подякуй колезі при інших','Поблагодари коллегу при других','Thank a colleague in front of others'),P3('Залиш записку-подяку','Оставь записку-благодарность','Leave a thank-you note')]},
+ {t:P3('Ближній поруч','Ближний рядом','The neighbour next door'),r:'Луки 10:27',w:P3('Ближній не десь далеко. Він за стіною, у маршрутці, в чаті.','Ближний не где-то далеко. Он за стеной, в маршрутке, в чате.','Your neighbour is not far away: behind the wall, on the bus, in the chat.'),d:[
+  P3('Дізнайся ім’я сусіда','Узнай имя соседа','Learn a neighbour’s name'),P3('Допоможи літній людині','Помоги пожилому человеку','Help an elderly person'),P3('Пригости когось чаєм','Угости кого-то чаем','Treat someone to tea'),
+  P3('Подзвони тому, хто хворіє','Позвони тому, кто болеет','Call someone who is ill'),P3('Пропусти когось у черзі','Пропусти кого-то в очереди','Let someone go first in line'),
+  P3('Принеси їжу тому, кому важко','Принеси еду тому, кому тяжело','Bring food to someone struggling'),P3('Сядь у церкві з новою людиною','Сядь в церкви с новым человеком','Sit with a newcomer at church'),P3('Запитай «як ти?» і вислухай','Спроси «как ты?» и выслушай','Ask “how are you?” and listen')]},
+ {t:P3('Слухати','Слушать','Listening'),r:'Якова 1:19',w:P3('Тиждень, коли ми більше слухаємо, ніж говоримо: людей і Бога.','Неделя, когда мы больше слушаем, чем говорим: людей и Бога.','A week of listening more than talking: to people and to God.'),d:[
+  P3('Розмова без телефона','Разговор без телефона','A talk with the phone away'),P3('15 хвилин тиші з Богом','15 минут тишины с Богом','15 minutes of silence with God'),P3('Розпитай літню людину про життя','Расспроси пожилого человека о жизни','Ask an older person about their life'),
+  P3('Вислухай і не давай порад','Выслушай и не давай советов','Listen without giving advice'),P3('Запитай дитину про її день','Спроси ребёнка о его дне','Ask a child about their day'),
+  P3('Вечір без новин','Вечер без новостей','An evening without news'),P3('Повільно прочитай розділ Біблії','Медленно прочитай главу Библии','Read a Bible chapter slowly'),P3('Запитай, що людина відчуває','Спроси, что человек чувствует','Ask someone how they feel')]},
+ {t:P3('Щедрість','Щедрость','Generosity'),r:'2 Коринтян 9:7',w:P3('Віддавати не з надлишку, а з радістю.','Отдавать не от избытка, а с радостью.','Giving not from surplus, but with joy.'),d:[
+  P3('Заплати комусь за каву','Заплати кому-то за кофе','Pay for someone’s coffee'),P3('Віддай річ, яка тобі дорога','Отдай вещь, которая тебе дорога','Give away something dear to you'),P3('Подаруй годину допомоги','Подари час помощи','Give an hour of help'),
+  P3('Збери пакет продуктів','Собери пакет продуктов','Pack a bag of groceries'),P3('Подаруй книгу','Подари книгу','Give someone a book'),
+  P3('Допоможи своїм умінням','Помоги своим умением','Help with your skill'),P3('Залиш щедрі чайові','Оставь щедрые чаевые','Leave a generous tip'),P3('Пригости колег','Угости коллег','Treat your colleagues')]},
+ {t:P3('Примирення','Примирение','Peacemaking'),r:'Матвія 5:9',w:P3('Миротворці шукають не правоту, а мир. Тиждень першого кроку.','Миротворцы ищут не правоту, а мир. Неделя первого шага.','Peacemakers seek peace, not being right. A week of the first step.'),d:[
+  P3('Напиши тому, з ким посварився','Напиши тому, с кем поссорился','Message someone you fell out with'),P3('Попроси пробачення першим','Попроси прощения первым','Apologise first'),P3('Помолись за того, хто образив','Помолись за того, кто обидел','Pray for someone who hurt you'),
+  P3('Скажи добре про того, хто дратує','Скажи доброе о том, кто раздражает','Say something kind about someone who annoys you'),P3('Відпусти стару образу','Отпусти старую обиду','Let go of an old grudge'),
+  P3('Поверни борг чи позичене','Верни долг или взятое','Return a debt or something borrowed'),P3('Промовч, коли хочеться сперечатися','Промолчи, когда хочется спорить','Stay quiet when you want to argue'),P3('Помирись удома','Помирись дома','Make peace at home')]},
+ {t:P3('Місто молиться','Город молится','The city prays'),r:'1 Тимофія 2:1',w:P3('Тиждень, коли вся церква молиться за Київ.','Неделя, когда вся церковь молится за Киев.','A week when the whole church prays for Kyiv.'),d:[
+  P3('Помолись за людей у метро','Помолись за людей в метро','Pray for people on the metro'),P3('Помолись за свою вулицю','Помолись за свою улицу','Pray for your street'),P3('Помолись за лікарів','Помолись за врачей','Pray for doctors'),
+  P3('Помолись за військових','Помолись за военных','Pray for soldiers'),P3('Помолись за школу','Помолись за школу','Pray for a school'),
+  P3('Помолись за владу міста','Помолись за власть города','Pray for the city leaders'),P3('Помолись за сусідів','Помолись за соседей','Pray for your neighbours'),P3('Помолись за свою роботу','Помолись за свою работу','Pray for your workplace')]},
+ {t:P3('Свідчення','Свидетельство','Testimony'),r:'1 Петра 3:15',w:P3('Не проповідь, а чесна історія. Кожен розповідає по-своєму.','Не проповедь, а честная история. Каждый рассказывает по-своему.','Not a sermon, an honest story. Everyone tells it their way.'),d:[
+  P3('Розкажи, що Бог зробив для тебе','Расскажи, что Бог сделал для тебя','Tell what God has done for you'),P3('Запроси когось у неділю','Пригласи кого-то в воскресенье','Invite someone on Sunday'),P3('Поділись віршем','Поделись стихом','Share a verse'),
+  P3('Запропонуй помолитися разом','Предложи помолиться вместе','Offer to pray together'),P3('Розкажи рідним, як прийшов до віри','Расскажи родным, как пришёл к вере','Tell your family how you came to faith'),
+  P3('Надішли другу проповідь','Отправь другу проповедь','Send a friend a sermon'),P3('Поділись цим застосунком','Поделись этим приложением','Share this app'),P3('Помолись перед їжею на людях','Помолись перед едой при людях','Say grace in public')]},
+ {t:P3('Свої','Свои','Family'),r:'Ісуса Навина 24:15',w:P3('Віра починається вдома. Тиждень для найближчих.','Вера начинается дома. Неделя для самых близких.','Faith starts at home. A week for those closest to you.'),d:[
+  P3('Вечеря без телефонів','Ужин без телефонов','Dinner without phones'),P3('Лист подяки рідним','Письмо благодарности родным','A thank-you letter to family'),P3('Пограй з дітьми','Поиграй с детьми','Play with children'),
+  P3('Зроби хатню справу за когось','Сделай домашнее дело за кого-то','Do a chore for someone'),P3('Помолись разом із рідними','Помолись вместе с родными','Pray with your family'),
+  P3('Прогулянка вдвох','Прогулка вдвоём','A walk together'),P3('Подзвони бабусі чи дідусю','Позвони бабушке или дедушке','Call a grandparent'),P3('Скажи «я тебе люблю»','Скажи «я тебя люблю»','Say “I love you”')]}];
+var BG_LINES=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
 function msWeek(){var d=day0(new Date()),m=addDays(d,-((d.getDay()+6)%7));return iso(m);}
 function msNow(){var w=fromIso(msWeek()),n=Math.round((w-new Date(2026,0,5))/6048e5);return MISSIONS[((n%MISSIONS.length)+MISSIONS.length)%MISSIONS.length];}
-function msData(){return (D&&D.mission&&D.mission.week===msWeek())?D.mission:{week:msWeek(),mine:null,drawn:[0,0,0,0,0,0],done:[0,0,0,0,0,0],stories:[]};}
 function msRange(){var m=fromIso(msWeek()),s=addDays(m,6);if(state.lang==='en')return m.getMonth()===s.getMonth()?MG.en[m.getMonth()]+' '+m.getDate()+'–'+s.getDate():fmtDay(m)+' – '+fmtDay(s);return m.getDate()+'–'+fmtDay(s);}
-var msAnim=false;
-function vMission(){var M=msNow(),S=msData(),me=S.mine,tot=S.drawn.reduce(function(a,b){return a+b;},0),dn=S.done.reduce(function(a,b){return a+b;},0),sun=new Date().getDay()===0,r=parseRef(M.r),h='';
-  h+=back('play')+'<section class="ms-head"><p class="ms-k">'+x('Церква в дії','Церковь в действии')+' · '+msRange()+'</p><h1>'+esc(rL(M.t))+'</h1><p>'+esc(rL(M.w))+'</p>'+
+/* cell i of the card: the centre (4) is the free star, the others are the 8 deeds in order */
+function bgDeed(M,i){return i===4?null:M.d[i<4?i:i-1];}
+function msData(){var b=(D&&D.bingo&&D.bingo.week===msWeek())?D.bingo:{week:msWeek(),mine:'000000000',cells:[0,0,0,0,0,0,0,0,0],deeds:0,people:0,bingos:0};
+  var m=String(b.mine||'000000000').split('').map(function(c){return c==='1';});m[4]=true;return {week:b.week,on:m,cells:b.cells||[],deeds:b.deeds||0,people:b.people||0,bingos:b.bingos||0};}
+function bgLines(on){return BG_LINES.filter(function(l){return l.every(function(i){return on[i];});});}
+function bgCount(on){return on.filter(function(v,i){return v&&i!==4;}).length;}
+/* how many more cells to the nearest line */
+function bgNeed(on){return Math.min.apply(null,BG_LINES.map(function(l){return l.filter(function(i){return !on[i];}).length;}));}
+function bgStatus(S){var n=bgCount(S.on),ln=bgLines(S.on).length;
+  if(n===8)return x('Уся картка! Ти справжній приклад для церкви','Вся карточка! Ты настоящий пример для церкви','The whole card! You are a real example');
+  if(ln)return x('БІНГО! ','БИНГО! ','BINGO! ')+(ln>1?'×'+ln+' ':'')+x('Можна зібрати ще','Можно собрать ещё','You can go for more');
+  var k=bgNeed(S.on);return k===1?x('Ще одна — і БІНГО!','Ещё одна — и БИНГО!','One more and it’s BINGO!'):x('Три в ряд — і бінго','Три в ряд — и бинго','Three in a row is a bingo');}
+var bgWin=-1;
+function msDataRaw(){return (D&&D.bingo&&D.bingo.week===msWeek())?D.bingo:{week:msWeek(),mine:'000000000',cells:[0,0,0,0,0,0,0,0,0],deeds:0,people:0,bingos:0};}
+function bgGrid(M,S,big){var win={};bgLines(S.on).forEach(function(l){l.forEach(function(i){win[i]=1;});});
+  return '<div class="bg-grid'+(big?' big':'')+'">'+[0,1,2,3,4,5,6,7,8].map(function(i){var d=bgDeed(M,i),on=S.on[i],c=S.cells[i]||0;
+    if(i===4)return '<div class="bg-c bg-free'+(win[i]?' win':'')+'"><span class="bg-star" aria-hidden="true">★</span><small>'+x('Бог з тобою','Бог с тобой','God is with you')+'</small></div>';
+    var inner='<span class="bg-t">'+esc(rL(d))+'</span>'+(big?'<b class="bg-n">'+c+'</b>':(on?'<span class="bg-ck" aria-hidden="true">'+CHECK+'</span>':''));
+    return big?'<div class="bg-c'+(c?' on':'')+'">'+inner+'</div>':'<button class="bg-c'+(on?' on':'')+(win[i]?' win':'')+(bgWin===i?' pop':'')+'" data-act="bgMark" data-v="'+i+'" aria-pressed="'+on+'">'+inner+'</button>';}).join('')+'</div>';}
+/* the hill with one light per good deed of the church this week */
+function bgHill(n){var dots='',k=Math.min(n,140),s=7;for(var i=0;i<k;i++){s=(s*9301+49297)%233280;var a=s/233280;s=(s*9301+49297)%233280;var b=s/233280;
+    var xx=20+a*280,top=96-Math.sin(Math.PI*(xx-0)/320)*62,yy=top+6+b*(108-top);dots+='<circle cx="'+xx.toFixed(1)+'" cy="'+yy.toFixed(1)+'" r="'+(1.3+b*1.6).toFixed(1)+'" style="--d:'+(a*3).toFixed(2)+'s"/>';}
+  return '<svg class="bg-hill" viewBox="0 0 320 110" aria-hidden="true"><path d="M0 110 C70 60 120 34 160 34 C200 34 250 60 320 110Z" fill="rgba(0,0,0,.28)"/><rect x="152" y="18" width="16" height="17" fill="#0B1E1C"/><path d="M149 20l11-10 11 10z" fill="#0B1E1C"/><rect x="157.5" y="24" width="5" height="6" fill="#FFD27A"/><g fill="#FFD98A">'+dots+'</g></svg>';}
+function vMission(){var M=msNow(),S=msData(),r=parseRef(M.r),h='',n=bgCount(S.on),ln=bgLines(S.on).length;
+  h+=back('play')+'<section class="ms-head"><p class="ms-k">'+x('Церква в дії · бінго добрих справ','Церковь в действии · бинго добрых дел','Church in action · good deeds bingo')+' · '+msRange()+'</p><h1>'+esc(rL(M.t))+'</h1><p>'+esc(rL(M.w))+'</p>'+
     (r?'<button class="btn small ms-ref" data-act="bible" data-v="'+r.b+':'+r.c+':'+r.v+'">'+(state.lang==='en'?refEn(M.r):M.r)+'</button>':'')+
-    '<div class="ms-stats"><span><b>'+tot+'</b>'+x(' витягли шлях',' вытянули путь')+'</span><span><b>'+dn+'</b>'+x(' уже зробили',' уже сделали')+'</span></div></section>';
-  if(!me){h+='<section class="ms-draw"><p class="sub">'+x('Шість шляхів до одного завдання. Який випаде тобі, вирішиш не ти. Витягни картку й живи нею тиждень, а в неділю розкажи, як це було.','Шесть путей к одному заданию. Какой выпадет тебе, решаешь не ты. Вытяни карточку и живи ею неделю, а в воскресенье расскажи, как это было.')+'</p>'+
-      '<div class="ms-deck">'+[0,1,2,3,4,5].map(function(i){return '<button class="ms-back" data-act="msDraw" style="--i:'+i+'" aria-label="'+x('Витягнути шлях','Вытянуть путь')+'"><span>?</span></button>';}).join('')+'</div>'+
-      '<button class="btn accent wide" data-act="msDraw">'+x('Витягнути свій шлях','Вытянуть свой путь')+'</button></section>';}
-  else{var path=rL(M.p[me.path]);
-    h+='<section class="ms-mine'+(msAnim?' reveal':'')+'"><p class="ms-k">'+x('Тобі випало','Тебе выпало')+' · '+x('шлях ','путь ')+(me.path+1)+x(' із 6',' из 6')+'</p><p class="ms-path">'+esc(path)+'</p>'+
-      (me.status==='done'?'<p class="ms-told">'+CHECK+x('Ти поділився своєю історією','Ты поделился своей историей')+'</p>':
-       (me.swaps<1?'<div class="ms-sw"><button class="btn small ms-swap" data-act="msSwap">↻ '+(state.confirm==='msSwap'?x('Точно змінити? Натисни ще раз','Точно сменить? Нажми ещё раз'):x('Змінити карту','Сменить карту'))+'</button><span>'+x('Один раз. Випаде одна з інших п’яти.','Один раз. Выпадет одна из других пяти.')+'</span></div>':'<p class="ms-swd">'+x('Карту вже змінено. Цей шлях твій.','Карта уже сменена. Этот путь твой.')+'</p>'))+'</section>';
-    if(me.status!=='done')h+='<section class="card"><h2>'+x('Як це було','Как это было')+'</h2><p class="sub">'+x('Коли зробиш, коротко розкажи: що сталося, що відчув, що змінилося. У неділю ці історії побачить уся церква.','Когда сделаешь, коротко расскажи: что произошло, что почувствовал, что изменилось. В воскресенье эти истории увидит вся церковь.')+'</p>'+
-      '<form data-form="msDone" class="stack" style="gap:10px"><label class="sr" for="ms-t">'+x('Моя історія','Моя история')+'</label><textarea id="ms-t" name="text" rows="4" maxlength="500" placeholder="'+x('Я написав сусідці з п’ятого поверху…','Я написал соседке с пятого этажа…')+'"></textarea>'+
-      '<label class="ms-anon"><input type="checkbox" name="anon"> '+x('Показати без мого імені','Показать без моего имени')+'</label><button class="btn accent" type="submit">'+x('Зроблено, поділитися','Сделано, поделиться')+'</button></form></section>';}
-  h+='<section class="stack"><div class="between" style="align-items:center"><h2>'+(sun?x('Що випало іншим','Что выпало другим'):x('Шляхи церкви','Пути церкви'))+'</h2><button class="btn tint small" data-act="msShow">'+x('Недільний показ','Воскресный показ')+'</button></div>'+
-    '<ol class="ms-paths">'+M.p.map(function(p,i){var st=S.stories.filter(function(q){return q.path===i;});
-      return '<li'+(me&&me.path===i?' class="ms-mine-p"':'')+'><div class="ms-ph"><span class="ms-n">'+(i+1)+'</span><p>'+esc(rL(p))+'</p></div><p class="ms-c">'+x('витягли: ','вытянули: ')+S.drawn[i]+' · '+x('зробили: ','сделали: ')+S.done[i]+'</p>'+
-        (st.length?'<ul class="ms-st">'+st.slice(0,3).map(function(q){return '<li><p>'+esc(q.text)+'</p><small>'+(q.name?esc(q.name):x('Без імені','Без имени'))+(isAdmin()&&!q.sample?' · <button class="link mod-x" data-act="msDel" data-v="'+esc(q.key)+'">'+(state.confirm==='ms:'+q.key?x('Точно прибрати?','Точно убрать?'):x('Прибрати','Убрать'))+'</button>':'')+'</small></li>';}).join('')+'</ul>':'')+'</li>';}).join('')+'</ol></section>';
+    bgHill(S.deeds)+'<div class="ms-stats"><span><b>'+S.deeds+'</b>'+x(' добрих справ церкви',' добрых дел церкви',' good deeds by the church')+'</span><span><b>'+S.bingos+'</b>'+x(' бінго',' бинго',' bingos')+'</span></div>'+(DEMO?'<i class="ms-demo">'+x('приклад','пример','sample')+'</i>':'')+'</section>';
+  h+='<section class="bg-me"><div class="between" style="align-items:center"><h2>'+x('Моя картка','Моя карточка','My card')+'</h2><span class="bg-prog">'+n+x(' із 8',' из 8',' of 8')+'</span></div>'+
+    '<p class="sub">'+x('Обирай, що тобі до сил, у будь-якому порядку. Зробив — торкнись клітинки.','Выбирай, что тебе по силам, в любом порядке. Сделал — коснись клетки.','Pick what you can, in any order. Done it? Tap the cell.')+'</p>'+
+    bgGrid(M,S)+'<p class="bg-st'+(ln?' yes':'')+'">'+bgStatus(S)+'</p></section>';
+  h+='<section class="stack"><div class="between" style="align-items:center"><h2>'+x('Що робить церква','Что делает церковь','What the church is doing')+'</h2><button class="btn tint small" data-act="msShow">'+x('Недільний показ','Воскресный показ','Sunday screen')+'</button></div>'+
+    '<p class="sub">'+(S.people?x('Грають ','Играют ','Playing: ')+S.people+x(' людей. Цифра в клітинці — скільки разів це зробили.',' человек. Цифра в клетке — сколько раз это сделали.',' people. The number in a cell is how many did it.'):x('Ти можеш бути першим.','Ты можешь быть первым.','You can be the first.'))+'</p>'+bgGrid(M,S,true)+'</section>';
   return h;}
-function missionToday(){var M=msNow(),S=msData(),me=S.mine;if(me&&me.status==='done')return '';
-  return '<button class="ms-today" data-act="go" data-v="mission"><span class="ms-ico" aria-hidden="true">?</span><span><small>'+x('Церква в дії · завдання тижня','Церковь в действии · задание недели')+'</small><strong>'+esc(rL(M.t))+'</strong><em>'+(me?x('Твій шлях: ','Твой путь: ')+esc(rL(M.p[me.path])):x('Витягни свій шлях','Вытяни свой путь'))+'</em></span></button>';}
-/* fullscreen for the Sunday projector: counts per path and the stories, one by one */
+function missionToday(){var M=msNow(),S=msData(),n=bgCount(S.on);if(n===8)return '';
+  var dots=S.on.map(function(v,i){return '<i class="'+(i===4?'f':v?'on':'')+'"></i>';}).join('');
+  return '<button class="ms-today" data-act="go" data-v="mission"><span class="ms-mini" aria-hidden="true">'+dots+'</span><span><small>'+x('Бінго добрих справ · тиждень','Бинго добрых дел · неделя','Good deeds bingo · this week')+'</small><strong>'+esc(rL(M.t))+'</strong><em>'+(n?bgStatus(S):x('Обери справу до сил і відміть','Выбери дело по силам и отметь','Pick a deed you can do and tick it'))+'</em></span></button>';}
+/* fullscreen for the Sunday projector: the church's card with counts, the hill of lights and the totals */
 var msShowT=null;
-function msShowOpen(){var M=msNow(),S=msData(),ov=document.createElement('div'),i=0,st=S.stories.slice();ov.className='ms-show';ov.setAttribute('role','dialog');ov.tabIndex=-1;
-  var paths=M.p.map(function(p,k){return '<li><i>'+(k+1)+'</i><span>'+esc(rL(p))+'</span><b>'+S.done[k]+'</b></li>';}).join('');
-  ov.innerHTML='<button class="ms-x" aria-label="'+x('Закрити','Закрыть')+'">×</button><div class="ms-sh"><p class="ms-k">'+x('Церква в дії','Церковь в действии')+' · '+msRange()+'</p><h2>'+esc(rL(M.t))+'</h2><ol class="ms-sp">'+paths+'</ol></div><div class="ms-story" aria-live="polite"></div>';
-  var box=ov.querySelector('.ms-story'),show=function(){if(!st.length){box.innerHTML='<p>'+x('Історії з’являться, щойно хтось поділиться.','Истории появятся, как только кто-то поделится.')+'</p>';return;}var q=st[i%st.length];i++;
-    box.innerHTML='<p class="ms-sk">'+x('Шлях ','Путь ')+(q.path+1)+': '+esc(rL(M.p[q.path]))+'</p><p class="ms-q">«'+esc(q.text)+'»</p><p class="ms-sn">'+(q.name?esc(q.name):x('Без імені','Без имени'))+'</p>';box.classList.remove('in');void box.offsetWidth;box.classList.add('in');};
-  var close=function(){clearInterval(msShowT);ov.remove();try{if(document.fullscreenElement)document.exitFullscreen();}catch(e){}};
-  ov.querySelector('.ms-x').onclick=close;ov.addEventListener('keydown',function(e){if(e.key==='Escape')close();if(e.key==='ArrowRight'||e.key===' ')show();});ov.addEventListener('click',function(e){if(e.target===ov||e.target.closest('.ms-story'))show();});
-  document.body.appendChild(ov);ov.focus();show();clearInterval(msShowT);msShowT=setInterval(show,8000);try{if(ov.requestFullscreen)ov.requestFullscreen().catch(function(){});}catch(e){}}
+function msShowOpen(){var M=msNow(),S=msData(),ov=document.createElement('div');ov.className='ms-show';ov.setAttribute('role','dialog');ov.tabIndex=-1;
+  ov.innerHTML='<button class="ms-x" aria-label="'+x('Закрити','Закрыть','Close')+'">×</button><div class="ms-sh"><p class="ms-k">'+x('Церква в дії · бінго добрих справ','Церковь в действии · бинго добрых дел','Church in action · good deeds bingo')+' · '+msRange()+'</p><h2>'+esc(rL(M.t))+'</h2>'+
+    '<div class="ms-big"><span><b>'+S.deeds+'</b>'+x('добрих справ','добрых дел','good deeds')+'</span><span><b>'+S.bingos+'</b>'+x('бінго','бинго','bingos')+'</span><span><b>'+S.people+'</b>'+x('учасників','участников','players')+'</span></div>'+bgHill(S.deeds)+'</div>'+
+    '<div class="ms-story">'+bgGrid(M,S,true)+'</div>';
+  var close=function(){ov.remove();try{if(document.fullscreenElement)document.exitFullscreen();}catch(e){}};
+  ov.querySelector('.ms-x').onclick=close;ov.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  document.body.appendChild(ov);ov.focus();try{if(ov.requestFullscreen)ov.requestFullscreen().catch(function(){});}catch(e){}}
 function greet(){var h=new Date().getHours();return h>=5&&h<11?x('Доброго ранку','Доброе утро'):h>=11&&h<17?x('Доброго дня','Добрый день'):h>=17&&h<22?x('Доброго вечора','Добрый вечер'):x('Доброї ночі','Доброй ночи');}
 function hero2(now,nx){var name=((D&&D.me&&D.me.name)||'').trim().split(/\s+/)[0],done=dayCount(now),strip='';
   if(nx){var it=nx.it,key=it.id+'@'+iso(nx.date),ms=occDate(iso(nx.date),it.time).getTime(),cd=cdText(ms);
@@ -4178,10 +4161,13 @@ var actions={
     navigator.geolocation.getCurrentPosition(function(p){state.wxLoc={lat:Math.round(p.coords.latitude*100)/100,lon:Math.round(p.coords.longitude*100)/100,name:P2('Поруч','Рядом')};WX=null;commit();wxLoad(true);},
       function(){toast(x('Не вдалося визначити місце. Показую Київ','Не удалось определить место. Показываю Киев'),1);},{timeout:8000,maximumAge:6e5});},
   thanksEdit:function(){thEdit=true;render();var i=document.getElementById('th0');if(i)i.focus();},
-  msDraw:function(){var p=Math.floor(Math.random()*6);msAnim=true;run('msDraw',{path:p}).then(function(){setTimeout(function(){msAnim=false;},900);});},
-  msSwap:function(){var S=msData(),cur=S.mine?S.mine.path:-1,p;do{p=Math.floor(Math.random()*6);}while(p===cur);if(state.confirm!=='msSwap'){state.confirm='msSwap';render();return;}state.confirm=null;msAnim=true;run('msDraw',{path:p,swap:true},x('Карту змінено','Карта сменена')).then(function(){setTimeout(function(){msAnim=false;},900);});},
+  bgMark:function(v){var i=+v,S=msData(),on=!S.on[i],before=bgLines(S.on).length;S.on[i]=on;var after=bgLines(S.on).length,full=bgCount(S.on)===8;
+    var mine=S.on.map(function(q,k){return k===4?'0':q?'1':'0';}).join('');bgWin=on?i:-1;
+    optimistic(function(){if(!D.bingo||D.bingo.week!==msWeek())D.bingo=Object.assign({},msDataRaw());D.bingo.mine=mine;D.bingo.cells=(D.bingo.cells||[0,0,0,0,0,0,0,0,0]).slice();D.bingo.cells[i]=Math.max(0,(D.bingo.cells[i]||0)+(on?1:-1));D.bingo.deeds=Math.max(0,(D.bingo.deeds||0)+(on?1:-1));if(after>before&&!before)D.bingo.bingos=(D.bingo.bingos||0)+1;},'bgMark',{cell:i,on:on},
+      on&&full?x('Уся картка зібрана! Дякуємо тобі','Вся карточка собрана! Спасибо тебе','Whole card done! Thank you'):on&&after>before?x('БІНГО! 🎉','БИНГО! 🎉','BINGO! 🎉'):'');
+    if(on&&after>before){try{var hf=tg.HapticFeedback;if(hf)hf.notificationOccurred('success');}catch(e){}var el=document.querySelector('.bg-me');if(el)burst(el);}
+    setTimeout(function(){bgWin=-1;},600);},
   msShow:function(){msShowOpen();},
-  msDel:function(v){if(state.confirm!=='ms:'+v){state.confirm='ms:'+v;render();return;}state.confirm=null;run('msDel',{key:v},x('Історію прибрано','История убрана'));},
   kindDone:function(){var t=iso(new Date()),l=state.log[t]=state.log[t]||{},was=!!l.k;if(was)delete l.k;else logDay('k');state.sheet=null;commit(was?'':x('Дякуємо! Добре слово вже працює','Спасибо! Доброе слово уже работает'));},
   verseAddOpen:function(v){state.sheet='verseAdd';state.sheetData=v;render();setTimeout(function(){var t=document.getElementById('cv-in');if(t)t.focus();},60);},
   verseDel:function(v){if(state.confirm!=='vd:'+v){state.confirm='vd:'+v;render();return;}state.confirm=null;run('verseDel',{id:v},x('Вірш видалено','Стих удалён'));},
@@ -4227,8 +4213,6 @@ var actions={
   copy:function(v){copyText(/^[\d ]+$/.test(v)?v.replace(/ /g,''):v);}
 };
 var forms={
-  msDone:function(fd){var t=String(fd.get('text')||'').trim();if(t.length<10){toast(x('Розкажи хоча б одним реченням, як це було','Расскажи хотя бы одним предложением, как это было'),1);return;}
-    run('msDone',{text:t,anon:!!fd.get('anon')},x('Дякуємо! Твою історію побачить уся церква','Спасибо! Твою историю увидит вся церковь'));},
   sermon:function(fd){var o={};['id','date','time','title_uk','title_ru','speaker','verse','ask','text','status','video','vfrom','vto'].forEach(function(k){o[k]=String(fd.get(k)||'').trim();});
     run('sermonSave',{sermon:o},o.status==='published'?x('Підсумок опубліковано','Итог опубликован'):x('Анонс збережено','Анонс сохранён')).then(function(ok){if(ok){smEdit=null;render();}});},
   thanks:function(fd){var l=[0,1,2].map(function(i){return String(fd.get('t'+i)||'').trim().slice(0,120);});if(!l.some(function(q){return q;})){toast(x('Напиши хоча б одну подяку','Напиши хотя бы одну благодарность'),1);return;}
