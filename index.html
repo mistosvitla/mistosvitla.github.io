@@ -918,7 +918,6 @@ i.add{font-style:italic;color:var(--muted)}
 .mp-sl button[aria-pressed="true"]{background:rgba(255,255,255,.18);color:#fff}
 .mp-pl{color:#FFD27A;font-weight:600;font-size:13.5px;text-decoration:none}
 .ms-head{border-radius:26px;padding:20px 20px 16px;background:linear-gradient(160deg,#1F6F66,#0F3D38);color:#F2F7F5;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
-.ms-head::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,207,110,.35),transparent 70%)}
 .ms-head h1{font:800 34px/1 var(--font-display);letter-spacing:-.03em;color:#fff}
 .ms-head p{font-size:15.5px;line-height:1.45;opacity:.92}
 .ms-k{font:600 12.5px/1.2 var(--font-body);opacity:.8}
@@ -1382,6 +1381,34 @@ i.add{font-style:italic;color:var(--muted)}
 .sh-prev b{color:var(--accent);font-size:13px}.sh-prev strong{font-size:13.5px}.sh-prev span{color:var(--muted)}
 .sh-prev img{width:100%;border-radius:10px;margin-top:6px;aspect-ratio:1200/630;object-fit:cover;background:#1A1410}
 .sheet .btn.wide+.btn.wide{margin-top:8px}
+.ms-star{position:absolute;right:10px;top:8px;width:92px;height:92px;pointer-events:none;z-index:0}
+.ms-head>*:not(.ms-star){position:relative;z-index:1}.ms-head .ms-k{padding-right:84px}.ms-head h1{padding-right:40px}
+.ms-star svg{position:absolute;inset:16px;width:60px;height:60px;filter:drop-shadow(0 0 8px rgba(255,214,140,.9)) drop-shadow(0 0 22px rgba(255,190,120,.55))}
+.ms-halo{position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(255,228,170,.55),rgba(255,190,120,.18) 40%,transparent 68%)}
+.ms-rays{position:absolute;inset:-20px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(255,236,190,.38) 0deg 4deg,transparent 4deg 22deg);-webkit-mask:radial-gradient(circle,#000 18%,transparent 66%);mask:radial-gradient(circle,#000 18%,transparent 66%)}
+.ms-tw{position:absolute;width:5px;height:5px;border-radius:50%;background:#FFF6DC;box-shadow:0 0 8px 2px rgba(255,230,170,.9);opacity:0}.ms-tw.t1{left:4px;top:30px}.ms-tw.t2{right:2px;top:66px}.ms-tw.t3{left:30px;bottom:-2px}
+@media (prefers-reduced-motion:no-preference){
+ .ms-rays{animation:msRot 24s linear infinite}@keyframes msRot{to{transform:rotate(360deg)}}
+ .ms-halo{animation:msHalo 4s ease-in-out infinite}@keyframes msHalo{50%{transform:scale(1.18);opacity:.75}}
+ .ms-star svg{animation:msShine 6s ease-in-out infinite}@keyframes msShine{0%,100%{transform:scale(1) rotate(0);filter:drop-shadow(0 0 8px rgba(255,214,140,.9)) drop-shadow(0 0 22px rgba(255,190,120,.55)) hue-rotate(0deg)}33%{transform:scale(1.08) rotate(8deg);filter:drop-shadow(0 0 12px rgba(255,240,200,1)) drop-shadow(0 0 30px rgba(255,170,150,.7)) hue-rotate(-18deg)}66%{transform:scale(.96) rotate(-4deg);filter:drop-shadow(0 0 9px rgba(255,220,150,.9)) drop-shadow(0 0 26px rgba(200,230,255,.5)) hue-rotate(14deg)}}
+ .ms-sp4b{transform-origin:50% 50%;animation:msCore 2.6s ease-in-out infinite}@keyframes msCore{50%{opacity:.35;transform:scale(.8) rotate(45deg)}}
+ .ms-tw{animation:msTw 3.2s ease-in-out infinite}.ms-tw.t2{animation-delay:1.1s}.ms-tw.t3{animation-delay:2.1s}@keyframes msTw{0%,100%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1.3)}}}
+.bg-send{gap:8px}.bg-send span{color:#FFE3A3}
+.bg-hint{text-align:center;margin-top:-2px}
+.bg-sent{display:flex;align-items:center;justify-content:center;gap:6px;text-align:center;font-size:13.5px;color:#2C8A7E;font-weight:600}.bg-sent svg{flex:none;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:3}
+.bg-sacred{position:fixed;inset:0;z-index:400;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center;color:#FFF6E6;background:radial-gradient(120% 80% at 50% 30%,#3A2A1C 0%,#140F14 60%,#07060A 100%);animation:bsIn .6s ease both}
+.bg-sacred.out{animation:bsOut .7s ease both}@keyframes bsIn{from{opacity:0}}@keyframes bsOut{to{opacity:0}}
+.bs-rays{position:absolute;left:50%;top:30%;width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;background:repeating-conic-gradient(rgba(255,226,160,.16) 0deg 5deg,transparent 5deg 18deg);-webkit-mask:radial-gradient(circle,#000 8%,transparent 60%);mask:radial-gradient(circle,#000 8%,transparent 60%);opacity:0}
+.bs-lights i{position:absolute;left:var(--x);bottom:-20px;width:7px;height:7px;border-radius:50%;background:#FFE2A0;box-shadow:0 0 12px 4px rgba(255,210,122,.7);transform:scale(var(--s));opacity:0}
+.bs-star{position:relative;width:150px;height:150px;margin-top:-10vh;opacity:0}.bs-star .ms-star{position:absolute;inset:0;width:150px;height:150px;right:auto;top:auto}.bs-star .ms-star svg{inset:25px;width:100px;height:100px}
+.bs-tx{position:relative;max-width:420px;opacity:0}.bs-n{font:900 30px/1 var(--font-display);color:#FFD27A;margin:0 0 6px}
+.bs-tx h2{font:800 30px/1.1 var(--font-display);letter-spacing:-.02em;margin:0 0 14px;color:#fff}
+.bs-v{font:italic 500 17px/1.5 var(--font-word);color:#F1E4CC;margin:0 0 6px}.bs-r{font-size:13px;color:#C9B89B;margin:0}
+.bg-sacred .bs-rays{animation:bsR 1.6s .9s ease forwards,msRot 40s linear infinite}@keyframes bsR{to{opacity:1}}
+.bs-lights i{animation:bsUp 2.2s var(--d) cubic-bezier(.35,.1,.25,1) forwards}@keyframes bsUp{0%{opacity:0;transform:translate(0,0) scale(var(--s))}15%{opacity:1}85%{opacity:1}100%{opacity:0;left:50%;transform:translate(-50%,-62vh) scale(.3)}}
+.bs-star{animation:bsStar 1.2s 1.6s cubic-bezier(.2,.9,.25,1.2) forwards}@keyframes bsStar{from{opacity:0;transform:scale(.2) rotate(-40deg)}to{opacity:1;transform:none}}
+.bs-tx{animation:bsTx 1s 2.4s ease forwards}@keyframes bsTx{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.bs-lights{display:none}.bs-star,.bs-tx,.bs-rays{animation:bsR .6s forwards}}
 .hs-x{flex:none;width:32px;height:32px;border:0;background:none;color:var(--muted);font-size:22px;line-height:1;border-radius:50%}
 .sky .lit i{color:rgba(255,255,255,.6)}
 .glass{background:rgba(14,13,20,.5);-webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);border-radius:26px;padding:8px 12px 8px 8px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);display:flex;align-items:center;gap:10px}
@@ -1511,7 +1538,7 @@ var BASE_LIT=48, TRANSIENT=['bookOpen','sheet','sheetData','sel','pickBook','jum
 
 function defaults(){return {bookPos:{},bookOpen:null,log:{},path:{},aseg:'events',confirm:null,bcText:'',img:null,q:'',lang:'uk',skin:'',sfx:true,tab:'today',sub:null,seg:{bible:'read',prayer:'needs',community:'serve',heaven:'os'},devs:{p:{},all:false},dvCard:null,day:null,name:'',
   going:{},verseOn:false,verseAt:'',prayed:{},needs:[],testimonies:[],pastoral:null,step:{text:'',done:false},read:{},openBook:null,
-  bible:{b:0,c:5},hl:{},notes:{},marks:{},fs:1,cardDay:null,done:{},serve:{},skills:{},ads:[],hello:false,prSnd:true,ncSeen:false,ncHide:false,visits:0,hsHide:0,hsNo:0,sermon:false,
+  bible:{b:0,c:5},hl:{},notes:{},marks:{},fs:1,cardDay:null,done:{},serve:{},skills:{},ads:[],hello:false,prSnd:true,ncSeen:false,ncHide:false,bgLocal:null,visits:0,hsHide:0,hsNo:0,sermon:false,
   thanks:{},wxLoc:null,shareWay:null,sermSaved:{},
   sheet:null,sheetData:null,sel:null,pickBook:null,jump:null,cardAnim:false};}
 var state=defaults();
@@ -1741,7 +1768,7 @@ function demoApi(a,d){if(!DS)demoInit();if(a==='roleInvite')return {role:d.role,
   if(a==='sermonSave'){var so=d.sermon||{};if(!/^\d{4}-\d{2}-\d{2}$/.test(so.date||''))demoErr(x('Вкажіть дату проповіді','Укажите дату проповеди'));if(!String(so.title_uk||'').trim())demoErr(x('Заповніть поле «Тема»','Заполните поле «Тема»'));if(!/^$|^(\d{1,2}:)?[0-5]?\d:[0-5]\d$/.test(String(so.vfrom||'').trim())||!/^$|^(\d{1,2}:)?[0-5]?\d:[0-5]\d$/.test(String(so.vto||'').trim()))demoErr(x('Час у записі вкажіть як 52:10 або 1:31:40','Время в записи укажите как 52:10 или 1:31:40'));if(so.status==='published'&&!String(so.text||'').trim())demoErr(x('Додайте текст підсумку, щоб опублікувати','Добавьте текст итога, чтобы опубликовать'));
     DS.sermons=DS.sermons||[];var ex=DS.sermons.filter(function(q){return q.id===so.id;})[0],rec={id:so.id||('s'+now),date:so.date,time:so.time||'11:00',title:{uk:so.title_uk,ru:so.title_ru||so.title_uk},speaker:so.speaker||'',verse:so.verse||'',ask:so.ask||'',text:so.text||'',video:/^https:\/\//.test(so.video||'')?so.video:'',vfrom:String(so.vfrom||'').trim(),vto:String(so.vto||'').trim(),status:so.status==='published'?'published':'announce'};
     if(ex)Object.assign(ex,rec);else DS.sermons.push(rec);DS.sermons.sort(function(p,q){return p.date<q.date?1:-1;});}
-  if(a==='bgMark'){demoMission();var dm=DS.bg.mine.split('');var ci=+d.cell;if(ci>=0&&ci<9&&ci!==4)dm[ci]=d.on?'1':'0';DS.bg.mine=dm.join('');}
+  if(a==='bgSend'){demoMission();var dm=String(d.marks||'').replace(/[^01]/g,'').slice(0,9).split('');if(dm.length===9){dm[4]='0';DS.bg.mine=dm.join('');}}
   if(a==='sermonDel'){DS.sermons=(DS.sermons||[]).filter(function(q){return q.id!==d.id;});}
   if(a==='cheer'){DS.cheers=DS.cheers||{};var cc=DS.cheers[d.key]=DS.cheers[d.key]||{};cc[d.kind]=!cc[d.kind];}
   if(a==='verseDel'){Object.keys(DS.verses||{}).forEach(function(k){DS.verses[k]=DS.verses[k].filter(function(v){return v.id!==d.id;});});}
@@ -3779,8 +3806,12 @@ function msNow(){var w=fromIso(msWeek()),n=Math.round((w-new Date(2026,0,5))/604
 function msRange(){var m=fromIso(msWeek()),s=addDays(m,6);if(state.lang==='en')return m.getMonth()===s.getMonth()?MG.en[m.getMonth()]+' '+m.getDate()+'–'+s.getDate():fmtDay(m)+' – '+fmtDay(s);return m.getDate()+'–'+fmtDay(s);}
 /* cell i of the card: the centre (4) is the free star, the others are the 8 deeds in order */
 function bgDeed(M,i){return i===4?null:M.d[i<4?i:i-1];}
-function msData(){var b=(D&&D.bingo&&D.bingo.week===msWeek())?D.bingo:{week:msWeek(),mine:'000000000',cells:[0,0,0,0,0,0,0,0,0],deeds:0,people:0,bingos:0};
-  var m=String(b.mine||'000000000').split('').map(function(c){return c==='1';});m[4]=true;return {week:b.week,on:m,cells:b.cells||[],deeds:b.deeds||0,people:b.people||0,bingos:b.bingos||0};}
+/* The card lives on the phone: taps never go to the server. «Надіслати» sends the whole card once (and again after changes). */
+function bgSrv(){return (D&&D.bingo&&D.bingo.week===msWeek())?D.bingo:{week:msWeek(),mine:'000000000',cells:[0,0,0,0,0,0,0,0,0],deeds:0,people:0,bingos:0};}
+function bgMine(){var w=msWeek();if(!state.bgLocal||state.bgLocal.week!==w)state.bgLocal={week:w,m:String(bgSrv().mine||'000000000')};return state.bgLocal.m;}
+function bgDirty(){var a=bgMine(),b=String(bgSrv().mine||'000000000');for(var i=0;i<9;i++)if(i!==4&&a.charAt(i)!==b.charAt(i))return true;return false;}
+function msData(){var b=bgSrv();
+  var m=bgMine().split('').map(function(c){return c==='1';});m[4]=true;return {week:b.week,on:m,cells:b.cells||[],deeds:b.deeds||0,people:b.people||0,bingos:b.bingos||0};}
 function bgLines(on){return BG_LINES.filter(function(l){return l.every(function(i){return on[i];});});}
 function bgCount(on){return on.filter(function(v,i){return v&&i!==4;}).length;}
 /* how many more cells to the nearest line */
@@ -3790,7 +3821,6 @@ function bgStatus(S){var n=bgCount(S.on),ln=bgLines(S.on).length;
   if(ln)return x('БІНГО! ','БИНГО! ','BINGO! ')+(ln>1?'×'+ln+' ':'')+x('Можна зібрати ще','Можно собрать ещё','You can go for more');
   var k=bgNeed(S.on);return k===1?x('Ще одна — і БІНГО!','Ещё одна — и БИНГО!','One more and it’s BINGO!'):x('Три в ряд — і бінго','Три в ряд — и бинго','Three in a row is a bingo');}
 var bgWin=-1;
-function msDataRaw(){return (D&&D.bingo&&D.bingo.week===msWeek())?D.bingo:{week:msWeek(),mine:'000000000',cells:[0,0,0,0,0,0,0,0,0],deeds:0,people:0,bingos:0};}
 function bgGrid(M,S,big){var win={};bgLines(S.on).forEach(function(l){l.forEach(function(i){win[i]=1;});});
   return '<div class="bg-grid'+(big?' big':'')+'">'+[0,1,2,3,4,5,6,7,8].map(function(i){var d=bgDeed(M,i),on=S.on[i],c=S.cells[i]||0;
     if(i===4)return '<div class="bg-c bg-free'+(win[i]?' win':'')+'"><span class="bg-star" aria-hidden="true">★</span><small>'+x('Бог з тобою','Бог с тобой','God is with you')+'</small></div>';
@@ -3800,19 +3830,31 @@ function bgGrid(M,S,big){var win={};bgLines(S.on).forEach(function(l){l.forEach(
 function bgHill(n){var dots='',k=Math.min(n,140),s=7;for(var i=0;i<k;i++){s=(s*9301+49297)%233280;var a=s/233280;s=(s*9301+49297)%233280;var b=s/233280;
     var xx=20+a*280,top=96-Math.sin(Math.PI*(xx-0)/320)*62,yy=top+6+b*(108-top);dots+='<circle cx="'+xx.toFixed(1)+'" cy="'+yy.toFixed(1)+'" r="'+(1.3+b*1.6).toFixed(1)+'" style="--d:'+(a*3).toFixed(2)+'s"/>';}
   return '<svg class="bg-hill" viewBox="0 0 320 110" aria-hidden="true"><path d="M0 110 C70 60 120 34 160 34 C200 34 250 60 320 110Z" fill="rgba(0,0,0,.28)"/><rect x="152" y="18" width="16" height="17" fill="#0B1E1C"/><path d="M149 20l11-10 11 10z" fill="#0B1E1C"/><rect x="157.5" y="24" width="5" height="6" fill="#FFD27A"/><g fill="#FFD98A">'+dots+'</g></svg>';}
+function bgStar(){return '<span class="ms-star" aria-hidden="true"><i class="ms-halo"></i><i class="ms-rays"></i><svg viewBox="0 0 100 100"><defs><linearGradient id="msg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF8E1"/><stop offset=".45" stop-color="#FFD27A"/><stop offset="1" stop-color="#FFB089"/></linearGradient></defs><path class="ms-sp4" d="M50 4C53 34 66 47 96 50C66 53 53 66 50 96C47 66 34 53 4 50C34 47 47 34 50 4Z" fill="url(#msg)"/><path class="ms-sp4b" d="M50 26C51.5 42 58 48.5 74 50C58 51.5 51.5 58 50 74C48.5 58 42 51.5 26 50C42 48.5 48.5 42 50 26Z" fill="#fff" opacity=".85"/></svg><b class="ms-tw t1"></b><b class="ms-tw t2"></b><b class="ms-tw t3"></b></span>';}
+function bgMe(M,S){var n=bgCount(S.on),ln=bgLines(S.on).length,dirty=bgDirty(),sent=bgCount(msData0(bgSrv().mine));
+  var foot=dirty?'<button class="btn accent wide bg-send" data-act="bgSend"><span aria-hidden="true">✦</span> '+(sent?x('Надіслати оновлення','Отправить обновление','Send the update'):x('Надіслати добрі справи','Отправить добрые дела','Send my good deeds'))+'</button><p class="note bg-hint">'+x('Поки не надіслав, позначки бачиш лише ти.','Пока не отправил, отметки видишь только ты.','Until you send, only you can see your ticks.')+'</p>':
+    sent?'<p class="bg-sent">'+CHECK+x('Надіслано до спільного світла. Додавай справи до неділі й надсилай ще.','Отправлено в общий свет. Добавляй дела до воскресенья и отправляй ещё.','Sent to the shared light. Add deeds until Sunday and send again.')+'</p>':'';
+  return '<section class="bg-me" id="bgme"><div class="between" style="align-items:center"><h2>'+x('Моя картка','Моя карточка','My card')+'</h2><span class="bg-prog">'+n+x(' із 8',' из 8',' of 8')+'</span></div>'+
+    '<p class="sub">'+x('Обирай, що тобі до сил, у будь-якому порядку. Зробив — торкнись клітинки. Наприкінці надішли все разом.','Выбирай, что тебе по силам, в любом порядке. Сделал — коснись клетки. В конце отправь всё вместе.','Pick what you can, in any order. Done it? Tap the cell. Then send it all at once.')+'</p>'+
+    bgGrid(M,S)+'<p class="bg-st'+(ln?' yes':'')+'">'+bgStatus(S)+'</p>'+foot+'</section>';}
 function vMission(){var M=msNow(),S=msData(),r=parseRef(M.r),h='',n=bgCount(S.on),ln=bgLines(S.on).length;
-  h+=back('play')+'<section class="ms-head"><p class="ms-k">'+x('Церква в дії · бінго добрих справ','Церковь в действии · бинго добрых дел','Church in action · good deeds bingo')+' · '+msRange()+'</p><h1>'+esc(rL(M.t))+'</h1><p>'+esc(rL(M.w))+'</p>'+
+  h+=back('play')+'<section class="ms-head">'+bgStar()+'<p class="ms-k">'+x('Церква в дії · бінго добрих справ','Церковь в действии · бинго добрых дел','Church in action · good deeds bingo')+' · '+msRange()+'</p><h1>'+esc(rL(M.t))+'</h1><p>'+esc(rL(M.w))+'</p>'+
     (r?'<button class="btn small ms-ref" data-act="bible" data-v="'+r.b+':'+r.c+':'+r.v+'">'+(state.lang==='en'?refEn(M.r):M.r)+'</button>':'')+
     bgHill(S.deeds)+'<div class="ms-stats"><span><b>'+S.deeds+'</b>'+x(' добрих справ церкви',' добрых дел церкви',' good deeds by the church')+'</span><span><b>'+S.bingos+'</b>'+x(' бінго',' бинго',' bingos')+'</span></div>'+(DEMO?'<i class="ms-demo">'+x('приклад','пример','sample')+'</i>':'')+'</section>';
-  h+='<section class="bg-me"><div class="between" style="align-items:center"><h2>'+x('Моя картка','Моя карточка','My card')+'</h2><span class="bg-prog">'+n+x(' із 8',' из 8',' of 8')+'</span></div>'+
-    '<p class="sub">'+x('Обирай, що тобі до сил, у будь-якому порядку. Зробив — торкнись клітинки.','Выбирай, что тебе по силам, в любом порядке. Сделал — коснись клетки.','Pick what you can, in any order. Done it? Tap the cell.')+'</p>'+
-    bgGrid(M,S)+'<p class="bg-st'+(ln?' yes':'')+'">'+bgStatus(S)+'</p></section>';
+  h+=bgMe(M,S);
   h+='<section class="stack"><div class="between" style="align-items:center"><h2>'+x('Що робить церква','Что делает церковь','What the church is doing')+'</h2><button class="btn tint small" data-act="msShow">'+x('Недільний показ','Воскресный показ','Sunday screen')+'</button></div>'+
     '<p class="sub">'+(S.people?x('Грають ','Играют ','Playing: ')+S.people+x(' людей. Цифра в клітинці — скільки разів це зробили.',' человек. Цифра в клетке — сколько раз это сделали.',' people. The number in a cell is how many did it.'):x('Ти можеш бути першим.','Ты можешь быть первым.','You can be the first.'))+'</p>'+bgGrid(M,S,true)+'</section>';
   return h;}
 function missionToday(){var M=msNow(),S=msData(),n=bgCount(S.on);if(n===8)return '';
   var dots=S.on.map(function(v,i){return '<i class="'+(i===4?'f':v?'on':'')+'"></i>';}).join('');
   return '<button class="ms-today" data-act="go" data-v="mission"><span class="ms-mini" aria-hidden="true">'+dots+'</span><span><small>'+x('Бінго добрих справ · тиждень','Бинго добрых дел · неделя','Good deeds bingo · this week')+'</small><strong>'+esc(rL(M.t))+'</strong><em>'+(n?bgStatus(S):x('Обери справу до сил і відміть','Выбери дело по силам и отметь','Pick a deed you can do and tick it'))+'</em></span></button>';}
+/* after «Надіслати»: the deeds rise as small lights into one star over the city, with Matthew 5:16 */
+function bgSacred(add,total){var ov=document.createElement('div'),L='';ov.className='bg-sacred';ov.setAttribute('role','status');
+  for(var i=0;i<Math.min(Math.max(add,1)*5,40);i++){var a=Math.random();L+='<i style="--x:'+(8+a*84).toFixed(1)+'%;--d:'+(Math.random()*1.2).toFixed(2)+'s;--s:'+(0.6+Math.random()*0.9).toFixed(2)+'"></i>';}
+  ov.innerHTML='<div class="bs-rays"></div><div class="bs-lights">'+L+'</div><div class="bs-star">'+bgStar()+'</div>'+
+    '<div class="bs-tx"><p class="bs-n">+'+add+'</p><h2>'+x('Твоє світло вже в місті','Твой свет уже в городе','Your light is in the city now')+'</h2>'+
+    '<p class="bs-v">'+x('«Так нехай світить ваше світло перед людьми, щоб вони бачили ваші добрі діла і прославляли вашого Отця Небесного»','«Так да светит свет ваш пред людьми, чтобы они видели ваши добрые дела и прославляли Отца вашего Небесного»','“Let your light shine before others, that they may see your good deeds and glorify your Father in heaven”')+'</p><p class="bs-r">'+(state.lang==='en'?'Matthew 5:16':x('Матвія 5:16','Матфея 5:16'))+'</p></div>';
+  document.body.appendChild(ov);return ov;}
 /* fullscreen for the Sunday projector: the church's card with counts, the hill of lights and the totals */
 var msShowT=null;
 function msShowOpen(){var M=msNow(),S=msData(),ov=document.createElement('div');ov.className='ms-show';ov.setAttribute('role','dialog');ov.tabIndex=-1;
@@ -4161,12 +4203,15 @@ var actions={
     navigator.geolocation.getCurrentPosition(function(p){state.wxLoc={lat:Math.round(p.coords.latitude*100)/100,lon:Math.round(p.coords.longitude*100)/100,name:P2('Поруч','Рядом')};WX=null;commit();wxLoad(true);},
       function(){toast(x('Не вдалося визначити місце. Показую Київ','Не удалось определить место. Показываю Киев'),1);},{timeout:8000,maximumAge:6e5});},
   thanksEdit:function(){thEdit=true;render();var i=document.getElementById('th0');if(i)i.focus();},
-  bgMark:function(v){var i=+v,S=msData(),on=!S.on[i],before=bgLines(S.on).length;S.on[i]=on;var after=bgLines(S.on).length,full=bgCount(S.on)===8;
-    var mine=S.on.map(function(q,k){return k===4?'0':q?'1':'0';}).join('');bgWin=on?i:-1;
-    optimistic(function(){if(!D.bingo||D.bingo.week!==msWeek())D.bingo=Object.assign({},msDataRaw());D.bingo.mine=mine;D.bingo.cells=(D.bingo.cells||[0,0,0,0,0,0,0,0,0]).slice();D.bingo.cells[i]=Math.max(0,(D.bingo.cells[i]||0)+(on?1:-1));D.bingo.deeds=Math.max(0,(D.bingo.deeds||0)+(on?1:-1));if(after>before&&!before)D.bingo.bingos=(D.bingo.bingos||0)+1;},'bgMark',{cell:i,on:on},
-      on&&full?x('Уся картка зібрана! Дякуємо тобі','Вся карточка собрана! Спасибо тебе','Whole card done! Thank you'):on&&after>before?x('БІНГО! 🎉','БИНГО! 🎉','BINGO! 🎉'):'');
-    if(on&&after>before){try{var hf=tg.HapticFeedback;if(hf)hf.notificationOccurred('success');}catch(e){}var el=document.querySelector('.bg-me');if(el)burst(el);}
-    setTimeout(function(){bgWin=-1;},600);},
+  bgMark:function(v){var i=+v;if(i===4||!(i>=0&&i<9))return;var m=bgMine().split(''),before=bgLines(msData0(m.join(''))).length;m[i]=m[i]==='1'?'0':'1';state.bgLocal.m=m.join('');save();
+    var on=m[i]==='1',after=bgLines(msData0(state.bgLocal.m)).length;bgWin=on?i:-1;
+    var el=document.getElementById('bgme');if(el){var t=document.createElement('div');t.innerHTML=bgMe(msNow(),msData());el.replaceWith(t.firstChild);}else render();bgWin=-1;
+    if(on&&after>before){try{var hf=tg.HapticFeedback;if(hf)hf.notificationOccurred('success');}catch(e){}var nb=document.getElementById('bgme');if(nb)burst(nb);}
+    else{try{var h2=tg.HapticFeedback;if(h2)h2.selectionChanged();}catch(e){}}},
+  bgSend:function(){if(busy)return;var m=bgMine(),add=bgCount(msData0(m))-bgCount(msData0(bgSrv().mine)),done=false,ok=false,shown=false;
+    var ov=bgSacred(Math.max(add,1),bgCount(msData0(m))),fin=function(){if(!done||!shown)return;ov.classList.add('out');setTimeout(function(){ov.remove();},700);if(ok){render();var hl=document.querySelector('.ms-head');if(hl)burst(hl);}};
+    ov.addEventListener('click',function(){if(done){shown=true;fin();}});setTimeout(function(){shown=true;fin();},5200);
+    busy=true;post('bgSend',{marks:m}).then(function(nd){D=nd;applyD();cacheD();ok=true;}).catch(function(e){toast(errText(e),1);shown=true;}).then(function(){busy=false;done=true;fin();});},
   msShow:function(){msShowOpen();},
   kindDone:function(){var t=iso(new Date()),l=state.log[t]=state.log[t]||{},was=!!l.k;if(was)delete l.k;else logDay('k');state.sheet=null;commit(was?'':x('Дякуємо! Добре слово вже працює','Спасибо! Доброе слово уже работает'));},
   verseAddOpen:function(v){state.sheet='verseAdd';state.sheetData=v;render();setTimeout(function(){var t=document.getElementById('cv-in');if(t)t.focus();},60);},

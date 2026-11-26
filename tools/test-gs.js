@@ -252,15 +252,14 @@ const b5 = sent.length; S.resetCache(); S.tick(); assert.ok(!sent.slice(b5).some
   x = call(dan, 'cheer', { key: lv.key, kind: 'cheer' }); assert.strictEqual(x.way.feed.find(f => f.key === lv.key).cheers, 0, 'second tap undoes');
   x = call(anna, 'cheer', { key: lv.key, kind: 'cheer' }); assert.ok(/Себе/.test(x.error));
 }
-// --- Церква в дії: бінго добрих справ
+// --- Церква в дії: бінго добрих справ (the card is sent whole)
 {
-  let x = call(anna, 'bgMark', { cell: 4, on: true }); assert.ok(/клітинка/.test(x.error), 'free cell is not markable');
-  x = call(anna, 'bgMark', { cell: 9, on: true }); assert.ok(/клітинка/.test(x.error));
-  x = call(anna, 'bgMark', { cell: 0, on: true }); assert.strictEqual(x.bingo.mine, '100000000'); assert.strictEqual(x.bingo.deeds, 1); assert.strictEqual(x.bingo.bingos, 0);
-  x = call(anna, 'bgMark', { cell: 8, on: true }); assert.strictEqual(x.bingo.bingos, 1, 'diagonal through the free star');
-  x = call(dan, 'bgMark', { cell: 0, on: true }); assert.strictEqual(x.bingo.cells[0], 2); assert.strictEqual(x.bingo.people, 2); assert.strictEqual(x.bingo.mine, '100000000');
-  x = call(anna, 'bgMark', { cell: 8, on: false }); assert.strictEqual(x.bingo.bingos, 0, 'untick removes the bingo'); assert.strictEqual(x.bingo.deeds, 2);
-  x = call(dan, 'bgMark', { cell: 0, on: false }); assert.strictEqual(x.bingo.people, 1, 'empty card is not a player');
+  let x = call(anna, 'bgSend', { marks: '12' }); assert.ok(/картка/.test(x.error), 'bad card');
+  x = call(anna, 'bgSend', { marks: '100010000' }); assert.strictEqual(x.bingo.mine, '100000000', 'free centre is not stored'); assert.strictEqual(x.bingo.deeds, 1); assert.strictEqual(x.bingo.bingos, 0);
+  x = call(anna, 'bgSend', { marks: '100000001' }); assert.strictEqual(x.bingo.bingos, 1, 'diagonal through the free star'); assert.strictEqual(x.bingo.deeds, 2);
+  x = call(dan, 'bgSend', { marks: '100000000' }); assert.strictEqual(x.bingo.cells[0], 2); assert.strictEqual(x.bingo.people, 2); assert.strictEqual(x.bingo.mine, '100000000');
+  x = call(anna, 'bgSend', { marks: '100000000' }); assert.strictEqual(x.bingo.bingos, 0, 'resend replaces the card'); assert.strictEqual(x.bingo.deeds, 2);
+  x = call(dan, 'bgSend', { marks: '000000000' }); assert.strictEqual(x.bingo.people, 1, 'empty card is not a player');
   x = call(admin, 'load'); assert.strictEqual(x.bingo.mine, '000000000'); assert.strictEqual(x.bingo.cells[0], 1);
 }
 // verse formula matches the app

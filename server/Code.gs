@@ -742,11 +742,11 @@ var ACTIONS = {
     var t = findUser(to);
     if (t) send(to, kind === 'pray' ? '🙏 ' + first(u.name) + ' молиться за тебе на шляху Mind DEVS.' : '🔥 ' + first(u.name) + ' підтримує тебе на шляху Mind DEVS. Так тримати!');
   },
-  bgMark: function (u, b) {
-    var c = Number(b.cell);
-    if (!(c >= 0 && c <= 8) || c === 4 || c !== Math.floor(c)) throw new Error('Невідома клітинка');
+  bgSend: function (u, b) {
+    var m = String(b.marks || '');
+    if (!/^[01]{9}$/.test(m)) throw new Error('Невідома картка');
+    m = m.slice(0, 4) + '0' + m.slice(5);
     var wk = weekKey(), key = wk + ':' + u.id, r = rows('Bingo').filter(function (q) { return String(q.key) === key; })[0];
-    var m = bgMarks(r).split(''); m[c] = b.on ? '1' : '0'; m = m.join('');
     if (!r) addRow('Bingo', { key: key, week: wk, userId: String(u.id), marks: m, at: String(Date.now()) });
     else { r.marks = m; r.at = String(Date.now()); setRow('Bingo', r); }
   },
