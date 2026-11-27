@@ -262,6 +262,15 @@ const b5 = sent.length; S.resetCache(); S.tick(); assert.ok(!sent.slice(b5).some
   x = call(dan, 'bgSend', { marks: '000000000' }); assert.strictEqual(x.bingo.people, 1, 'empty card is not a player');
   x = call(admin, 'load'); assert.strictEqual(x.bingo.mine, '000000000'); assert.strictEqual(x.bingo.cells[0], 1);
 }
+// --- post for the church group: photo, caption and url buttons, admin only
+{
+  let x = call(dan, 'promoPost', { lang: 'uk' }); assert.ok(/адміністратор/.test(x.error), 'admin only');
+  const before = sent.length; x = call(admin, 'promoPost', { lang: 'ru' }); assert.ok(!x.error, x.error);
+  const m = sent.slice(before).find(s => /sendPhoto/.test(s.url)); assert.ok(m, 'photo sent');
+  assert.ok(/\/app\/ru\/og\.jpg$/.test(m.p.photo)); assert.strictEqual(m.p.parse_mode, 'HTML');
+  assert.ok(/\?startapp=src_group$/.test(m.p.reply_markup.inline_keyboard[0][0].url), 'opens the app');
+  assert.ok(!m.p.reply_markup.inline_keyboard[0][0].web_app, 'url button works in groups');
+}
 // verse formula matches the app
 assert.ok(S.verseOfDay('2026-11-09').ref.uk);
 // --- in-app registration: name from the app, contact through the bot

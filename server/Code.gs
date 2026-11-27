@@ -660,6 +660,19 @@ var ACTIONS = {
     if (mine.length) delRows('Requests', mine);
   },
 
+  /** Пост для групи церкви: картинка, кілька рядків і кнопки. Адмін пересилає його в групу й закріплює (кнопки при пересиланні лишаються). */
+  promoPost: function (u, b) {
+    var l = b.lang === 'ru' || b.lang === 'en' ? b.lang : 'uk', base = 'https://mistosvitla.github.io/app/' + (l === 'uk' ? '' : l + '/');
+    var T = {
+      uk: { cap: '<b>Місто Світла тепер у Telegram</b> ✨\n\nРозклад зустрічей, Біблія з планом читання, молитва разом і бінго добрих справ — усе в одному місці.\n\nВідкривається в один дотик, нічого встановлювати не треба 👇', open: '✨ Відкрити застосунок', share: '💛 Поділитися з другом', st: 'Застосунок нашої церкви «Місто Світла» в Telegram 👇' },
+      ru: { cap: '<b>Місто Світла теперь в Telegram</b> ✨\n\nРасписание встреч, Библия с планом чтения, молитва вместе и бинго добрых дел — всё в одном месте.\n\nОткрывается в одно касание, ничего устанавливать не нужно 👇', open: '✨ Открыть приложение', share: '💛 Поделиться с другом', st: 'Приложение нашей церкви «Місто Світла» в Telegram 👇' },
+      en: { cap: '<b>Misto Svitla is now in Telegram</b> ✨\n\nMeeting times, a Bible reading plan, praying together and a good deeds bingo — all in one place.\n\nOpens in one tap, nothing to install 👇', open: '✨ Open the app', share: '💛 Share with a friend', st: 'Our church app «Misto Svitla» in Telegram 👇' }
+    }[l];
+    var kb = { inline_keyboard: [[{ text: T.open, url: 'https://t.me/' + botName() + '?startapp=src_group' }], [{ text: T.share, url: 'https://t.me/share/url?url=' + encodeURIComponent(base) + '&text=' + encodeURIComponent(T.st) }]] };
+    var r = tgCall('sendPhoto', { chat_id: String(u.id), photo: base + 'og.jpg', caption: T.cap, parse_mode: 'HTML', reply_markup: kb });
+    if (!r || !r.ok) throw new Error('Telegram не прийняв пост');
+    return { light: { ok: true } };
+  },
   sendImage: function (u, b) {
     var m = String(b.img || '').match(/^data:image\/(png|jpeg);base64,(.+)$/);
     if (!m) throw new Error('Не вдалося підготувати картинку');
@@ -902,6 +915,7 @@ function roomSlow(u) {
 }
 
 ACTIONS.roleInvite.admin = true;
+ACTIONS.promoPost.admin = true;
 /** Посилання на дзвінок для кожної групи (за id події), щоб лідер не вставляв його щотижня. */
 function callOf(evId) { return prop('call:' + evId); }
 function callSave(evId, link) { PropertiesService.getScriptProperties().setProperty('call:' + evId, link); }
