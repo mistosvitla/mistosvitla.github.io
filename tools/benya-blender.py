@@ -147,7 +147,7 @@ if SKIN == 'joy':
     ball(fc + Vector((0, -0.06, 0)), 0.055, YL, seg=32)
 
 # ---- floor shadow catcher, camera, light
-bpy.ops.mesh.primitive_plane_add(size=12, location=(0, 0, 0)); fl = bpy.context.object; fl.is_shadow_catcher = True
+# no floor: only the lamb itself, so the picture has no shadow square around it
 bpy.ops.object.camera_add(location=(0.75, -3.5, 1.55)); cam = bpy.context.object; sc.camera = cam
 cam.data.lens = 62
 tgt = bpy.data.objects.new('tgt', None); tgt.location = (0, -0.05, 0.6); sc.collection.objects.link(tgt)
