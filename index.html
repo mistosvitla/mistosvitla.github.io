@@ -1467,6 +1467,12 @@ body.spl-on{overflow:hidden}body.spl-on:not(.spl-under) #app{visibility:hidden}
  .spl.ready .spl-go{animation:splGo 2.2s 1s ease-in-out infinite}@keyframes splGo{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}}
 @media (prefers-reduced-motion:reduce){.spl-line{stroke-dashoffset:0}.spl-win{opacity:1}}
 .cx3d{display:inline-block;position:relative;overflow:visible;vertical-align:middle}.cx3d img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;-webkit-user-drag:none}.cx3d .cx-ov{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.day3-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:-4px}.day3-h h2{margin:0}
+.day3-n{display:inline-flex;align-items:center;gap:5px;font:800 14px/1 var(--font-display);color:var(--muted)}.day3-n i{width:9px;height:9px;border-radius:50%;box-shadow:inset 0 0 0 1.6px color-mix(in srgb,var(--ink) 28%,transparent)}.day3-n i.on{background:#FFC552;box-shadow:0 0 8px rgba(255,190,80,.7)}.day3-n b{margin-left:3px}.day3-n.full{color:#D99A1E}
+.day3-hint{margin:0;font-size:13.5px;line-height:1.4;color:var(--muted)}.day3-hint.full{color:#C98A12;font-weight:600}
+.lamp-box{position:absolute;right:-3px;bottom:-3px;width:20px;height:20px;border-radius:50%;background:var(--surface);box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--ink) 25%,transparent),0 0 0 2.5px var(--surface)}
+.lamp.next .orb{box-shadow:0 0 0 2px color-mix(in srgb,#FFC552 70%,transparent)}
+@media (prefers-reduced-motion:no-preference){.lamp.next .orb{animation:lampNext 2.4s ease-in-out infinite}@keyframes lampNext{0%,100%{box-shadow:0 0 0 2px rgba(255,197,82,.75),0 0 0 2px rgba(255,197,82,.35)}50%{box-shadow:0 0 0 2px rgba(255,197,82,.75),0 0 0 10px rgba(255,197,82,0)}}}
 </style>
 </head>
 <body>
@@ -1931,7 +1937,7 @@ function splShow(again){if(!splOn()||SPL)return;var ph=splPhase(),el=document.cr
     '<div class="spl-boot" aria-hidden="true"><svg viewBox="0 0 200 120"><path class="spl-line" d="M10 110 C55 70 80 52 100 52 C120 52 145 70 190 110"/><path class="spl-line" d="M90 53 V36 L100 27 L110 36 V53"/><path class="spl-line" d="M100 27 V12 M94 18 H106"/><rect class="spl-win" x="97" y="40" width="6" height="8" rx="1"/></svg><p class="spl-cap"></p></div>'+
     '<div class="spl-top">'+splTop()+'</div>'+
     '<div class="spl-bot"><div class="spl-txt">'+splBot()+'</div><button class="spl-go" aria-label="'+x('Відкрити застосунок','Открыть приложение','Open the app')+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button><p class="spl-hint">'+x('Гортай угору','Листай вверх','Swipe up')+'</p></div>'+
-    '<div class="spl-benya" aria-hidden="true"><span class="spl-say">'+esc(splSay(ph))+'</span><img alt="" src="'+(state.skin&&LAMB_COS[state.skin]?'img/benya/'+state.skin+'.webp':'img/benya-3d.webp')+'"></div>';
+    '<div class="spl-benya" aria-hidden="true"><span class="spl-say">'+esc(splSay(ph))+'</span><img alt="" src="'+(state.skin&&LAMB_COS[state.skin]?'img/benya/'+state.skin+'.webp?v=3':'img/benya-3d.webp?v=3')+'"></div>';
   document.body.appendChild(el);document.body.classList.add('spl-on');SPL={el:el,t0:Date.now(),ready:!!again};
   var caps=[x('Запалюємо вогники…','Зажигаем огоньки…','Lighting the lights…'),x('Відчиняємо двері…','Открываем двери…','Opening the doors…'),x('Ставимо чайник…','Ставим чайник…','Putting the kettle on…')],ci=0,cap=el.querySelector('.spl-cap');
   cap.textContent=caps[0];SPL.capT=setInterval(function(){ci=(ci+1)%caps.length;cap.textContent=caps[ci];},1300);
@@ -2098,7 +2104,7 @@ function joyCloud(g,x,y,s){g.save();g.translate(x,y);g.scale(s,s);
 var JOYL=null;
 function joyLamb(g,x,y,s,sec){g.save();g.translate(x,y+Math.sin(sec*2.2)*1.2*s);g.scale(s,s);
   g.fillStyle='rgba(40,90,40,.18)';g.beginPath();g.ellipse(0,15,20,4,0,0,6.283);g.fill();
-  if(!JOYL){JOYL=new Image();JOYL.src='img/benya/happy.webp';}
+  if(!JOYL){JOYL=new Image();JOYL.src='img/benya/happy.webp?v=3';}
   if(JOYL.complete&&JOYL.naturalWidth){g.drawImage(JOYL,-26,-34,52,52);g.restore();return;}
   g.fillStyle='#5B4A63';[-11,-4,5,12].forEach(function(lx){g.beginPath();g.roundRect?g.roundRect(lx-2.2,4,4.4,11,2.2):g.rect(lx-2.2,4,4.4,11);g.fill();});
   var wool=g.createRadialGradient(-4,-8,2,0,0,22);wool.addColorStop(0,'#FFFFFF');wool.addColorStop(1,'#E9E1F2');g.fillStyle=wool;
@@ -3408,7 +3414,7 @@ function vGive(){var st=D.settings,rows=[[x('Картка Monobank','Карта 
 /* «Я тут новий»: a comic-strip tour of the app, hosted by Benya the lamb */
 /* Беня is a 3D render now (img/benya/*.webp, made by tools/benya-blender.py); props stay as small drawings next to him */
 function cxLamb(mood,prop,cos){var sk='',k;if(cos)for(k in LAMB_COS)if(LAMB_COS[k]===cos)sk=k;var f=sk||(mood==='wink'||mood==='wow'?mood:'happy');
-  return '<span class="cx-lamb cx3d" aria-hidden="true"><img src="img/benya/'+f+'.webp" alt="" draggable="false">'+(prop?'<svg class="cx-ov" viewBox="0 0 100 100">'+prop+'</svg>':'')+'</span>';}
+  return '<span class="cx-lamb cx3d" aria-hidden="true"><img src="img/benya/'+f+'.webp?v=3" alt="" draggable="false">'+(prop?'<svg class="cx-ov" viewBox="0 0 100 100">'+prop+'</svg>':'')+'</span>';}
 function cxLambFlat(mood,prop,cos){cos=cos||{};var eyes=mood==='wink'?'<path class="cx-ey" d="M43 44q3-3 6 0" stroke="#2E2236" stroke-width="2.2" fill="none" stroke-linecap="round"/><g class="cx-eyes"><ellipse cx="58" cy="44" rx="3" ry="3.8" fill="#2E2236"/><circle cx="59.2" cy="42.6" r="1.1" fill="#fff"/></g>':
     '<g class="cx-eyes"><ellipse cx="45" cy="44" rx="3" ry="3.8" fill="#2E2236"/><ellipse cx="58" cy="44" rx="3" ry="3.8" fill="#2E2236"/><circle cx="46.2" cy="42.6" r="1.1" fill="#fff"/><circle cx="59.2" cy="42.6" r="1.1" fill="#fff"/></g>';
   var mouth=mood==='wow'?'<ellipse cx="51.5" cy="53" rx="2.6" ry="3.2" fill="#9C4A5A"/>':'<path d="M47.5 51.5q4 4 8 0" stroke="#9C4A5A" stroke-width="2" fill="none" stroke-linecap="round"/>';
@@ -3999,13 +4005,17 @@ function hero2(now,nx){var name=((D&&D.me&&D.me.name)||'').trim().split(/\s+/)[0
       wxLine()+'<span class="sky-clock" id="skyclock" hidden></span>'+wxBadge()+'</div>'+
     '<div class="sky-bottom">'+heroLamb()+'<button class="lit" data-act="go" data-v="prayer"><span><b>'+num('lit',litCount())+'</b>'+x('молитов цього тижня','молитв на этой неделе')+'</span>'+(DEMO?'<i>'+x('приклад','пример')+'</i>':'')+'</button>'+strip+'</div></section>';}
 var LAMP={k:'<path d="M4 5h16v11H9l-5 4z"/><path d="M12 13.2s-3-1.9-3-4a1.6 1.6 0 0 1 3-.9 1.6 1.6 0 0 1 3 .9c0 2.1-3 4-3 4z"/>',r:'<path d="M4 5.500C6.500 4.500 9.500 4.500 12 6c2.500-1.500 5.500-1.500 8-.5V19c-2.500-1-5.500-1-8 .5-2.500-1.500-5.500-1.500-8-.5z"/><path d="M12 6v13.500"/>',c:'<rect x="6" y="3" width="12" height="18" rx="2.500"/><path d="M12 8.500l1.100 2.400 2.400 1.100-2.400 1.100L12 15.500l-1.100-2.400-2.400-1.100 2.400-1.100z"/>',p:'<path d="M12 20s-7-4.400-7-9.600A3.900 3.900 0 0 1 12 8a3.900 3.900 0 0 1 7 2.400C19 15.600 12 20 12 20z"/>'};
-function lamp(ok,act,v,icon,title,sub){return '<button class="lamp'+(ok?' ok':'')+'" data-act="'+act+'" data-v="'+v+'"><span class="orb"><svg viewBox="0 0 24 24" aria-hidden="true">'+LAMP[icon]+'</svg>'+(ok?'<i>'+CHECK+'</i>':'')+'</span><strong>'+title+'</strong><small>'+sub+'</small></button>';}
+function lamp(ok,act,v,icon,title,sub,next){return '<button class="lamp'+(ok?' ok':' todo')+(next?' next':'')+'" data-act="'+act+'" data-v="'+v+'"><span class="orb"><svg viewBox="0 0 24 24" aria-hidden="true">'+LAMP[icon]+'</svg>'+(ok?'<i>'+CHECK+'</i>':'<b class="lamp-box" aria-hidden="true"></b>')+'</span><strong>'+title+'</strong><small>'+sub+'</small></button>';}
 function homeDay(){var now=new Date(),l=state.log[iso(now)]||{},nx=nextChapter(),cn=weekCard(),open=cardOpen(),st=streak(),mon=addDays(day0(now),-((now.getDay()+6)%7)),bars='';
   for(var i=0;i<7;i++){var d=addDays(mon,i),c=dayCount(d),td=iso(d)===iso(now);bars+='<span class="wb'+(td?' today':'')+(d>now?' future':'')+'"><i style="--h:'+(c/3).toFixed(2)+'"></i><small>'+WS[state.lang][d.getDay()]+'</small></span>';}
-  return '<section class="stack" style="gap:10px"><div class="lamps">'+
-     lamp(!!l.r,'bible',nx?nx.b+':'+nx.c:'0:1','r',x('Розділ дня','Глава дня'),nx?bookName(nx.b)+' '+nx.c:x('Новий Завіт','Новый Завет'))+
-     lamp(!!l.k,'sheet','kind','k',x('Добре слово','Доброе слово'),x('Ближньому','Ближнему'))+
-     lamp(!!l.p,'go','prayer','p',x('Молитва','Молитва'),x('За когось','За кого-то'))+'</div>'+
+  var dn=[!!l.r,!!l.k,!!l.p],n=dn.filter(Boolean).length,nxt=dn.indexOf(false);
+  var hint=n===0?x('Три маленькі кроки щодня: прочитай розділ, скажи комусь добре слово, помолись. Зробиш — лампадка засвітиться.','Три маленьких шага каждый день: прочитай главу, скажи кому-то доброе слово, помолись. Сделаешь — лампадка загорится.','Three small steps a day: read a chapter, say a kind word, pray. Each one lights a lamp.'):
+    n===3?x('Усі три зроблено. День світиться!','Все три сделаны. День светится!','All three done. The day is shining!'):(3-n)===1?x('Ще один крок — і день світиться','Ещё один шаг — и день светится','One more step and the day shines'):x('Ще два кроки — і день світиться','Ещё два шага — и день светится','Two more steps and the day shines');
+  return '<section class="stack" style="gap:10px"><div class="day3-h"><h2>'+x('Три кроки на сьогодні','Три шага на сегодня','Three steps for today')+'</h2><span class="day3-n'+(n===3?' full':'')+'" aria-label="'+n+x(' із 3',' из 3',' of 3')+'">'+dn.map(function(d){return '<i class="'+(d?'on':'')+'"></i>';}).join('')+'<b>'+n+'/3</b></span></div>'+
+    '<p class="day3-hint'+(n===3?' full':'')+'">'+hint+'</p><div class="lamps">'+
+     lamp(!!l.r,'bible',nx?nx.b+':'+nx.c:'0:1','r',x('Розділ дня','Глава дня'),nx?bookName(nx.b)+' '+nx.c:x('Новий Завіт','Новый Завет'),nxt===0)+
+     lamp(!!l.k,'sheet','kind','k',x('Добре слово','Доброе слово'),x('Ближньому','Ближнему'),nxt===1)+
+     lamp(!!l.p,'go','prayer','p',x('Молитва','Молитва'),x('За когось','За кого-то'),nxt===2)+'</div>'+
     (st<1?'':'<div class="weektile"><div><span>'+x('Днів поспіль','Дней подряд')+'</span><b>'+num('streak',st)+'</b></div><div class="wbars">'+bars+'</div></div>')+'</section>';}
 
 /* ---------- sheets ---------- */
