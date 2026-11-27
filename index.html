@@ -1428,6 +1428,44 @@ i.add{font-style:italic;color:var(--muted)}
 .lamp small{font-size:12px;line-height:1.2;color:var(--muted);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .lamp:active{transform:scale(.955);opacity:.82}
 @media (prefers-reduced-motion:no-preference){.lamp.ok .orb{animation:glowp 3.6s ease-in-out infinite}@keyframes glowp{0%,100%{box-shadow:0 0 0 6px rgba(255,200,90,.2),0 8px 22px rgba(255,186,60,.45)}50%{box-shadow:0 0 0 9px rgba(255,200,90,.12),0 8px 28px rgba(255,186,60,.6)}}}
+body.spl-on{overflow:hidden}body.spl-on:not(.spl-under) #app{visibility:hidden}
+.spl{position:fixed;left:0;right:0;top:0;height:100lvh;z-index:900;overflow:hidden;background:#07060A;color:#fff;touch-action:none;user-select:none;-webkit-user-select:none;--drag:0;--bot:calc(100lvh - 100dvh)}
+.spl-scene{position:absolute;inset:0;opacity:0;transition:opacity .9s ease}
+.spl.ready .spl-scene{opacity:1}
+.spl-pic{position:absolute;inset:-4% -6%}
+.spl-pic img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.spl-tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,0) 24%,rgba(0,0,0,0) 46%,rgba(0,0,0,.72) 82%,rgba(0,0,0,.86) 100%)}
+.spl[data-phase="night"] .spl-tint{background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.25) 55%,rgba(4,4,14,.85) 100%)}
+.spl[data-phase="day"] .spl-tint{background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 44%,rgba(0,0,0,.75) 82%,rgba(0,0,0,.88) 100%)}
+.spl-boot{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .5s ease}
+.spl.ready .spl-boot{opacity:0;pointer-events:none}
+.spl-boot svg{width:210px;height:126px;overflow:visible}
+.spl-line{fill:none;stroke:#FFD27A;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:300;stroke-dashoffset:300;filter:drop-shadow(0 0 6px rgba(255,210,122,.6))}
+.spl-win{fill:#FFD27A;opacity:0}
+.spl-cap{font:500 14px/1 var(--font-body);color:rgba(255,236,200,.7);letter-spacing:.02em}
+.spl-top,.spl-bot,.spl-benya{opacity:0;transition:opacity .8s .25s ease}
+.spl.ready .spl-top,.spl.ready .spl-bot,.spl.ready .spl-benya{opacity:calc(1 - var(--drag))}
+.spl-top{position:absolute;left:22px;right:22px;top:calc(env(safe-area-inset-top,0px) + var(--tg-content-safe-area-inset-top,0px) + var(--tg-safe-area-inset-top,0px) + 22px);display:flex;justify-content:space-between;align-items:center;gap:12px;text-shadow:0 1px 10px rgba(0,0,0,.45)}
+.spl-date{font:600 15px/1.2 var(--font-body);color:rgba(255,255,255,.92)}
+.spl-wx{display:inline-flex;align-items:center;gap:6px;font:800 22px/1 var(--font-display);color:#fff}.spl-wx svg{stroke:#fff;color:#fff}.spl-wx .wi svg{width:26px;height:26px}
+.spl-bot{position:absolute;left:22px;right:22px;bottom:calc(var(--bot) + env(safe-area-inset-bottom,0px) + 22px);display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.spl-txt{max-width:64%}
+.spl-hi{font:800 clamp(34px,10vw,46px)/1.02 var(--font-display);letter-spacing:-.035em;margin:0;text-shadow:0 2px 20px rgba(0,0,0,.4)}
+.spl-next{display:flex;align-items:center;gap:8px;margin:10px 0 0;font-size:14.5px;line-height:1.35;color:rgba(255,255,255,.88)}.spl-next i{flex:none;width:7px;height:7px;border-radius:50%;background:#FFD27A;box-shadow:0 0 10px #FFD27A}
+.spl-go{align-self:center;margin-top:8px;width:62px;height:62px;border:0;border-radius:50%;display:grid;place-items:center;background:#FFD27A;color:#20160A;box-shadow:0 0 0 8px rgba(255,210,122,.18),0 10px 30px rgba(255,190,90,.45)}
+.spl-go svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.spl-hint{align-self:center;margin:-4px 0 0;font:600 12.5px/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.spl-benya{position:absolute;right:10px;bottom:calc(var(--bot) + env(safe-area-inset-bottom,0px) + 14px);width:min(33vw,140px)}
+.spl-benya img{display:block;width:100%;height:auto;filter:drop-shadow(0 10px 18px rgba(0,0,0,.45))}
+.spl-say{position:absolute;right:4px;top:-28px;background:#fff;color:#17120A;font:700 12.5px/1 var(--font-body);padding:8px 11px;border-radius:14px 14px 14px 4px;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.28)}
+@media (prefers-reduced-motion:no-preference){
+ .spl-line{animation:splDraw 1.6s ease forwards}.spl-line:nth-child(2){animation-delay:.5s}.spl-line:nth-child(3){animation-delay:.9s}
+ .spl-win{animation:splWin .6s 1.4s ease forwards}@keyframes splWin{to{opacity:1}}@keyframes splDraw{to{stroke-dashoffset:0}}
+ .spl.ready .spl-pic{animation:splPan 26s ease-in-out infinite alternate}@keyframes splPan{from{transform:scale(1.02) translate3d(0,0,0)}to{transform:scale(1.1) translate3d(-2%,-2.5%,0)}}
+ .spl.ready .spl-benya img{animation:splBob 3.4s ease-in-out infinite}@keyframes splBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-8px) rotate(2deg)}}
+ .spl.ready .spl-say{animation:splSay .5s 1.2s cubic-bezier(.2,.9,.25,1.3) both}@keyframes splSay{from{opacity:0;transform:scale(.6)}}
+ .spl.ready .spl-go{animation:splGo 2.2s 1s ease-in-out infinite}@keyframes splGo{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}}
+@media (prefers-reduced-motion:reduce){.spl-line{stroke-dashoffset:0}.spl-win{opacity:1}}
 </style>
 </head>
 <body>
@@ -1871,7 +1909,48 @@ function guestView(){var now=new Date(),up=[],sun=null;
    '<section class="stack"><h2>'+x('Ми в мережі','Мы в сети','Find us')+'</h2><div class="row">'+[['Telegram',TG],['Instagram',IG],['YouTube',YT],['Facebook',FB]].filter(function(l){return l[1];}).map(function(l){return '<a class="btn tint small" href="'+esc(l[1])+'" target="_blank" rel="noopener">'+l[0]+'</a>';}).join('')+'</div></section>'+
    '<div class="g-cta" id="gcta">'+tgBtn.replace('btn light','btn accent')+'</div>'+
    '<p class="note g-demo"><a href="?demo=1">'+x('Подивитися, як виглядає застосунок','Посмотреть, как выглядит приложение','See what the app looks like')+'</a></p></main>';}
+/* ---------- Заставка: a full-screen sky photo by the time of day, swipe up to enter. Shown on start and after 45 s away ---------- */
+var SPL=null,splAway=0;
+function splPhase(){var h=new Date().getHours();return h>=5&&h<10?'dawn':h>=10&&h<17?'day':h>=17&&h<21?'dusk':'night';}
+function splOn(){return !/[?&]nosplash=1/.test(location.search)&&!GUEST&&(LIVE||/[?&]demo=1/.test(location.search));}
+function splTop(){var now=new Date(),w='';try{if(WX&&WX.cur){var wc=wxCode(WX.cur.code);w='<span class="spl-wx"><span class="wi">'+wxIcon(wc[0],WX.cur.day)+'</span>'+deg(WX.cur.temp)+'</span>';}}catch(e){}
+  return '<p class="spl-date">'+WD[state.lang][now.getDay()]+', '+fmtDay(now)+'</p>'+w;}
+function splBot(){var name=((D&&D.me&&D.me.name)||'').trim().split(/\s+/)[0],nx=null,line='';try{nx=nextMeeting(new Date());}catch(e){}
+  if(nx)line='<p class="spl-next"><i aria-hidden="true"></i>'+esc(L(nx.it.title))+' · '+rel(nx.date)+' '+at(nx.it.time)+'</p>';
+  return '<h1 class="spl-hi">'+greet()+(name?',<br>'+esc(name):'')+'</h1>'+line;}
+function splShow(again){if(!splOn()||SPL)return;var ph=splPhase(),el=document.createElement('div');el.className='spl'+(again?' ready again':'');el.setAttribute('data-phase',ph);el.setAttribute('role','dialog');el.setAttribute('aria-label',x('Заставка. Гортай угору, щоб відкрити','Заставка. Листай вверх, чтобы открыть','Splash. Swipe up to open'));
+  el.innerHTML='<div class="spl-scene"><div class="spl-pic"><img alt="" src="img/sp-'+ph+'.jpg"></div><div class="spl-tint"></div></div>'+
+    '<div class="spl-boot" aria-hidden="true"><svg viewBox="0 0 200 120"><path class="spl-line" d="M10 110 C55 70 80 52 100 52 C120 52 145 70 190 110"/><path class="spl-line" d="M90 53 V36 L100 27 L110 36 V53"/><path class="spl-line" d="M100 27 V12 M94 18 H106"/><rect class="spl-win" x="97" y="40" width="6" height="8" rx="1"/></svg><p class="spl-cap"></p></div>'+
+    '<div class="spl-top">'+splTop()+'</div>'+
+    '<div class="spl-bot"><div class="spl-txt">'+splBot()+'</div><button class="spl-go" aria-label="'+x('Відкрити застосунок','Открыть приложение','Open the app')+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button><p class="spl-hint">'+x('Гортай угору','Листай вверх','Swipe up')+'</p></div>'+
+    '<div class="spl-benya" aria-hidden="true"><span class="spl-say">'+x('Привіт! Я Беня','Привет! Я Беня','Hi! I’m Benya')+'</span><img alt="" src="img/benya-3d.webp"></div>';
+  document.body.appendChild(el);document.body.classList.add('spl-on');SPL={el:el,t0:Date.now(),ready:!!again};
+  var caps=[x('Запалюємо вогники…','Зажигаем огоньки…','Lighting the lights…'),x('Відчиняємо двері…','Открываем двери…','Opening the doors…'),x('Ставимо чайник…','Ставим чайник…','Putting the kettle on…')],ci=0,cap=el.querySelector('.spl-cap');
+  cap.textContent=caps[0];SPL.capT=setInterval(function(){ci=(ci+1)%caps.length;cap.textContent=caps[ci];},1300);
+  splGesture(el);
+  if(again){clearInterval(SPL.capT);document.body.classList.add('spl-under');return;}
+  var img=el.querySelector('.spl-pic img'),imgOk=new Promise(function(res){if(img.decode)img.decode().then(res,res);else{img.onload=res;img.onerror=res;}}),
+    wait=function(ms){return new Promise(function(r){setTimeout(r,ms);});},
+    data=new Promise(function(res){var t=setInterval(function(){if(D&&BLOCK!=='loading'){clearInterval(t);res();}},120);setTimeout(function(){clearInterval(t);res();},4000);});
+  Promise.all([imgOk,wait(1100),data]).then(splReady);setTimeout(splReady,7000);}
+function splReady(){if(!SPL||SPL.ready&&SPL.shown)return;SPL.ready=SPL.shown=true;clearInterval(SPL.capT);var el=SPL.el;
+  el.querySelector('.spl-top').innerHTML=splTop();el.querySelector('.spl-txt').innerHTML=splBot();el.classList.add('ready');setTimeout(function(){document.body.classList.add('spl-under');},900);}
+function splClose(){if(!SPL)return;var s=SPL;SPL=null;clearInterval(s.capT);s.el.style.transition='transform .55s cubic-bezier(.4,0,.2,1)';s.el.style.transform='translateY(-100%)';
+  document.body.classList.remove('spl-on','spl-under');try{var h=tg.HapticFeedback;if(h)h.impactOccurred('soft');}catch(e){}
+  setTimeout(function(){s.el.remove();},620);}
+function splGesture(el){var y0=null,t0=0,dy=0;
+  el.addEventListener('pointerdown',function(e){if(!el.classList.contains('ready'))return;if(e.target.closest('button'))return;y0=e.clientY;t0=Date.now();dy=0;el.style.transition='none';try{el.setPointerCapture(e.pointerId);}catch(er){}});
+  el.addEventListener('pointermove',function(e){if(y0===null)return;var d=Math.min(0,e.clientY-y0);dy=d<-260?-260+(d+260)*0.35:d;el.style.transform='translateY('+dy+'px)';el.style.setProperty('--drag',Math.min(1,-dy/300));});
+  var up=function(){if(y0===null)return;y0=null;var v=dy/Math.max(1,Date.now()-t0);if(dy<-90||v<-0.6)splClose();else{el.style.transition='transform .45s cubic-bezier(.34,1.56,.64,1)';el.style.transform='';el.style.setProperty('--drag',0);}};
+  el.addEventListener('pointerup',up);el.addEventListener('pointercancel',up);
+  el.addEventListener('wheel',function(e){if(el.classList.contains('ready')&&e.deltaY>20)splClose();},{passive:true});
+  el.querySelector('.spl-go').addEventListener('click',function(){if(el.classList.contains('ready'))splClose();});}
+document.addEventListener('keydown',function(e){if(SPL&&SPL.el.classList.contains('ready')&&/^(ArrowUp|Enter| )$/.test(e.key)){e.preventDefault();splClose();}});
+function splAwayNow(){splAway=Date.now();}
+function splBack(){if(splAway&&Date.now()-splAway>45000&&!SPL)splShow(true);splAway=0;}
+document.addEventListener('visibilitychange',function(){if(document.hidden)splAwayNow();else splBack();});
 function boot(){
+  splShow();
   if(LIVE){try{tg.ready();tg.expand();if(tg.BackButton)tg.BackButton.onClick(goBack);if(tg.disableVerticalSwipes)tg.disableVerticalSwipes();tgTheme();state.visits=(state.visits||0)+1;save();checkHome();if(tg.onEvent)tg.onEvent('homeScreenAdded',function(){homeAdded=true;render();});if(tg.onEvent)tg.onEvent('themeChanged',function(){tgTheme();render();});}catch(e){}
     if(!D){try{var c=JSON.parse(localStorage.getItem('ms-cache')||'null');if(c&&c.me){D=c;applyD();}}catch(e){}}
     if(D){BLOCK=null;}else BLOCK='loading';render();
