@@ -1466,6 +1466,7 @@ body.spl-on{overflow:hidden}body.spl-on:not(.spl-under) #app{visibility:hidden}
  .spl.ready .spl-say{animation:splSay .5s 1.2s cubic-bezier(.2,.9,.25,1.3) both}@keyframes splSay{from{opacity:0;transform:scale(.6)}}
  .spl.ready .spl-go{animation:splGo 2.2s 1s ease-in-out infinite}@keyframes splGo{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}}
 @media (prefers-reduced-motion:reduce){.spl-line{stroke-dashoffset:0}.spl-win{opacity:1}}
+.cx3d{display:inline-block;position:relative;overflow:visible;vertical-align:middle}.cx3d img{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;-webkit-user-drag:none}.cx3d .cx-ov{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 </style>
 </head>
 <body>
@@ -1576,7 +1577,7 @@ var BASE_LIT=48, TRANSIENT=['bookOpen','sheet','sheetData','sel','pickBook','jum
 
 function defaults(){return {bookPos:{},bookOpen:null,log:{},path:{},aseg:'events',confirm:null,bcText:'',img:null,q:'',lang:'uk',skin:'',sfx:true,tab:'today',sub:null,seg:{bible:'read',prayer:'needs',community:'serve',heaven:'os'},devs:{p:{},all:false},dvCard:null,day:null,name:'',
   going:{},verseOn:false,verseAt:'',prayed:{},needs:[],testimonies:[],pastoral:null,step:{text:'',done:false},read:{},openBook:null,
-  bible:{b:0,c:5},hl:{},notes:{},marks:{},fs:1,cardDay:null,done:{},serve:{},skills:{},ads:[],hello:false,prSnd:true,ncSeen:false,ncHide:false,bgLocal:null,visits:0,hsHide:0,hsNo:0,sermon:false,
+  bible:{b:0,c:5},hl:{},notes:{},marks:{},fs:1,cardDay:null,done:{},serve:{},skills:{},ads:[],hello:false,prSnd:true,ncSeen:false,ncHide:false,splHi:0,splLast:-1,bgLocal:null,visits:0,hsHide:0,hsNo:0,sermon:false,
   thanks:{},wxLoc:null,shareWay:null,sermSaved:{},
   sheet:null,sheetData:null,sel:null,pickBook:null,jump:null,cardAnim:false};}
 var state=defaults();
@@ -1912,6 +1913,13 @@ function guestView(){var now=new Date(),up=[],sun=null;
 /* ---------- Заставка: a full-screen sky photo by the time of day, swipe up to enter. Shown on start and after 45 s away ---------- */
 var SPL=null,splAway=0;
 function splPhase(){var h=new Date().getHours();return h>=5&&h<10?'dawn':h>=10&&h<17?'day':h>=17&&h<21?'dusk':'night';}
+function splSay(ph){var A={dawn:[P3('Гарного ранку!','Хорошего утра!','Have a good morning!'),P3('Новий день — нові милості','Новый день — новые милости','New day, new mercies'),P3('Кава й молитва?','Кофе и молитва?','Coffee and a prayer?')],
+    day:[P3('Радий тебе бачити!','Рад тебя видеть!','Good to see you!'),P3('Гарного дня!','Хорошего дня!','Have a good day!'),P3('Як ти сьогодні?','Как ты сегодня?','How are you today?')],
+    dusk:[P3('Гарного вечора!','Хорошего вечера!','Have a nice evening!'),P3('Як минув день?','Как прошёл день?','How was your day?'),P3('Час видихнути','Время выдохнуть','Time to breathe out')],
+    night:[P3('Тихої ночі','Тихой ночи','Have a quiet night'),P3('Бог не спить, відпочинь','Бог не спит, отдохни','God never sleeps, rest'),P3('Ще не спиш?','Ещё не спишь?','Still awake?')]},
+    all=[P3('Я скучив!','Я скучал!','I missed you!'),P3('Бе-е-е!','Бе-е-е!','Baa-a!'),P3('Ти тут — і це добре','Ты здесь — и это хорошо','You are here, and that’s good')];
+  if(!state.splHi){state.splHi=1;save();return rL(P3('Привіт! Я Беня','Привет! Я Беня','Hi! I’m Benya'));}
+  var l=A[ph].concat(all),i=Math.floor(Math.random()*l.length);if(i===state.splLast)i=(i+1)%l.length;state.splLast=i;return rL(l[i]);}
 function splOn(){return !/[?&]nosplash=1/.test(location.search)&&!GUEST&&(LIVE||/[?&]demo=1/.test(location.search));}
 function splTop(){var now=new Date(),w='';try{if(WX&&WX.cur){var wc=wxCode(WX.cur.code);w='<span class="spl-wx"><span class="wi">'+wxIcon(wc[0],WX.cur.day)+'</span>'+deg(WX.cur.temp)+'</span>';}}catch(e){}
   return '<p class="spl-date">'+WD[state.lang][now.getDay()]+', '+fmtDay(now)+'</p>'+w;}
@@ -1923,7 +1931,7 @@ function splShow(again){if(!splOn()||SPL)return;var ph=splPhase(),el=document.cr
     '<div class="spl-boot" aria-hidden="true"><svg viewBox="0 0 200 120"><path class="spl-line" d="M10 110 C55 70 80 52 100 52 C120 52 145 70 190 110"/><path class="spl-line" d="M90 53 V36 L100 27 L110 36 V53"/><path class="spl-line" d="M100 27 V12 M94 18 H106"/><rect class="spl-win" x="97" y="40" width="6" height="8" rx="1"/></svg><p class="spl-cap"></p></div>'+
     '<div class="spl-top">'+splTop()+'</div>'+
     '<div class="spl-bot"><div class="spl-txt">'+splBot()+'</div><button class="spl-go" aria-label="'+x('Відкрити застосунок','Открыть приложение','Open the app')+'"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button><p class="spl-hint">'+x('Гортай угору','Листай вверх','Swipe up')+'</p></div>'+
-    '<div class="spl-benya" aria-hidden="true"><span class="spl-say">'+x('Привіт! Я Беня','Привет! Я Беня','Hi! I’m Benya')+'</span><img alt="" src="img/benya-3d.webp"></div>';
+    '<div class="spl-benya" aria-hidden="true"><span class="spl-say">'+esc(splSay(ph))+'</span><img alt="" src="'+(state.skin&&LAMB_COS[state.skin]?'img/benya/'+state.skin+'.webp':'img/benya-3d.webp')+'"></div>';
   document.body.appendChild(el);document.body.classList.add('spl-on');SPL={el:el,t0:Date.now(),ready:!!again};
   var caps=[x('Запалюємо вогники…','Зажигаем огоньки…','Lighting the lights…'),x('Відчиняємо двері…','Открываем двери…','Opening the doors…'),x('Ставимо чайник…','Ставим чайник…','Putting the kettle on…')],ci=0,cap=el.querySelector('.spl-cap');
   cap.textContent=caps[0];SPL.capT=setInterval(function(){ci=(ci+1)%caps.length;cap.textContent=caps[ci];},1300);
@@ -2087,8 +2095,11 @@ function joyCloud(g,x,y,s){g.save();g.translate(x,y);g.scale(s,s);
   var gr=g.createLinearGradient(0,-26,0,16);gr.addColorStop(0,'#FFFFFF');gr.addColorStop(.6,'#F7F1FF');gr.addColorStop(1,'#DCD3F5');g.fillStyle=gr;
   g.beginPath();g.arc(-22,4,14,0,6.283);g.arc(-4,-6,20,0,6.283);g.arc(18,0,16,0,6.283);g.arc(32,8,10,0,6.283);g.roundRect?g.roundRect(-34,4,74,14,7):g.rect(-34,4,74,14);g.fill();
   g.fillStyle='rgba(255,255,255,.9)';g.beginPath();g.ellipse(-8,-16,8,4,-.4,0,6.283);g.fill();g.restore();}
+var JOYL=null;
 function joyLamb(g,x,y,s,sec){g.save();g.translate(x,y+Math.sin(sec*2.2)*1.2*s);g.scale(s,s);
   g.fillStyle='rgba(40,90,40,.18)';g.beginPath();g.ellipse(0,15,20,4,0,0,6.283);g.fill();
+  if(!JOYL){JOYL=new Image();JOYL.src='img/benya/happy.webp';}
+  if(JOYL.complete&&JOYL.naturalWidth){g.drawImage(JOYL,-26,-34,52,52);g.restore();return;}
   g.fillStyle='#5B4A63';[-11,-4,5,12].forEach(function(lx){g.beginPath();g.roundRect?g.roundRect(lx-2.2,4,4.4,11,2.2):g.rect(lx-2.2,4,4.4,11);g.fill();});
   var wool=g.createRadialGradient(-4,-8,2,0,0,22);wool.addColorStop(0,'#FFFFFF');wool.addColorStop(1,'#E9E1F2');g.fillStyle=wool;
   g.beginPath();[[-12,0,9],[-4,-6,10],[6,-5,10],[13,1,8],[2,4,10],[-8,5,8]].forEach(function(c){g.moveTo(c[0]+c[2],c[1]);g.arc(c[0],c[1],c[2],0,6.283);});g.fill();
@@ -3395,7 +3406,10 @@ function vGive(){var st=D.settings,rows=[[x('Картка Monobank','Карта 
   (DEMO?'<p class="note">'+x('Реквізити взято з опису YouTube-каналу церкви. Адміністратор змінює їх в адмінці.','Реквизиты взяты из описания YouTube-канала церкви. Администратор меняет их в админке.')+'</p>':'')+
   '<section class="card"><h2 class="t3">'+x('Проєкти та звіти','Проекты и отчёты')+'</h2><p class="sub">'+x('Тут з’являться окремі збори зі шкалою та звіти про витрати, коли церква почне їх публікувати.','Здесь появятся отдельные сборы со шкалой и отчёты о расходах, когда церковь начнёт их публиковать.')+'</p></section>';}
 /* «Я тут новий»: a comic-strip tour of the app, hosted by Benya the lamb */
-function cxLamb(mood,prop,cos){cos=cos||{};var eyes=mood==='wink'?'<path class="cx-ey" d="M43 44q3-3 6 0" stroke="#2E2236" stroke-width="2.2" fill="none" stroke-linecap="round"/><g class="cx-eyes"><ellipse cx="58" cy="44" rx="3" ry="3.8" fill="#2E2236"/><circle cx="59.2" cy="42.6" r="1.1" fill="#fff"/></g>':
+/* Беня is a 3D render now (img/benya/*.webp, made by tools/benya-blender.py); props stay as small drawings next to him */
+function cxLamb(mood,prop,cos){var sk='',k;if(cos)for(k in LAMB_COS)if(LAMB_COS[k]===cos)sk=k;var f=sk||(mood==='wink'||mood==='wow'?mood:'happy');
+  return '<span class="cx-lamb cx3d" aria-hidden="true"><img src="img/benya/'+f+'.webp" alt="" draggable="false">'+(prop?'<svg class="cx-ov" viewBox="0 0 100 100">'+prop+'</svg>':'')+'</span>';}
+function cxLambFlat(mood,prop,cos){cos=cos||{};var eyes=mood==='wink'?'<path class="cx-ey" d="M43 44q3-3 6 0" stroke="#2E2236" stroke-width="2.2" fill="none" stroke-linecap="round"/><g class="cx-eyes"><ellipse cx="58" cy="44" rx="3" ry="3.8" fill="#2E2236"/><circle cx="59.2" cy="42.6" r="1.1" fill="#fff"/></g>':
     '<g class="cx-eyes"><ellipse cx="45" cy="44" rx="3" ry="3.8" fill="#2E2236"/><ellipse cx="58" cy="44" rx="3" ry="3.8" fill="#2E2236"/><circle cx="46.2" cy="42.6" r="1.1" fill="#fff"/><circle cx="59.2" cy="42.6" r="1.1" fill="#fff"/></g>';
   var mouth=mood==='wow'?'<ellipse cx="51.5" cy="53" rx="2.6" ry="3.2" fill="#9C4A5A"/>':'<path d="M47.5 51.5q4 4 8 0" stroke="#9C4A5A" stroke-width="2" fill="none" stroke-linecap="round"/>';
   return '<svg class="cx-lamb" viewBox="0 0 100 100" aria-hidden="true"><ellipse cx="46" cy="93" rx="30" ry="4" fill="rgba(0,0,0,.12)"/>'+
